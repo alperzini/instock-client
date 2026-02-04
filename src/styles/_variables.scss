@@ -1,0 +1,145 @@
+@use "./functions" as *;
+
+//Font Family and Weight for use everywhere
+$primary-font: "Titillium Web", sans-serif;
+$font-semi-bold: 600;
+$font-regular: 400;
+
+//All Wrappers Max Width
+$max-width-wrapper: pxToRem(1020);
+
+/*Text Styles*/
+/*Mobile Text Sizes and Line heights*/
+//M H1 - Page Header
+$text-size-m-h1: pxToRem(28);
+$line-height-m-h1: pxToRem(36);
+
+//M H2 - Subheader
+$text-size-m-h2: pxToRem(20);
+$line-height-m-h2: pxToRem(28);
+
+//M H3 - Labels, Links & Buttons
+$text-size-m-h3: pxToRem(13);
+$line-height-m-h3: pxToRem(20);
+
+//M H4 - Table Header
+$text-size-m-h4: pxToRem(11);
+$line-height-m-h4: pxToRem(16);
+
+//M P1 - Body Large
+$text-size-m-p1: pxToRem(15);
+$line-height-m-p1: pxToRem(26);
+
+//M P2 - Body Medium
+$text-size-m-p2: pxToRem(13);
+$line-height-m-p2: pxToRem(20);
+
+//M P3 - Body Small
+$text-size-m-p3: pxToRem(11);
+$line-height-m-p3: pxToRem(16);
+
+/*Desktop & Tablet Text Sizes and Line heights*/
+//DT H1 - Page Header
+$text-size-dt-h1: pxToRem(32);
+$line-height-dt-h1: pxToRem(40);
+
+//DT H2 - Subheader
+$text-size-dt-h2: pxToRem(24);
+$line-height-dt-h2: pxToRem(32);
+
+//DT H3 - Labels, Links & Buttons
+$text-size-dt-h3: pxToRem(14);
+$line-height-dt-h3: pxToRem(22);
+
+//DT H4 - Table Header
+$text-size-dt-h4: pxToRem(12);
+$line-height-dt-h4: pxToRem(18);
+
+//DT P1 - Body Large
+$text-size-dt-p1: pxToRem(16);
+$line-height-dt-p1: pxToRem(28);
+
+//DT P2 - Body Medium
+$text-size-dt-p2: pxToRem(14);
+$line-height-dt-p2: pxToRem(22);
+
+//DT P3 - Body Small
+$text-size-dt-p3: pxToRem(12);
+$line-height-dt-p3: pxToRem(18);
+
+/*Colors*/
+//Primary colors
+$color-instock-black: #13182C;
+$color-instock-indigo: #2E66E5;
+$color-white: #FFFFFF;
+
+//Secondary colors
+$color-slate: #5C667E;
+$color-cloud: #BDC5D5;
+
+//Background colors
+$color-graphite: #232940;
+$color-light-grey: #F7F8F9;
+
+//Supporting colors
+$color-green: #158463;
+$color-red: #C94515;
+
+/*Call to Actions Styles*/
+//Mobile CTA Height
+$cta-height-m: pxToRem(36);
+
+//Desktop & Tablet CTA Height
+$cta-height-dt: pxToRem(38);
+
+//Desktop & Tablet CTA Right and Left Padding (no padding for top and bottom)
+$cta-padding-dt: pxToRem(16);
+
+//Mobile, Desktop & Tablet CTA Border Radius
+$cta-br: 20px;
+
+//Mobile, Desktop & Tablet Text Link Right Margin (no margin for other sides)
+$link-margin-right: 4px;
+
+/*Form Fields Styles*/
+//Mobile Form Field Height
+$ff-height-m: pxToRem(36);
+
+//Desktop & Tablet Form Field Height
+$ff-height-dt: pxToRem(38);
+
+//Mobile, Desktop & Tablet Form Field Right and Left Padding (no padding for top and bottom)
+$ff-padding-right: pxToRem(16);
+$ff-padding-left: pxToRem(16);
+
+//Mobile, Desktop & Tablet Form Field Top and Bottom Margin (no margin for right and left)
+$ff-margin-top: 4px;
+$ff-margin-bottom: 4px;
+
+//Mobile, Desktop & Tablet Form Field Border Radius
+$ff-br: 20px;
+
+/*Radio Button and Radio Button Group Styles*/
+//Mobile, Desktop & Tablet Radio Button Group Top and Bottom Margin (no margin for right and left)
+$rbg-margin-top: 4px;
+$rbg-margin-bottom: 4px;
+
+//Mobile, Desktop & Tablet Radio Button Right Margin (no margin for other sides)
+$rb-margin-right: 8px;
+
+/*Tag Styles*/
+//Mobile Tag Height
+$tag-height-m: pxToRem(24);
+
+//Desktop & Tablet Tag Height
+$tag-height-dt: pxToRem(26);
+
+//Mobile, Desktop & Tablet Tag Right and Left Padding (no padding for top and bottom)
+$tag-padding-right: pxToRem(8);
+$tag-padding-left: pxToRem(8);
+
+//Mobile, Desktop & Tablet Tag Background Opacity
+$tag-bo: 7%;
+
+//Mobile, Desktop & Tablet Tag Border Radius
+$tag-br: 20px;
