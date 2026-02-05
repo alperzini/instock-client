@@ -73,10 +73,10 @@ background-color: $color-graphite;
 
     // Active link - indigo pill background
     &--active {
-    background-color: $color-instock-indigo;
+    background-color: $color-instock-black;
 
     &:hover {
-        background-color: darken($color-instock-indigo, 10%);
+        background-color: darken($color-instock-black, 10%);
         text-decoration: none;
     }
     }
