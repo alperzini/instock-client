@@ -3,8 +3,18 @@ import Logo from '../Logo/Logo'
 import './Navigation.scss'
 
 function Navigation() {
+
+    // Gives us access to the current URL (pathname, search, hash, etc.)
 const location = useLocation()
+
+// Check if the current page is related to Warehouses
+  // This will be true for:
+  // - Home page "/"
+  // - Any route that starts with "/WarehousesPage"
 const isWarehousesActive = location.pathname === '/' || location.pathname.startsWith('/WarehousesPage')
+
+// Check if the current page is related to Inventory
+// This will be true for any route that starts with "/InventoryPage"
 const isInventoryActive = location.pathname.startsWith('/InventoryPage')
 
 return (
