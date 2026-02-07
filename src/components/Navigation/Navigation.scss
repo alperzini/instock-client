@@ -1,5 +1,6 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
+@use "sass:color";
 
 .navigation {
 background-color: $color-graphite;
@@ -76,7 +77,7 @@ background-color: $color-graphite;
     background-color: $color-instock-black;
 
     &:hover {
-        background-color: darken($color-instock-black, 10%);
+        background-color: color.adjust($color-instock-black, $lightness: -10%);
         text-decoration: none;
     }
     }
