@@ -35,7 +35,6 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      {/* Add navigation here */}
       <Navigation />
       <Routes>
         <Route path="/" element={<WarehousesPage warehouses={warehouses} setWarehouses={setWarehouses} />} />
@@ -48,7 +47,7 @@ function App() {
         <Route path="/addInventory" element={<AddInventoryItemPage inventory={inventory} setInventory={setInventory} />} />
         <Route path="*" element={<h1>404<br />PAGE NOT FOUND</h1>} />
       </Routes>
-      {/* Add Footer Here */}
+      <Footer />
     </BrowserRouter>
   )
 }
