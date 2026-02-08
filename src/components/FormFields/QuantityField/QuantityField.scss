@@ -46,5 +46,9 @@
             line-height: $line-height-dt-p2;
             height: $ff-height-dt;
         }
+
+        @include desktop {
+            width: pxToRem(122);
+        }
     }
 }
