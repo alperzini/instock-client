@@ -1,6 +1,7 @@
 import "./WarehousesPage.scss";
 import TextField from "../../components/FormFields/TextField/TextField";
 import DescriptionField from "../../components/FormFields/DescriptionField/DescriptionField";
+import QuantityField from "../../components/FormFields/QuantityField/QuantityField";
 import { useState } from "react";
 
 const WarehousesPage = ({ warehouses, setWarehouses }) => {
@@ -11,7 +12,7 @@ const WarehousesPage = ({ warehouses, setWarehouses }) => {
     }
     return (
         // <TextField onChange={handleTextChange} label="Item Name" name="name" id="name" placeholder="Item Name" value={value} error="This field is required" isError={true} />
-        <DescriptionField onChange={handleTextChange} label="Item Name" name="name" id="name" placeholder="Item Name" value={value} error="This field is required" isError={true} />
+        <QuantityField onChange={handleTextChange} label="Item Name" name="name" id="name" placeholder="Item Name" value={value} error="This field is required" isError={true} />
 
     );
 };
