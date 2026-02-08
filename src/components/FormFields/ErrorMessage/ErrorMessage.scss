@@ -1,0 +1,22 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/functions" as *;
+@use "../../../styles/mixins" as *;
+
+.error-message {
+    display: flex;
+    align-items: center;
+    font-size: $text-size-m-p3;
+    line-height: $line-height-m-p3;
+    color: $color-red;
+
+    @include tablet {
+        font-size: $text-size-dt-p3;
+        line-height: $line-height-dt-p3;
+    }
+
+    &__icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+}
