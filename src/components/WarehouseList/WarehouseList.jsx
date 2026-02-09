@@ -25,13 +25,13 @@ const WarehouseList = ({ warehouses }) => {
 
             {/* Table header */}
             <div className="warehouse-list__table-header">
-            <span>WAREHOUSE</span>
-            <span>ADDRESS</span>
-            <span>CONTACT NAME</span>
-            <span>CONTACT INFORMATION</span>
-            <span>ACTIONS</span>
+            <span className="warehouse-list__th">WAREHOUSE</span>
+            <span className="warehouse-list__th">ADDRESS</span>
+            <span className="warehouse-list__th">CONTACT NAME</span>
+            <span className="warehouse-list__th">CONTACT INFORMATION</span>
+            <span className="warehouse-list__th warehouse-list__th--actions">ACTIONS</span>
             </div>
-
+            
             {/* Warehouse rows */}
             <div className="warehouse-list__rows">
             {warehouses?.map((warehouse) => (
