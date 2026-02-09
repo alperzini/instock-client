@@ -17,9 +17,10 @@ const WarehouseList = ({ warehouses }) => {
                 />
     
                 {/* Add button */}
-                <button className="warehouse-list__add">
+                <button type="button" className="warehouse-list__add">
                 + Add New Warehouse
                 </button>
+
             </div>
 
             {/* Table header */}
