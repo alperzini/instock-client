@@ -1,5 +1,5 @@
 import "./WarehouseListItem.scss";
-import delete_outline-24 from ""
+import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 
 const WarehouseListItem = ({ warehouse }) => {
