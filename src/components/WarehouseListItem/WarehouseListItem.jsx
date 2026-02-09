@@ -24,8 +24,8 @@ const WarehouseListItem = ({ warehouse }) => {
         </div>
 
         <div className="warehouse-item__actions">
-        <button>Delete</button>
-        <button>Edit</button>
+        <DeleteIcon />
+        <EditIcon />
         </div>
     </article>
 
