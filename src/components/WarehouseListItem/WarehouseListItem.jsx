@@ -1,4 +1,6 @@
 import "./WarehouseListItem.scss";
+import DeleteIcon from "../Icons/DeleteIcon";
+import EditIcon from "../Icons/EditIcon";
 
 const WarehouseListItem = ({ warehouse }) => {
     return (
