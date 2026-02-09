@@ -20,7 +20,7 @@ const WarehousesPage = ({ warehouses, setWarehouses }) => {
     }
     return (
         <>
-            <TextField onChange={handleTextChange} type="email" label="Item Name" name="name" id="name" placeholder="Item Name" value={value} error="This field is required" isError={false} />
+            <TextField onChange={handleTextChange} type="email" label="Item Name" name="name" id="name" placeholder="Item Name" value={value} error="This field is required"  />
             <StatusField legend="Status" name="status" selectedStatus={selectedStatus} onChange={handleRadioChange} />
             <SearchField onChange={handleSearchChange} name="search" id="search" placeholder="Search..." value={search} />
         </>
