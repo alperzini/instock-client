@@ -21,7 +21,26 @@ const WarehousesPage = ({ warehouses, setWarehouses }) => {
                 + Add New Warehouse
                 </button>
             </div>
+
+            {/* Table header (tablet/desktop) */}
+            <div className="warehouse-list__table-header">
+            <span>WAREHOUSE</span>
+            <span>ADDRESS</span>
+            <span>CONTACT NAME</span>
+            <span>CONTACT INFORMATION</span>
+            <span>ACTIONS</span>
             </div>
+
+            {/* Warehouse rows */}
+            <div className="warehouse-list__rows">
+            {warehouses?.map((warehouse) => (
+                <WarehouseListItem
+                key={warehouse.id}
+                warehouse={warehouse}
+                />
+            ))}
+            </div>
+        </div>
         </section>
         );
     };
