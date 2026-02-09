@@ -1,9 +1,12 @@
 import "./WarehouseList.scss";
-import WarehouseListItem from "./WarehouseListItem";
+import WarehouseListItem from "../WarehouseListItem/WarehouseListItem";
+import SortIcon from "../Icons/SortIcon";
 
-const WarehouseList = ({ warehouses }) => {    
+const WarehouseList = ({ warehouses, setWarehouses }) => {    
     return (
         <section className="warehouse-list">
+
+            <div className="warehouse-list__container">
             {/* Page header */}
             <div className="warehouse-list__header">
             <h1 className="warehouse-list__title">Warehouses</h1>
@@ -25,13 +28,13 @@ const WarehouseList = ({ warehouses }) => {
 
             {/* Table header */}
             <div className="warehouse-list__table-header">
-            <span className="warehouse-list__th">WAREHOUSE</span>
-            <span className="warehouse-list__th">ADDRESS</span>
-            <span className="warehouse-list__th">CONTACT NAME</span>
-            <span className="warehouse-list__th">CONTACT INFORMATION</span>
-            <span className="warehouse-list__th warehouse-list__th--actions">ACTIONS</span>
+            <span className="warehouse-list__th">WAREHOUSE <SortIcon /></span>
+            <span className="warehouse-list__th">ADDRESS <SortIcon /></span>
+            <span className="warehouse-list__th">CONTACT NAME <SortIcon /></span>
+            <span className="warehouse-list__th">CONTACT INFORMATION <SortIcon /></span>
+            <span className="warehouse-list__th warehouse-list__th--actions">ACTIONS<SortIcon /></span>
             </div>
-            
+
             {/* Warehouse rows */}
             <div className="warehouse-list__rows">
             {warehouses?.map((warehouse) => (
@@ -41,6 +44,7 @@ const WarehouseList = ({ warehouses }) => {
                 />
             ))}
             </div>
+        </div>
         </div>
         </section>
         );

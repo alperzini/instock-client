@@ -1,0 +1,134 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/icons" as *;
+
+.warehouse-list {
+    &__container {
+    @extend %wrapper;
+    background-color: $color-white;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(19, 24, 44, 0.08);
+    overflow: hidden;
+    }
+
+    &__header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    @include desktop {
+        padding: 2rem 2.5rem;
+    }
+    }
+
+    &__title {
+    margin: 0;
+    font-size: $text-size-m-h1;
+    line-height: $line-height-m-h1;
+    font-weight: $font-semi-bold;
+    color: $color-instock-black;
+
+    @include tablet {
+        font-size: $text-size-dt-h1;
+        line-height: $line-height-dt-h1;
+    }
+    }
+
+    &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include tablet {
+        flex-direction: row;
+        align-items: center;
+    }
+    }
+
+    &__search {
+    height: $ff-height-m;
+    padding: 0 $ff-padding-left;
+    border-radius: $ff-br;
+    border: 1px solid $color-cloud;
+    font-size: $text-size-m-p2;
+
+    @include tablet {
+        height: $ff-height-dt;
+        width: 16rem;
+        font-size: $text-size-dt-p2;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $color-instock-indigo;
+    }
+    }
+
+    &__add {
+    height: $cta-height-m;
+    padding: 0 $cta-padding-dt;
+    border-radius: $cta-br;
+    border: none;
+    background-color: $color-instock-indigo;
+    color: $color-white;
+    font-weight: $font-semi-bold;
+    cursor: pointer;
+
+    @include tablet {
+        height: $cta-height-dt;
+        white-space: nowrap;
+    }
+
+    &:hover {
+        opacity: 0.9;
+    }
+    }
+
+    /* TABLE HEADER — hidden on mobile */
+    &__table-header {
+    display: none;
+    width: 100%;
+
+    @include tablet {
+        display: flex;
+        padding: 0.75rem 2rem;
+        background-color: $color-light-grey;
+        border-top: 1px solid $color-cloud;
+        border-bottom: 1px solid $color-cloud;
+        gap: 1rem;
+    }
+
+    @include desktop {
+        padding: 0.75rem 2.5rem;
+    }
+    }
+
+    &__th {
+    font-size: $text-size-dt-h4;
+    font-weight: $font-semi-bold;
+    color: $color-slate;
+
+    &:nth-child(1) { flex: 1.2; }
+    &:nth-child(2) { flex: 1.6; }
+    &:nth-child(3) { flex: 1.2; }
+    &:nth-child(4) { flex: 1.7; }
+    &:nth-child(5) {
+        flex: 0.7;
+        text-align: right;
+    }
+    }
+
+    &__rows {
+    display: flex;
+    flex-direction: column;
+    }
+}

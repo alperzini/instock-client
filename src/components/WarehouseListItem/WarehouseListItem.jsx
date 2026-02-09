@@ -2,7 +2,7 @@ import "./WarehouseListItem.scss";
 import DeleteIcon from "../Icons/DeleteIcon";
 import EditIcon from "../Icons/EditIcon";
 
-const WarehouseListItem = ({ warehouse }) => {
+const WarehouseListItem = ({ warehouse, setWarehouse }) => {
     return (
     
         <article className="warehouse-item">

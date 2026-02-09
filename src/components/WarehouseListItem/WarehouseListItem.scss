@@ -1,0 +1,74 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/icons" as *;
+
+    .warehouse-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-bottom: 1px solid $color-cloud;
+
+    &:hover {
+        background-color: $color-light-grey;
+    }
+
+    @include tablet {
+        flex-direction: row;
+        align-items: center;
+        padding: 1rem 2rem;
+        gap: 1rem;
+    }
+
+    @include desktop {
+        padding: 1rem 2.5rem;
+    }
+
+    &__name,
+    &__address,
+    &__contact,
+    &__info {
+        font-size: $text-size-m-p2;
+        line-height: $line-height-m-p2;
+        color: $color-instock-black;
+
+        @include tablet {
+        font-size: $text-size-dt-p2;
+        line-height: $line-height-dt-p2;
+        }
+    }
+
+    &__name {
+        font-weight: $font-semi-bold;
+        color: $color-instock-indigo;
+        flex: 1.2;
+    }
+
+    &__address {
+        flex: 1.6;
+    }
+
+    &__contact {
+        flex: 1.2;
+    }
+
+    &__info {
+        flex: 1.7;
+
+        p {
+        margin: 0;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+
+        @include tablet {
+        flex: 0.7;
+        justify-content: flex-end;
+        margin-top: 0;
+        }
+    }
+}
