@@ -39,6 +39,11 @@
         line-height: $line-height-m-p2;
         color: $color-slate;
         font-weight: $font-regular;
+        transition: background-color 0.3s;
+
+        &:hover {
+            color: $color-instock-black;;
+        }
 
         @include tablet {
             font-size: $text-size-dt-p2;
@@ -68,9 +73,15 @@
             padding: 4px;
             background-clip: content-box;
 
-            & + .status-field__label {
+            &+.status-field__label {
                 color: $color-instock-black;
             }
+        }
+
+        &:hover {
+            box-shadow: 0px 0px 0px 1px #819fe6;
+            border-radius: 50%;
+            opacity: 1;
         }
     }
 }
