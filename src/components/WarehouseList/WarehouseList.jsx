@@ -1,7 +1,7 @@
 import "./WarehouseList.scss";
 import WarehouseListItem from "./WarehouseListItem";
 
-const WarehousesList = ({ warehouses, setWarehouses }) => {    
+const WarehouseList = ({ warehouses, setWarehouses }) => {    
     return (
         <section className="warehouse-list">
             {/* Page header */}
@@ -45,4 +45,4 @@ const WarehousesList = ({ warehouses, setWarehouses }) => {
         );
     };
     
-    export default WarehousesList;
+    export default WarehouseList;
