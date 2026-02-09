@@ -1,0 +1,46 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/functions" as *;
+@use "../../../styles/mixins" as *;
+
+.search-field {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: $ff-margin-top;
+        position: relative;
+    }
+
+    &__search-input {
+        outline: none;
+        font-size: $text-size-m-p2;
+        line-height: $line-height-m-p2;
+        color: $color-instock-black;
+        font-weight: $font-regular;
+        height: $ff-height-m;
+        padding: 0 pxToRem(40) 0 $ff-padding-left;
+        border-radius: $ff-br;
+        border: 1px solid $color-cloud;
+
+        &:focus {
+            border-color: $color-instock-indigo;
+        }
+
+        //Remove the default x button from search field
+        &::-webkit-search-cancel-button {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        @include tablet {
+            font-size: $text-size-dt-p2;
+            line-height: $line-height-dt-p2;
+            height: $ff-height-dt;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: pxToRem(7);
+        right: pxToRem(16);
+    }
+}
