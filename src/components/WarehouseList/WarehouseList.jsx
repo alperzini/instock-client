@@ -22,7 +22,7 @@ const WarehousesPage = ({ warehouses, setWarehouses }) => {
                 </button>
             </div>
 
-            {/* Table header (tablet/desktop) */}
+            {/* Table header */}
             <div className="warehouse-list__table-header">
             <span>WAREHOUSE</span>
             <span>ADDRESS</span>
