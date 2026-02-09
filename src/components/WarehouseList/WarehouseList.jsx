@@ -1,7 +1,7 @@
 import "./WarehouseList.scss";
 import WarehouseListItem from "./WarehouseListItem";
 
-const WarehousesPage = ({ warehouses, setWarehouses }) => {    
+const WarehousesList = ({ warehouses, setWarehouses }) => {    
     return (
         <section className="warehouse-list">
             {/* Page header */}
