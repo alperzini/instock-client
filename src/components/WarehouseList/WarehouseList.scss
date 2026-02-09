@@ -113,9 +113,12 @@
     }
 
     &__th {
+    display: flex;
+    align-items: center;
     font-size: $text-size-dt-h4;
     font-weight: $font-semi-bold;
     color: $color-slate;
+    
 
     &:nth-child(1) { flex: 1.2; }
     &:nth-child(2) { flex: 1.6; }

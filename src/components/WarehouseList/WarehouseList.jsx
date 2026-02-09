@@ -32,7 +32,7 @@ const WarehouseList = ({ warehouses, setWarehouses }) => {
             <span className="warehouse-list__th">ADDRESS <SortIcon /></span>
             <span className="warehouse-list__th">CONTACT NAME <SortIcon /></span>
             <span className="warehouse-list__th">CONTACT INFORMATION <SortIcon /></span>
-            <span className="warehouse-list__th warehouse-list__th--actions">ACTIONS<SortIcon /></span>
+            <span className="warehouse-list__th warehouse-list__th--actions">ACTIONS</span>
             </div>
 
             {/* Warehouse rows */}
