@@ -38,7 +38,7 @@
         }
 
         &--error-border {
-            border-color: $color-red
+            border-color: $color-red;
         }
 
         @include tablet {
