@@ -1,43 +1,74 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
-@use "../../styles/icons" as *;
 
 .search-field {
-    position: relative;
-    display: flex;
-    align-items: center;
+position: relative;
+display: flex;
+align-items: center;
+width: 100%;
+
+@include tablet {
+    width: 16rem;
+}
+
+&__input {
     width: 100%;
+    height: $ff-height-m;
+    padding-left: $ff-padding-left;
+    padding-right: 3rem; // room for 24px icon + spacing
+    border-radius: $ff-br;
+    border: 1px solid $color-cloud;
+    background-color: $color-white;
+    font-size: $text-size-m-p2;
 
     @include tablet {
-        width: 16rem;
+    height: $ff-height-dt;
+    font-size: $text-size-dt-p2;
     }
 
-    &__input {
-        width: 100%;
-        height: $ff-height-m;
-        padding-left: $ff-padding-left;
-        padding-right: 2.5rem; // space for icon
-        border-radius: $ff-br;
-        border: 1px solid $color-cloud;
-        font-size: $text-size-m-p2;
-
-        @include tablet {
-        height: $ff-height-dt;
-        font-size: $text-size-dt-p2;
-        }
-
-        &:focus {
-        outline: none;
-        border-color: $color-instock-indigo;
-        }
+    &::placeholder {
+    color: $color-slate;
+    opacity: 0.7;
     }
 
-    &__icon {
-        position: absolute;
-        right: 1rem;
-        width: 24px;
-        height: 24px;
-        pointer-events: none;
-        opacity: 0.6;
+    &:hover {
+    border-color: $color-slate;
     }
+
+    &:focus {
+    outline: none;
     }
+}
+
+// focus ring on wrapper so icon + input feel like one control
+&:focus-within {
+    .search-field__input {
+    border-color: $color-instock-indigo;
+    }
+}
+
+&__icon {
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0.6;
+
+    img {
+    display: block;
+    width: 24px;
+    height: 24px;
+    }
+}
+
+&--disabled {
+    opacity: 0.6;
+
+    .search-field__input {
+    cursor: not-allowed;
+    background-color: $color-light-grey;
+    }
+}
+}
