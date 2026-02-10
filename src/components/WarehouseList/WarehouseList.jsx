@@ -1,6 +1,8 @@
 import "./WarehouseList.scss";
 import WarehouseListItem from "../WarehouseListItem/WarehouseListItem";
 import SortIcon from "../Icons/SortIcon";
+import SearchField from "../SearchField/SearchField";
+import Button from "../Button/Button";
 
 const WarehouseList = ({ warehouses, setWarehouses }) => {    
     return (
@@ -13,16 +15,9 @@ const WarehouseList = ({ warehouses, setWarehouses }) => {
     
             <div className="warehouse-list__actions">
                 {/* Search (UI only) */}
-                <input
-                type="text"
-                className="warehouse-list__search"
-                placeholder="Search..."
-                />
+                <SearchField />
     
                 {/* Add button */}
-                <button type="button" className="warehouse-list__add">
-                + Add New Warehouse
-                </button>
 
             </div>
 
