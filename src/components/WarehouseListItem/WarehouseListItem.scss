@@ -44,6 +44,16 @@
         flex: 1.2;
     }
 
+    &__link {
+        color: $color-instock-indigo;
+        text-decoration: none;
+        font-weight: $font-semi-bold;
+    
+        &:hover {
+        text-decoration: underline;
+        }
+    }
+
     &__address {
         flex: 1.6;
     }

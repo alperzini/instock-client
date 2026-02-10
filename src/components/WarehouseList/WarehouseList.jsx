@@ -4,7 +4,7 @@ import SortIcon from "../Icons/SortIcon";
 import SearchField from "../SearchField/SearchField";
 import { useState } from "react";
 import Button from "../Button/Button";
-import { useNavigate } from "../Navigation/Navigation";
+import { useNavigate } from "react-router-dom";
 
 const WarehouseList = ({ warehouses, setWarehouses }) => {    
     const [search, setSearch] = useState("");

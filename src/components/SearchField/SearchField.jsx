@@ -3,7 +3,7 @@ import searchIcon from "../../assets/icons/search-24px.svg";
 
 const SearchField = ({
 value = "",
-onChange,
+onChange = () => {},
 placeholder = "Search...",
 name = "search",
 ariaLabel = "Search",
