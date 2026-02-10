@@ -39,7 +39,7 @@ white-space: nowrap;
 /* Secondary = White with border */
 &--secondary {
     background-color: $color-white;
-    color: $color-instock-indigo;
+    color: $color-slate;
     border-color: $color-cloud;
 
     &:hover:not(:disabled) {
