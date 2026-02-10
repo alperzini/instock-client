@@ -4,7 +4,7 @@ const SortIcon = ({ onClick, ariaLabel = "Sort" }) => {
 return (
     <button
     type="button"
-    className="icon-button"
+    className="icon-button icon-button--sort"
     aria-label={ariaLabel}
     onClick={onClick}
     >
