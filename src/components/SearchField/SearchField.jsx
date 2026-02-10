@@ -2,51 +2,30 @@ import "./SearchField.scss";
 import searchIcon from "../../assets/icons/search-24px.svg";
 
 const SearchField = ({
-id,
-value,
-defaultvalue = "",
+value = "",
 onChange,
-onSubmit,
 placeholder = "Search...",
 name = "search",
 ariaLabel = "Search",
 disabled = false,
 className = "",
-iconSize =24,
-...rest
 }) => {
-    const handleKeyDown = (e) => {
-        if (e.key === "Enter" && onSubmit) onSubmit(e);
-    };
-    
-    const isControlled = value !== undefined;
 return (
-    <div className={`search-field ${disabled ? "search-field--disabled" : ""} ${className}`.trim()}>
+    <div className={`search-field ${className}`.trim()}>
     <input
-        id = {id}
         type="text"
         className="search-field__input"
-        name= {name}
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
+        name={name}
         aria-label={ariaLabel}
         disabled={disabled}
-        onChange={onChange}
-        onKeyDown={handleKeyDown}
-        value={isControlled ? value : undefined}
-        defaultValue={!isControlled ? defaultValue : undefined}
-        {...rest}
     />
 
-    {showIcon && (
-        <span className="search-field__icon" aria-hidden="true">
-        <img
-            src={searchIcon}
-            alt=""
-            width={iconSize}
-            height={iconSize}
-        />
-        </span>
-)}
+    <span className="search-field__icon" aria-hidden="true">
+        <img src={searchIcon} alt="" />
+    </span>
     </div>
 );
 };

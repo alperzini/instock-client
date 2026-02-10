@@ -2,9 +2,11 @@ import "./WarehouseList.scss";
 import WarehouseListItem from "../WarehouseListItem/WarehouseListItem";
 import SortIcon from "../Icons/SortIcon";
 import SearchField from "../SearchField/SearchField";
+import { useState } from "react";
 import Button from "../Button/Button";
 
 const WarehouseList = ({ warehouses, setWarehouses }) => {    
+    const [search, setSearch] = useState("");
     return (
         <section className="warehouse-list">
 
@@ -15,7 +17,11 @@ const WarehouseList = ({ warehouses, setWarehouses }) => {
     
             <div className="warehouse-list__actions">
                 {/* Search (UI only) */}
-                <SearchField />
+                <SearchField
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search..."
+                />
     
                 {/* Add button */}
                 <Button variant="primary">+ Add New Warehouse</Button>

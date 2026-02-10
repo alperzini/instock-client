@@ -12,6 +12,7 @@ width: 100%;
 }
 
 &__input {
+    box-sizing: border-box;
     width: 100%;
     height: $ff-height-m;
     padding-left: $ff-padding-left;
@@ -38,9 +39,12 @@ width: 100%;
     &:focus {
     outline: none;
     }
+
+    &:disabled {
+    cursor: not-allowed;
+    }
 }
 
-// focus ring on wrapper so icon + input feel like one control
 &:focus-within {
     .search-field__input {
     border-color: $color-instock-indigo;
@@ -67,8 +71,11 @@ width: 100%;
     opacity: 0.6;
 
     .search-field__input {
-    cursor: not-allowed;
     background-color: $color-light-grey;
+    }
+
+    .search-field__input:hover {
+    border-color: $color-cloud;
     }
 }
 }
