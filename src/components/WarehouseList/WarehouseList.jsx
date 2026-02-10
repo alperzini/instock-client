@@ -18,6 +18,7 @@ const WarehouseList = ({ warehouses, setWarehouses }) => {
                 <SearchField />
     
                 {/* Add button */}
+                <Button variant="primary">+ Add New Warehouse</Button>
 
             </div>
 
