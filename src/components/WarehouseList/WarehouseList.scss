@@ -54,45 +54,6 @@
     }
     }
 
-    &__search {
-    height: $ff-height-m;
-    padding: 0 $ff-padding-left;
-    border-radius: $ff-br;
-    border: 1px solid $color-cloud;
-    font-size: $text-size-m-p2;
-
-    @include tablet {
-        height: $ff-height-dt;
-        width: 16rem;
-        font-size: $text-size-dt-p2;
-    }
-
-    &:focus {
-        outline: none;
-        border-color: $color-instock-indigo;
-    }
-    }
-
-    &__add {
-    height: $cta-height-m;
-    padding: 0 $cta-padding-dt;
-    border-radius: $cta-br;
-    border: none;
-    background-color: $color-instock-indigo;
-    color: $color-white;
-    font-weight: $font-semi-bold;
-    cursor: pointer;
-
-    @include tablet {
-        height: $cta-height-dt;
-        white-space: nowrap;
-    }
-
-    &:hover {
-        opacity: 0.9;
-    }
-    }
-
     /* TABLE HEADER — hidden on mobile */
     &__table-header {
     display: none;
