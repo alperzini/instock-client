@@ -4,6 +4,7 @@ import SortIcon from "../Icons/SortIcon";
 import SearchField from "../SearchField/SearchField";
 import { useState } from "react";
 import Button from "../Button/Button";
+import { useNavigate } from "../Navigation/Navigation";
 
 const WarehouseList = ({ warehouses, setWarehouses }) => {    
     const [search, setSearch] = useState("");
@@ -24,7 +25,11 @@ const WarehouseList = ({ warehouses, setWarehouses }) => {
                 />
     
                 {/* Add button */}
-                <Button variant="primary">+ Add New Warehouse</Button>
+                <Button 
+                variant="primary"
+                onClick={() => navigate("/addWarehouse")}
+                >
+                + Add New Warehouse</Button>
 
             </div>
 
