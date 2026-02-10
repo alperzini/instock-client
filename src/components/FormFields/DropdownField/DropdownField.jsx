@@ -1,5 +1,4 @@
 import "./DropdownField.scss";
-import selectArrow from "../../../assets/icons/arrow_drop_down-24px.svg";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 
 function DropdownField(props) {
