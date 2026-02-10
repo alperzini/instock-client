@@ -9,7 +9,8 @@ const WarehouseListItem = ({ warehouse, setWarehouse }) => {
         <article className="warehouse-item">
         <div className="warehouse-item__name">
         <Link to={`/warehouse/${warehouse.id}`} className="warehouse-item__link">
-        {warehouse.warehouse_name}
+        {warehouse.warehouse_name} 
+        <ChevronRightIcon className="warehouse-item__chevron" />
         </Link>
         </div>
 
