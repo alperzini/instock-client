@@ -4,9 +4,12 @@ import StatusField from "../../components/formFields/StatusField/StatusField";
 import SearchField from "../../components/formFields/SearchField/SearchField";
 import DropdownField from "../../components/formFields/DropdownField/DropdownField";
 import FieldsetField from "../../components/formFields/FieldsetField/FieldsetField";
-import CancelButton from "../../components/customButtons/CancelButton/CancelButton";
+import FormCancelButton from "../../components/customButtons/FormCancelButton/FormCancelButton";
 import FormAddButton from "../../components/customButtons/FormAddButton/FormAddButton";
 import DeleteButton from "../../components/customButtons/DeleteButton/DeleteButton";
+import FormButtonsWrapper from "../../components/formFields/FormButtonsWrapper/FormButtonsWrapper";
+import BackArrowButton from "../../components/customButtons/BackArrowButton/BackArrowButton";
+import FormHeader from "../../components/formFields/FormHeader/FormHeader";
 import { useState } from "react";
 
 const WarehousesPage = ({ warehouses, setWarehouses }) => {
@@ -31,15 +34,19 @@ const WarehousesPage = ({ warehouses, setWarehouses }) => {
     return (
         <>
             <div style={{ padding: 30 }} >
+                <FormHeader title={"Add New Inventory Item"} />
                 <FieldsetField title="Item Details" hasBorder={false} >
                     <TextField onChange={handleTextChange} type="email" label="Item Name" name="name" id="name" placeholder="Item Name" value={value} error="This field is required" />
                     <StatusField legend="Status" name="status" selectedStatus={selectedStatus} onChange={handleRadioChange} />
                     <SearchField onChange={handleSearchChange} name="search" id="search" placeholder="Search..." value={search} />
                     <DropdownField onChange={handleListChange} options={options} label="Fruit" name="fruit" id="fruit" placeholder="Please select" selectedValue={selectedFruit} isError={false} error="This field is required" />
-                    <CancelButton />
-                    <FormAddButton label="+ Add Item" isDisabled={false} />
                     <DeleteButton label="Delete" />
                 </FieldsetField>
+                <FormButtonsWrapper>
+                    <FormCancelButton />
+                    <FormAddButton label="+ Add Item" isDisabled={false} />
+                </FormButtonsWrapper>
+                <BackArrowButton />
             </div>
         </>
     );

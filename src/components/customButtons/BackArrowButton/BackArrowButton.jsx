@@ -1,7 +1,8 @@
-import "./CancelButton.scss";
+import "./BackArrowButton.scss";
 import { useNavigate, useLocation } from 'react-router-dom';
+import BackArrowIcon from "../../../assets/icons/arrow_back-24px.svg";
 
-function CancelButton() {
+function BackArrowButton() {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -15,7 +16,9 @@ function CancelButton() {
     };
 
     return (
-        <button className="cancel-button" type="button" onClick={handleGoBack} >Cancel</button>
+            <button className="back-button" type="button" onClick={handleGoBack} >
+                <img className="back-button__icon" src={BackArrowIcon} alt="Back arrow icon." />
+            </button>
     );
 }
-export default CancelButton;
+export default BackArrowButton;

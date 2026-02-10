@@ -1,0 +1,34 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/functions" as *;
+@use "../../../styles/mixins" as *;
+
+.form-header {
+    background-color: $color-white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid $color-cloud;
+
+    padding: pxToRem(32) pxToRem(24) pxToRem(24);
+
+    @include tablet {
+        padding: pxToRem(32) pxToRem(32) pxToRem(21);
+    }
+
+    @include desktop {
+        padding: pxToRem(32) pxToRem(40) pxToRem(21);
+    }
+
+    &__title {
+        color: $color-instock-black;
+        margin: 0;
+        font-size: $text-size-m-h1;
+        line-height: $line-height-m-h1;
+
+        @include tablet {
+            font-size: $text-size-dt-h1;
+            line-height: $line-height-dt-h1;
+        }
+    }
+}

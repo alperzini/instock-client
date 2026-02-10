@@ -15,6 +15,7 @@
     font-size: $text-size-m-h3;
     line-height: $line-height-m-h3;
     height: $cta-height-m;
+    width: 100%;
 
     &:hover, &:focus {
         background-color: $color-graphite;
@@ -32,5 +33,6 @@
         line-height: $line-height-dt-h3;
         height: $cta-height-dt;
         padding: 0 $cta-padding-dt;
+        width: auto;
     }
 }

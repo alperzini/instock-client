@@ -2,7 +2,7 @@
 @use "../../../styles/functions" as *;
 @use "../../../styles/mixins" as *;
 
-.cancel-button {
+.form-cancel-button {
     font-family: $primary-font;
     color: $color-slate;
     background-color: $color-white;
@@ -15,6 +15,7 @@
     font-size: $text-size-m-h3;
     line-height: $line-height-m-h3;
     height: $cta-height-m;
+    width: 100%;
 
     &:hover, &:focus {
         color: $color-instock-indigo;
@@ -26,5 +27,6 @@
         line-height: $line-height-dt-h3;
         height: $cta-height-dt;
         padding: 0 $cta-padding-dt;
+        width: auto;
     }
 }
