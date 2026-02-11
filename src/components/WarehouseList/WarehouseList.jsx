@@ -6,55 +6,55 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 
-const WarehouseList = ({ warehouses, setWarehouses }) => {    
-    const [search, setSearch] = useState("");
-    return (
-        <section className="warehouse-list">
+const WarehouseList = ({ warehouses }) => {
+const [search, setSearch] = useState("");
+const navigate = useNavigate();
 
-            <div className="warehouse-list__container">
-            {/* Page header */}
-            <div className="warehouse-list__header">
-            <h1 className="warehouse-list__title">Warehouses</h1>
-    
-            <div className="warehouse-list__actions">
-                {/* Search (UI only) */}
-                <SearchField
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search..."
-                />
-    
-                {/* Add button */}
-                <Button 
-                variant="primary"
-                onClick={() => navigate("/addWarehouse")}
-                >
-                + Add New Warehouse</Button>
+return (
+    <section className="warehouse-list">
+    <div className="warehouse-list__container">
+        <div className="warehouse-list__header">
+        <h1 className="warehouse-list__title">Warehouses</h1>
 
-            </div>
+        <div className="warehouse-list__actions">
+            <SearchField
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search..."
+            />
 
-            {/* Table header */}
-            <div className="warehouse-list__table-header">
-            <span className="warehouse-list__th">WAREHOUSE <SortIcon /></span>
-            <span className="warehouse-list__th">ADDRESS <SortIcon /></span>
-            <span className="warehouse-list__th">CONTACT NAME <SortIcon /></span>
-            <span className="warehouse-list__th">CONTACT INFORMATION <SortIcon /></span>
-            <span className="warehouse-list__th warehouse-list__th--actions">ACTIONS</span>
-            </div>
-
-            {/* Warehouse rows */}
-            <div className="warehouse-list__rows">
-            {warehouses?.map((warehouse) => (
-                <WarehouseListItem
-                key={warehouse.id}
-                warehouse={warehouse}
-                />
-            ))}
-            </div>
+            <Button variant="primary" onClick={() => navigate("/addWarehouse")}>
+            + Add New Warehouse
+            </Button>
         </div>
         </div>
-        </section>
-        );
-    };
-    
-    export default WarehouseList;
+
+        <div className="warehouse-list__table-header" role="row">
+        <div className="warehouse-list__th" role="columnheader">
+            WAREHOUSE <SortIcon />
+        </div>
+        <div className="warehouse-list__th" role="columnheader">
+            ADDRESS <SortIcon />
+        </div>
+        <div className="warehouse-list__th" role="columnheader">
+            CONTACT NAME <SortIcon />
+        </div>
+        <div className="warehouse-list__th" role="columnheader">
+            CONTACT INFORMATION <SortIcon />
+        </div>
+        <div className="warehouse-list__th warehouse-list__th--actions" role="columnheader">
+            ACTIONS
+        </div>
+        </div>
+
+        <div className="warehouse-list__rows">
+        {warehouses?.map((warehouse) => (
+            <WarehouseListItem key={warehouse.id} warehouse={warehouse} />
+        ))}
+        </div>
+    </div>
+    </section>
+);
+};
+
+export default WarehouseList;

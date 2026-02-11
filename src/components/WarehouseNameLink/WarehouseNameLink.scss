@@ -8,18 +8,26 @@ color: $color-instock-indigo;
 text-decoration: none;
 font-weight: $font-semi-bold;
 
-&:hover {
+&:hover,
+&:focus-visible {
     text-decoration: underline;
 }
-
 
 &__chevron {
     width: 24px;
     height: 24px;
+    transition: transform 160ms ease;
+    transform: translateX(0);
+}
+
+&:hover &__chevron,
+&:focus-visible &__chevron {
+    transform: translateX(4px);
 }
 }
 
-.warehouse-item__cell {
-    flex-shrink: 0;
-    width: 20%;
+@media (prefers-reduced-motion: reduce) {
+.warehouse-name-link__chevron {
+    transition: none;
+}
 }
