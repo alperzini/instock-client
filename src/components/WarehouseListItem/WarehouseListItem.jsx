@@ -1,9 +1,16 @@
 import "./WarehouseListItem.scss";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DeleteIcon from "../Icons/DeleteIcon";
 import EditIcon from "../Icons/EditIcon";
 import WarehouseNameLink from "../WarehouseNameLink/WarehouseNameLink";
+import DeleteWarehouseModal from "../DeleteWarehouseModal/DeleteWarehouseModal";
 
 const WarehouseListItem = ({ warehouse }) => {
+
+    const navigate = useNavigate();
+    const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
 return (
     <article className="warehouse-item">
     <div className="warehouse-item__cell warehouse-item__cell--warehouse">
@@ -32,9 +39,24 @@ return (
     </div>
 
     <div className="warehouse-item__actions">
-        <DeleteIcon />
-        <EditIcon />
-    </div>
+            <button
+                type="button"
+                className="warehouse-item__icon-btn"
+                onClick={() => setIsDeleteOpen(true)}
+                aria-label={`Delete ${warehouse.warehouse_name}`}
+            >
+                <DeleteIcon />
+            </button>
+
+            <button
+                type="button"
+                className="warehouse-item__icon-btn"
+                onClick={() => navigate(`/editWarehouse/${warehouse.id}`)}
+                aria-label={`Edit ${warehouse.warehouse_name}`}
+            >
+                <EditIcon />
+            </button>
+            </div>
     </article>
 );
 };

@@ -1,0 +1,119 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.delete-modal {
+position: fixed;
+inset: 0;
+z-index: 50;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 1rem;
+
+&__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(19, 24, 44, 0.6);
+}
+
+&__card {
+    position: relative;
+    width: 100%;
+    max-width: 42rem;
+    background: $color-white;
+    border-radius: 4px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 8px 24px rgba(19, 24, 44, 0.18);
+
+    @include tablet {
+    padding: 2.5rem 3rem;
+    }
+}
+
+&__close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    border: 0;
+    background: transparent;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    color: $color-instock-black;
+}
+
+&__title {
+    margin: 0 0 1rem 0;
+    font-size: $text-size-m-h1;
+    line-height: $line-height-m-h1;
+    font-weight: $font-semi-bold;
+    color: $color-instock-black;
+
+    @include tablet {
+    font-size: $text-size-dt-h1;
+    line-height: $line-height-dt-h1;
+    }
+}
+
+&__text {
+    margin: 0;
+    font-size: $text-size-m-p2;
+    line-height: $line-height-m-p2;
+    color: $color-instock-black;
+
+    @include tablet {
+    font-size: $text-size-dt-p2;
+    line-height: $line-height-dt-p2;
+    max-width: 34rem;
+    }
+}
+
+&__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+    @include tablet {
+    justify-content: flex-end;
+    }
+}
+
+&__btn {
+    height: $cta-height-m;
+    border-radius: $cta-br;
+    padding: 0 $cta-padding-dt;
+    font-size: $text-size-m-h3;
+    line-height: $line-height-m-h3;
+    font-weight: $font-semi-bold;
+    cursor: pointer;
+    width: 100%;
+
+    @include tablet {
+    width: auto;
+    height: $cta-height-dt;
+    font-size: $text-size-dt-h3;
+    line-height: $line-height-dt-h3;
+    }
+
+    &--secondary {
+    background: $color-white;
+    border: 1px solid $color-cloud;
+    color: $color-slate;
+
+    &:hover {
+        border-color: $color-slate;
+    }
+    }
+
+    &--delete {
+    background: $color-red;
+    border: 1px solid $color-red;
+    color: $color-white;
+
+    &:hover {
+        opacity: 0.9;
+    }
+    }
+}
+}
