@@ -1,17 +1,18 @@
 import "./WarehouseListItem.scss";
 import DeleteIcon from "../Icons/DeleteIcon";
 import EditIcon from "../Icons/EditIcon";
+import ChevronRightIcon from "../Icons/ChevronRightIcon";
+import WarehouseNameLink from "../WarehouseNameLink/WarehouseNameLink";
 import { Link } from "react-router-dom";
 
 const WarehouseListItem = ({ warehouse, setWarehouse }) => {
     return (
     
         <article className="warehouse-item">
-        <div className="warehouse-item__name">
-        <Link to={`/warehouse/${warehouse.id}`} className="warehouse-item__link">
-        {warehouse.warehouse_name} 
-        <ChevronRightIcon className="warehouse-item__chevron" />
-        </Link>
+        <div className="warehouse-item__cell warehouse-item__cell--name">
+        <WarehouseNameLink to={`/warehouse/${warehouse.id}`}>
+        {warehouse.warehouse_name}
+        </WarehouseNameLink>
         </div>
 
         <div className="warehouse-item__address">

@@ -1,0 +1,25 @@
+@use "../../styles/variables" as *;
+
+.warehouse-name-link {
+display: inline-flex;
+align-items: center;
+gap: 4px;
+color: $color-instock-indigo;
+text-decoration: none;
+font-weight: $font-semi-bold;
+
+&:hover {
+    text-decoration: underline;
+}
+
+
+&__chevron {
+    width: 24px;
+    height: 24px;
+}
+}
+
+.warehouse-item__cell {
+    flex-shrink: 0;
+    width: 20%;
+}

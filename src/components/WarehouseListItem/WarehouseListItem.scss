@@ -8,6 +8,8 @@
     gap: 0.75rem;
     padding: 1rem;
     border-bottom: 1px solid $color-cloud;
+    min-height: 4.5rem;
+    width: 100%;
 
     &:hover {
         background-color: $color-light-grey;
@@ -31,6 +33,7 @@
         font-size: $text-size-m-p2;
         line-height: $line-height-m-p2;
         color: $color-instock-black;
+        
 
         @include tablet {
         font-size: $text-size-dt-p2;
@@ -45,14 +48,14 @@
     }
 
     &__link {
-        color: $color-instock-indigo;
-        text-decoration: none;
-        font-weight: $font-semi-bold;
-    
-        &:hover {
-        text-decoration: underline;
+            color: $color-instock-indigo;
+            text-decoration: none;
+            font-weight: $font-semi-bold;
+        
+            &:hover {
+            text-decoration: underline;
+            }
         }
-    }
 
     &__address {
         flex: 1.6;
@@ -72,6 +75,7 @@
 
     &__actions {
         display: flex;
+        align-items: center;
         gap: 0.75rem;
         margin-top: 0.5rem;
 
