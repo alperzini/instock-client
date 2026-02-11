@@ -1,0 +1,21 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/functions" as *;
+@use "../../../styles/mixins" as *;
+
+.form-buttons-wrapper {
+    background-color: $color-light-grey;
+    display: flex;
+    justify-content: space-around;
+    gap: 16px;
+
+    padding: pxToRem(16) pxToRem(24);
+
+    @include tablet {
+        padding: pxToRem(16) pxToRem(32);
+        justify-content: flex-end;
+    }
+
+    @include desktop {
+        padding: pxToRem(16) pxToRem(40);
+    }
+}
