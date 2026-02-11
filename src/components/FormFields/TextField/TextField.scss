@@ -22,6 +22,7 @@
     }
 
     &__text-input {
+        font-family: $primary-font;
         outline: none;
         font-size: $text-size-m-p2;
         line-height: $line-height-m-p2;
@@ -29,7 +30,6 @@
         font-weight: $font-regular;
         height: $ff-height-m;
         padding: 0 $ff-padding-right 0 $ff-padding-left;
-        // margin: $ff-margin-top 0 $ff-margin-bottom 0;
         border-radius: $ff-br;
         border: 1px solid $color-cloud;
 

@@ -2,13 +2,13 @@ import "./QuantityField.scss";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 
 function QuantityField(props) {
-    const { label, name, id, placeholder, value, onChange, error, isError } = props;
+    const { label, name, id, value, onChange, error, isError } = props;
 
     return (
         <div className="quantity-field__wrapper">
             <label className="quantity-field__label" htmlFor={id}>{label}</label>
             <input className={`quantity-field__quantity-input ${isError ? "quantity-field__quantity-input--error-border" : ""}`}
-                type="number" min={1} id={id} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+                type="number" min={1} id={id} name={name} value={value} onChange={onChange} />
             <ErrorMessage error={error} isError={isError} />
         </div>
     );

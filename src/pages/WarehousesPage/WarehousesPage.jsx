@@ -1,4 +1,6 @@
 import "./WarehousesPage.scss";
+import DescriptionField from "../../components/formFields/DescriptionField/DescriptionField";
+import QuantityField from "../../components/formFields/QuantityField/QuantityField";
 import TextField from "../../components/formFields/TextField/TextField";
 import StatusField from "../../components/formFields/StatusField/StatusField";
 import SearchField from "../../components/formFields/SearchField/SearchField";
@@ -8,24 +10,38 @@ import FormCancelButton from "../../components/customButtons/FormCancelButton/Fo
 import FormAddButton from "../../components/customButtons/FormAddButton/FormAddButton";
 import DeleteButton from "../../components/customButtons/DeleteButton/DeleteButton";
 import FormButtonsWrapper from "../../components/formFields/FormButtonsWrapper/FormButtonsWrapper";
-import BackArrowButton from "../../components/customButtons/BackArrowButton/BackArrowButton";
 import FormHeader from "../../components/formFields/FormHeader/FormHeader";
+import PageWrapper from "../../components/PageWrapper/PageWrapper";
+import BackArrowButton from "../../components/customButtons/BackArrowButton/BackArrowButton";
 import { useState } from "react";
 
 const WarehousesPage = ({ warehouses, setWarehouses }) => {
     console.log("WarehousesPage");
-    const [value, setValue] = useState("");
-    const handleTextChange = (event) => {
-        setValue(event.target.name.value);
+    const [desc, setDesc] = useState("");
+    const handleDescChange = (event) => {
+        setDesc(event.target.name.value);
     }
+
+    const [name, setName] = useState("");
+    const handleNameChange = (event) => {
+        setName(event.target.name.value);
+    }
+
     const [selectedStatus, setSelectedStatus] = useState("In Stock");
     const handleRadioChange = (event) => {
         setSelectedStatus(event.target.value);
     }
+
+    const [quantity, setQuantity] = useState(1);
+    const handleQuantityChange = (event) => {
+        setQuantity(event.target.value);
+    }
+
     const [search, setSearch] = useState("");
     const handleSearchChange = (event) => {
         setSearch(event.target.name.value);
     }
+
     const [selectedFruit, setSelectedFruit] = useState('');
     const options = ['Apple', 'Banana', 'Cranberry'];
     const handleListChange = (event) => {
@@ -33,13 +49,16 @@ const WarehousesPage = ({ warehouses, setWarehouses }) => {
     };
     return (
         <>
-            <div style={{ padding: 30 }} >
+            <div style={{ height: "60px" }}></div>
+            <PageWrapper>
                 <FormHeader title={"Add New Inventory Item"} />
                 <FieldsetField title="Item Details" hasBorder={false} >
-                    <TextField onChange={handleTextChange} type="email" label="Item Name" name="name" id="name" placeholder="Item Name" value={value} error="This field is required" />
+                    <DescriptionField onChange={handleDescChange} label="Description" name="description" id="description" placeholder="Please enter a brief item description..." value={desc} error="This field is required" isError={false} />
+                    <TextField onChange={handleNameChange} type="text" label="Item Name" name="name" id="name" placeholder="Item Name" value={name} error="This field is required" isError={true} />
                     <StatusField legend="Status" name="status" selectedStatus={selectedStatus} onChange={handleRadioChange} />
-                    <SearchField onChange={handleSearchChange} name="search" id="search" placeholder="Search..." value={search} />
+                    <QuantityField onChange={handleQuantityChange} label="Quantity" name="quantity" id="quantity" value={quantity} />
                     <DropdownField onChange={handleListChange} options={options} label="Fruit" name="fruit" id="fruit" placeholder="Please select" selectedValue={selectedFruit} isError={false} error="This field is required" />
+                    <SearchField onChange={handleSearchChange} name="search" id="search" placeholder="Search..." value={search} />
                     <DeleteButton label="Delete" />
                 </FieldsetField>
                 <FormButtonsWrapper>
@@ -47,7 +66,7 @@ const WarehousesPage = ({ warehouses, setWarehouses }) => {
                     <FormAddButton label="+ Add Item" isDisabled={false} />
                 </FormButtonsWrapper>
                 <BackArrowButton />
-            </div>
+            </PageWrapper>
         </>
     );
 };

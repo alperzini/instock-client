@@ -24,13 +24,13 @@
     &__desc-input {
         outline: none;
         resize: none;
+        font-family: $primary-font;
         font-size: $text-size-m-p2;
         line-height: $line-height-m-p2;
         color: $color-instock-black;
         font-weight: $font-regular;
         height: pxToRem(120);
         padding: 0 $ff-padding-right 0 $ff-padding-left;
-        // margin: $ff-margin-top 0 $ff-margin-bottom 0;
         border-radius: $ff-br;
         border: 1px solid $color-cloud;
 

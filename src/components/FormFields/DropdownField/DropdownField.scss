@@ -23,6 +23,7 @@
 
     &__dropdown-input {
         //Custom select styling
+        font-family: $primary-font;
         appearance: base-select;
         background-color: $color-white;
         display: flex;
@@ -95,6 +96,7 @@
 
     &__option {
         outline: none;
+        font-family: $primary-font;
         color: $color-instock-black;
         line-height: $line-height-m-p2;
         height: $ff-height-m;

@@ -1,5 +1,5 @@
 import "./DescriptionField.scss";
-import ErrorMessage from "../ErrorMessage/ErrorMessagejsx";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function DescriptionField(props) {
     const { label, name, id, placeholder, value, onChange, error, isError } = props;

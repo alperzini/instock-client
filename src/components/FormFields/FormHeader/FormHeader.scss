@@ -6,7 +6,7 @@
     background-color: $color-white;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: baseline;
     gap: 8px;
     border-bottom: 1px solid $color-cloud;
 
@@ -21,8 +21,10 @@
     }
 
     &__title {
+        font-family: $primary-font;
         color: $color-instock-black;
         margin: 0;
+        font-weight: $font-semi-bold;
         font-size: $text-size-m-h1;
         line-height: $line-height-m-h1;
 

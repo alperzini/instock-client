@@ -13,6 +13,7 @@
     }
 
     &__legend {
+        font-family: $primary-font;
         font-size: $text-size-m-p2;
         line-height: $line-height-m-p2;
         color: $color-instock-black;
@@ -35,6 +36,7 @@
     }
 
     &__label {
+        font-family: $primary-font;
         font-size: $text-size-m-p2;
         line-height: $line-height-m-p2;
         color: $color-slate;
@@ -42,7 +44,8 @@
         transition: background-color 0.3s;
 
         &:hover {
-            color: $color-instock-black;;
+            color: $color-instock-black;
+            ;
         }
 
         @include tablet {
@@ -78,10 +81,15 @@
             }
         }
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             box-shadow: 0px 0px 0px 1px #819fe6;
             border-radius: 50%;
             opacity: 1;
+        }
+
+        &:hover+.status-field__label {
+            color: $color-instock-black;
         }
     }
 }
