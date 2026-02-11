@@ -6,31 +6,34 @@
     &__wrapper {
         display: flex;
         flex-direction: column;
+        width: 100%;
         gap: pxToRem(16);
         padding: pxToRem(16) pxToRem(24) pxToRem(24);
         background-color: $color-white;
 
-        &--border {
-            border: none;
-            border-bottom: 1px solid $color-cloud;
-
-            @include tablet {
-                border: none;
-                border-right: 1px solid $color-cloud;
-            }
-        }
-
         @include tablet {
             gap: pxToRem(24);
-            padding: pxToRem(24) pxToRem(32) pxToRem(32);
+            padding: 0 pxToRem(32) 0 0;
         }
 
         @include desktop {
-            padding: pxToRem(24) pxToRem(40) pxToRem(32);
+            padding: 0 pxToRem(40) 0 0;
+        }
+
+        &--second {
+            @include tablet {
+                gap: pxToRem(24);
+                padding: 0 0 0 pxToRem(32);
+            }
+
+            @include desktop {
+                padding: 0 0 0 pxToRem(40);
+            }
         }
     }
 
     &__title {
+        font-family: $primary-font;
         font-size: $text-size-m-h2;
         line-height: $line-height-m-h2;
         color: $color-instock-black;

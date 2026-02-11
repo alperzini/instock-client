@@ -13,6 +13,7 @@ import FormButtonsWrapper from "../../components/formFields/FormButtonsWrapper/F
 import FormHeader from "../../components/formFields/FormHeader/FormHeader";
 import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import BackArrowButton from "../../components/customButtons/BackArrowButton/BackArrowButton";
+import FieldsetsWrapper from "../../components/formFields/FieldsetsWrapper/FieldsetsWrapper";
 import { useState } from "react";
 
 const WarehousesPage = ({ warehouses, setWarehouses }) => {
@@ -52,20 +53,29 @@ const WarehousesPage = ({ warehouses, setWarehouses }) => {
             <div style={{ height: "60px" }}></div>
             <PageWrapper>
                 <FormHeader title={"Add New Inventory Item"} />
-                <FieldsetField title="Item Details" hasBorder={false} >
-                    <DescriptionField onChange={handleDescChange} label="Description" name="description" id="description" placeholder="Please enter a brief item description..." value={desc} error="This field is required" isError={false} />
-                    <TextField onChange={handleNameChange} type="text" label="Item Name" name="name" id="name" placeholder="Item Name" value={name} error="This field is required" isError={true} />
-                    <StatusField legend="Status" name="status" selectedStatus={selectedStatus} onChange={handleRadioChange} />
-                    <QuantityField onChange={handleQuantityChange} label="Quantity" name="quantity" id="quantity" value={quantity} />
-                    <DropdownField onChange={handleListChange} options={options} label="Fruit" name="fruit" id="fruit" placeholder="Please select" selectedValue={selectedFruit} isError={false} error="This field is required" />
-                    <SearchField onChange={handleSearchChange} name="search" id="search" placeholder="Search..." value={search} />
-                    <DeleteButton label="Delete" />
-                </FieldsetField>
+                <FieldsetsWrapper>
+                    <FieldsetField title="Item Details" isSecond={false} >
+                        <DescriptionField onChange={handleDescChange} label="Description" name="description" id="description" placeholder="Please enter a brief item description..." value={desc} error="This field is required" isError={false} />
+                        <TextField onChange={handleNameChange} type="text" label="Item Name" name="name" id="name" placeholder="Item Name" value={name} error="This field is required" isError={false} />
+                        <StatusField legend="Status" name="status" selectedStatus={selectedStatus} onChange={handleRadioChange} />
+                        <QuantityField onChange={handleQuantityChange} label="Quantity" name="quantity" id="quantity" value={quantity} />
+                        <DropdownField onChange={handleListChange} options={options} label="Fruit" name="fruit" id="fruit" placeholder="Please select" selectedValue={selectedFruit} isError={true} error="This field is required" />
+                    </FieldsetField>
+                    <FieldsetField title="Item Details" isSecond={true} >
+                        <DescriptionField onChange={handleDescChange} label="Description" name="description" id="description" placeholder="Please enter a brief item description..." value={desc} error="This field is required" isError={false} />
+                        <TextField onChange={handleNameChange} type="text" label="Item Name" name="name" id="name" placeholder="Item Name" value={name} error="This field is required" isError={true} />
+                        <StatusField legend="Status" name="status" selectedStatus={selectedStatus} onChange={handleRadioChange} />
+                        <QuantityField onChange={handleQuantityChange} label="Quantity" name="quantity" id="quantity" value={quantity} />
+                        <DropdownField onChange={handleListChange} options={options} label="Fruit" name="fruit" id="fruit" placeholder="Please select" selectedValue={selectedFruit} isError={false} error="This field is required" />
+                        <SearchField onChange={handleSearchChange} name="search" id="search" placeholder="Search..." value={search} />
+                        <BackArrowButton />
+                        <DeleteButton label="Delete" />
+                    </FieldsetField>
+                </FieldsetsWrapper>
                 <FormButtonsWrapper>
                     <FormCancelButton />
-                    <FormAddButton label="+ Add Item" isDisabled={false} />
+                    <FormAddButton label="+ Add Item" isDisabled={true} />
                 </FormButtonsWrapper>
-                <BackArrowButton />
             </PageWrapper>
         </>
     );
