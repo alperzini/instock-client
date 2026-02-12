@@ -1,6 +1,6 @@
 @use "./styles/global";
 @use "./styles/variables" as *;
-
+@use "./styles/icons" as *;
 h1 {
     font: $text-size-m-h1 $primary-font;
 }

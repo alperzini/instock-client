@@ -1,4 +1,17 @@
 @use "../../styles/variables" as *;
 @use "../../styles/functions" as *;
 @use "../../styles/mixins" as *;
+@use "../../styles/icons" as *;
+
+.warehouses-page {
+    padding: 0 1rem 2rem;
+
+    @include tablet {
+        padding: 0 2rem 2.5rem;
+    }
+
+    @include desktop {
+        padding: 0 2.5rem 3rem;
+    }
+}
 
