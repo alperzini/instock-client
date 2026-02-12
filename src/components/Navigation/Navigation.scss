@@ -1,0 +1,85 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "sass:color";
+
+.navigation {
+background-color: $color-graphite;
+
+&__container {
+    @extend %wrapper;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+
+    @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2.25rem;
+    }
+
+    @include desktop {
+    padding: 1rem 2.5rem;
+    }
+}
+
+&__logo {
+    display: inline-block;
+    margin-bottom: 1rem;
+
+    @include tablet {
+    margin-bottom: 0;
+    }
+}
+
+&__nav {
+    display: flex;
+    width: 100%;
+
+    @include tablet {
+    width: auto;
+    }
+}
+
+&__link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $cta-height-m;
+    color: $color-white;
+    font-size: $text-size-m-h3;
+    line-height: $line-height-m-h3;
+    font-weight: $font-semi-bold;
+    padding: 0 $cta-padding-dt;
+    border-radius: $cta-br;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    @include tablet {
+    flex: none;
+    height: $cta-height-dt;
+    font-size: $text-size-dt-h3;
+    line-height: $line-height-dt-h3;
+    }
+
+    // Inactive link - no background, underline on hover
+    &:not(.navigation__link--active) {
+    background-color: transparent;
+
+    &:hover {
+        text-decoration: underline;
+    }
+    }
+
+    // Active link - indigo pill background
+    &--active {
+    background-color: $color-instock-black;
+
+    &:hover {
+        background-color: color.adjust($color-instock-black, $lightness: -10%);
+        text-decoration: none;
+    }
+    }
+}
+}

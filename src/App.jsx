@@ -10,6 +10,7 @@ import InventoryPage from "./pages/InventoryPage/InventoryPage.jsx";
 import InventoryItemDetailsPage from "./pages/InventoryItemDetailsPage/InventoryItemDetailsPage.jsx";
 import EditInventoryItemPage from "./pages/EditInventoryItemPage/EditInventoryItemPage.jsx";
 import AddInventoryItemPage from "./pages/AddInventoryItemPage/AddInventoryItemPage.jsx";
+import Navigation from './components/Navigation/Navigation.jsx';
 
 function App() {
   // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -34,7 +35,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      {/* Add Header here */}
+      <Navigation />
       <Routes>
         <Route path="/" element={<WarehousesPage warehouses={warehouses} setWarehouses={setWarehouses} />} />
         <Route path="/warehouse/:warehouseId" element={<WarehouseDetailsPage inventory={inventory} setInventory={setInventory} />} />
@@ -46,7 +47,7 @@ function App() {
         <Route path="/addInventory" element={<AddInventoryItemPage inventory={inventory} setInventory={setInventory} />} />
         <Route path="*" element={<h1>404<br />PAGE NOT FOUND</h1>} />
       </Routes>
-      {/* Add Footer Here */}
+      <Footer />
     </BrowserRouter>
   )
 }
