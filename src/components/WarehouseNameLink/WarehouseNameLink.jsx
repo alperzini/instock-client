@@ -6,7 +6,7 @@ const WarehouseNameLink = ({ to, children, className = "" }) => {
 return (
     <Link to={to} className={`warehouse-name-link ${className}`.trim()}>
     <span className="warehouse-name-link__text">{children}</span>
-    <ChevronRightIcon className="warehouse-name-link__chevron" />
+    <ChevronRightIcon />
     </Link>
 );
 };

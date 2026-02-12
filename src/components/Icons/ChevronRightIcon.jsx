@@ -4,7 +4,7 @@ const ChevronRightIcon = ({ className = "" }) => {
 return (
     <img
     src={chevronRight}
-    className={`chevron-icon ${className}`.trim()}
+    className={`warehouse-chevron ${className}`.trim()}
     alt=""
     aria-hidden="true"
     />

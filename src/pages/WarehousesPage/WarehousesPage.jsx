@@ -26,7 +26,7 @@ const WarehousesPage = ({ warehouses, setWarehouses }) => {
 useEffect(() => {
     // TEMP: mock data for testing Ticket 45
     setWarehouses([
-      {
+    {
         id: "1",
         warehouse_name: "Toronto",
         address: "123 King St",
@@ -35,8 +35,8 @@ useEffect(() => {
         contact_name: "Ava Patel",
         contact_phone: "+1 (416) 555-1234",
         contact_email: "ava@instock.com",
-      },
-      {
+    },
+    {
         id: "2",
         warehouse_name: "Chicago",
         address: "3218 Guess Rd",
@@ -45,16 +45,16 @@ useEffect(() => {
         contact_name: "Jameson Schuppe",
         contact_phone: "+1 (919) 797-2875",
         contact_email: "jschuppe@instock.com",
-      },
+    },
     ]);
-  }, [setWarehouses]);
+}, [setWarehouses]);
 
-  return (
+return (
     <main className="warehouses-page">
-     {/* <PageWrapper />  */}
-     <WarehouseList warehouses={warehouses} /> 
+    {/* <PageWrapper />  */}
+    <WarehouseList warehouses={warehouses} /> 
     </main>
-  );
+);
 
     
 };
