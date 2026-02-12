@@ -1,0 +1,95 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/functions" as *;
+@use "../../../styles/mixins" as *;
+
+.status-field {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: $ff-margin-top;
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__legend {
+        font-family: $primary-font;
+        font-size: $text-size-m-p2;
+        line-height: $line-height-m-p2;
+        color: $color-instock-black;
+        font-weight: $font-semi-bold;
+        padding: 0;
+
+        @include tablet {
+            font-size: $text-size-dt-p2;
+            line-height: $line-height-dt-p2;
+        }
+    }
+
+    &__radio-buttons-wrapper {
+        display: flex;
+        gap: 89px;
+
+        @include tablet {
+            gap: 40px;
+        }
+    }
+
+    &__label {
+        font-family: $primary-font;
+        font-size: $text-size-m-p2;
+        line-height: $line-height-m-p2;
+        color: $color-slate;
+        font-weight: $font-regular;
+        transition: background-color 0.3s;
+
+        &:hover {
+            color: $color-instock-black;
+            ;
+        }
+
+        @include tablet {
+            font-size: $text-size-dt-p2;
+            line-height: $line-height-dt-p2;
+        }
+    }
+
+    &__radio-buttons-item-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &__radio-button {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid $color-cloud;
+        outline: none;
+        margin: 0;
+
+        &:checked {
+            border-color: $color-instock-indigo;
+            background-color: $color-instock-indigo;
+            padding: 4px;
+            background-clip: content-box;
+
+            &+.status-field__label {
+                color: $color-instock-black;
+            }
+        }
+
+        &:hover,
+        &:focus {
+            box-shadow: 0px 0px 0px 1px #819fe6;
+            border-radius: 50%;
+            opacity: 1;
+        }
+
+        &:hover+.status-field__label {
+            color: $color-instock-black;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/functions" as *;
+@use "../../../styles/mixins" as *;
+
+.fieldsets-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-cloud;
+    gap: 1px;
+
+    @include tablet {
+        flex-direction: row;
+    }
+
+    &__wrapper {
+        background-color: $color-white;
+
+        @include tablet {
+            padding: pxToRem(24) pxToRem(32) pxToRem(32);
+        }
+
+        @include desktop {
+            padding: pxToRem(24) pxToRem(40) pxToRem(32);
+        }
+    }
+}
