@@ -11,6 +11,7 @@ import InventoryItemDetailsPage from "./pages/InventoryItemDetailsPage/Inventory
 import EditInventoryItemPage from "./pages/EditInventoryItemPage/EditInventoryItemPage.jsx";
 import AddInventoryItemPage from "./pages/AddInventoryItemPage/AddInventoryItemPage.jsx";
 import Navigation from './components/Navigation/Navigation.jsx';
+import Footer from './components/Footer/Footer.jsx';
 
 function App() {
   // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
