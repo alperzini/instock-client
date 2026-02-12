@@ -13,3 +13,4 @@ const WarehousesPage = ({ warehouses, setWarehouses }) => {
 };
 
 export default WarehousesPage;
+
