@@ -10,6 +10,17 @@ const WarehouseList = ({ warehouses }) => {
 const [search, setSearch] = useState("");
 const navigate = useNavigate();
 
+const handleDeleteWarehouse = (warehouseId) => {
+    if (!setWarehouses) return;
+    setWarehouses((prev) => prev.filter((w) => w.id !== warehouseId));
+};
+
+const filtered = warehouses.filter((w) =>
+    `${w.warehouse_name} ${w.address} ${w.city} ${w.country} ${w.contact_name} ${w.contact_email} ${w.contact_phone}`
+    .toLowerCase()
+    .includes(search.toLowerCase())
+);
+
 return (
     <section className="warehouse-list">
     <div className="warehouse-list__container">
@@ -49,7 +60,11 @@ return (
 
         <div className="warehouse-list__rows">
         {warehouses?.map((warehouse) => (
-            <WarehouseListItem key={warehouse.id} warehouse={warehouse} />
+            <WarehouseListItem 
+            key={warehouse.id} 
+            warehouse={warehouse} 
+            onDelete={handleDeleteWarehouse}
+            />
         ))}
         </div>
     </div>

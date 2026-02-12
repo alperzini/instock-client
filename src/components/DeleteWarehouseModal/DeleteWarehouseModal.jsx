@@ -19,15 +19,16 @@ return (
 
         <h1 className="delete-modal__title">Delete {warehouseName} warehouse?</h1>
         <p className="delete-modal__text">
-        Please confirm that you’d like to delete the {warehouseName} from the
-        list of warehouses. You won’t be able to undo this action.
+        Please confirm that you’d like to delete the {warehouseName} from the list of warehouses. You won’t be able to undo this action.
         </p>
 
         <div className="delete-modal__actions">
         <button type="button" className="delete-modal__btn delete-modal__btn--secondary" onClick={onClose}>
             Cancel
         </button>
-        <button type="button" className="delete-modal__btn delete-modal__btn--delete" onClick={onDelete}>
+        <button type="button" 
+        className="delete-modal__btn delete-modal__btn--delete" 
+        onClick={onDelete}>
             Delete
         </button>
         </div>

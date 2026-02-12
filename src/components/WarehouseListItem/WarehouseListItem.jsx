@@ -11,7 +11,15 @@ const WarehouseListItem = ({ warehouse }) => {
     const navigate = useNavigate();
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
+    const closeDelete = () => setIsDeleteOpen(false);
+
+    const confirmDelete = () => {
+        onDelete?.(warehouse.id);
+        closeDelete();
+    };
+
 return (
+    <>
     <article className="warehouse-item">
     <div className="warehouse-item__cell warehouse-item__cell--warehouse">
         <p className="warehouse-item__label">WAREHOUSE</p>
@@ -58,6 +66,16 @@ return (
             </button>
             </div>
     </article>
+
+    <DeleteWarehouseModal
+        isOpen={isDeleteOpen}
+        warehouseName={warehouse.warehouse_name}
+        onClose={closeDelete}
+        onDelete={confirmDelete}
+      />
+
+    </>
+
 );
 };
 
