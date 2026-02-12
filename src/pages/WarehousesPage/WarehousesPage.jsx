@@ -18,6 +18,7 @@
 
 import "./WarehousesPage.scss";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
+import PageWrapper from "../../components/PageWrapper/PageWrapper"
 import { useEffect } from "react";
 
 const WarehousesPage = ({ warehouses, setWarehouses }) => {
@@ -50,7 +51,8 @@ useEffect(() => {
 
   return (
     <main className="warehouses-page">
-      <WarehouseList warehouses={warehouses} />
+     {/* <PageWrapper />  */}
+     <WarehouseList warehouses={warehouses} /> 
     </main>
   );
 

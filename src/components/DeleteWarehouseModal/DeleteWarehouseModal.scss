@@ -65,9 +65,9 @@ padding: 1rem;
     margin-top: auto;
     display: flex;
     gap: 1rem;
-  }
+}
 
-  &__btn {
+&__btn {
     height: $cta-height-m;
     border-radius: $cta-br;
     padding: 0 $cta-padding-dt;
@@ -76,51 +76,51 @@ padding: 1rem;
     font-weight: $font-semi-bold;
     cursor: pointer;
     width: 100%;
-  }
+}
 
-  &__btn--secondary {
+&__btn--secondary {
     background: $color-white;
     border: 1px solid $color-cloud;
     color: $color-slate;
 
     &:hover {
-      border-color: $color-slate;
+    border-color: $color-slate;
     }
-  }
+}
 
-  &__btn--delete {
+&__btn--delete {
     background: $color-red;
     border: 1px solid $color-red;
     color: $color-white;
 
     &:hover {
-      opacity: 0.9;
+    opacity: 0.9;
     }
-  }
+}
 
-  @include tablet {
+@include tablet {
     align-items: center;
     justify-content: center;
     padding: 1rem;
 
     &__card {
-      width: 100%;
-      max-width: 42rem;
-      height: auto;
-      border-radius: 4px;
-      padding: 2.5rem 3rem;
-      box-shadow: 0 8px 24px rgba(19, 24, 44, 0.18);
+    width: 100%;
+    max-width: 42rem;
+    height: auto;
+    border-radius: 4px;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 8px 24px rgba(19, 24, 44, 0.18);
     }
 
     &__actions {
-      justify-content: flex-end;
+    justify-content: flex-end;
     }
 
     &__btn {
-      width: auto;
-      height: $cta-height-dt;
-      font-size: $text-size-dt-h3;
-      line-height: $line-height-dt-h3;
+    width: auto;
+    height: $cta-height-dt;
+    font-size: $text-size-dt-h3;
+    line-height: $line-height-dt-h3;
     }
-  }
+}
 }
