@@ -49,7 +49,7 @@ const UsingFormComponentsSearchDeleteBackExample = () => {
     };
     return (
         <>
-            <div style={{ height: "60px" }}></div>
+            <div style={{ height: "60px", backgroundColor: '#232940' }}></div>
             <PageWrapper>
                 <FormHeader title={"Add New Inventory Item"} />
                 <FieldsetsWrapper>
