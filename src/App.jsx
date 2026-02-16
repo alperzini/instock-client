@@ -39,7 +39,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<WarehousesPage warehouses={warehouses} setWarehouses={setWarehouses} />} />
-        <Route path="/warehouse/:warehouseId" element={<WarehouseDetailsPage inventory={inventory} setInventory={setInventory} />} />
+        <Route path="/warehouse/:warehouseId" element={<WarehouseDetailsPage inventory={inventory} setInventory={setInventory} warehouses= {warehouses}/>} />
         <Route path="/editWarehouse/:warehouseId" element={<EditWarehousePage warehouses={warehouses} setWarehouses={setWarehouses} />} />
         <Route path="/addWarehouse" element={<AddWareHousePage warehouses={warehouses} setWarehouses={setWarehouses} />} />
         <Route path="/inventory" element={<InventoryPage inventory={inventory} setInventory={setInventory} />} />

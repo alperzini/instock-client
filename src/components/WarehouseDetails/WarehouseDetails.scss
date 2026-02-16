@@ -1,0 +1,150 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.warehouse-details {
+background: $color-white;
+
+&__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1rem;
+
+    @include tablet {
+    padding: 2rem;
+    }
+
+    @include desktop {
+    padding: 2rem 2.5rem;
+    }
+}
+
+&__title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+&__title {
+    margin: 0;
+    font-size: $text-size-m-h1;
+    line-height: $line-height-m-h1;
+    font-weight: $font-semi-bold;
+    color: $color-instock-black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include tablet {
+    font-size: $text-size-dt-h1;
+    line-height: $line-height-dt-h1;
+    }
+}
+
+&__edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    height: $cta-height-m;
+    padding: 0 1rem;
+    border-radius: 999px;
+
+    border: 1px solid $color-instock-indigo;
+    background: $color-instock-indigo;
+    color: $color-white;
+
+    cursor: pointer;
+    font-weight: $font-semi-bold;
+    font-size: $text-size-m-h3;
+    line-height: $line-height-m-h3;
+
+    svg,
+    img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    }
+
+    &:hover {
+    background: $color-graphite;
+    border-color: $color-graphite;
+    }
+
+    @include tablet {
+    height: $cta-height-dt;
+    font-size: $text-size-dt-h3;
+    line-height: $line-height-dt-h3;
+    padding: 0 1.25rem;
+    }
+}
+
+&__edit-text {
+    display: none;
+
+    @include tablet {
+    display: inline;
+    }
+}
+
+&__divider {
+    height: 1px;
+    background: $color-cloud;
+}
+
+&__info {
+    padding: 1.5rem 1rem;
+    display: grid;
+    gap: 1.25rem;
+
+    @include tablet {
+    padding: 2rem;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    }
+
+    @include desktop {
+    padding: 2rem 2.5rem;
+    }
+}
+
+&__block {
+    min-width: 0;
+}
+
+&__block--address {
+    @include tablet {
+    padding-right: 2rem;
+    border-right: 1px solid $color-cloud;
+    }
+}
+
+&__label {
+    margin: 0 0 0.5rem 0;
+    font-size: $text-size-m-h4;
+    line-height: $line-height-m-h4;
+    font-weight: $font-semi-bold;
+    color: $color-slate;
+    text-transform: uppercase;
+
+    @include tablet {
+    font-size: $text-size-dt-h4;
+    line-height: $line-height-dt-h4;
+    }
+}
+
+&__value {
+    margin: 0;
+    font-size: $text-size-m-p2;
+    line-height: $line-height-m-p2;
+    color: $color-instock-black;
+
+    @include tablet {
+    font-size: $text-size-dt-p2;
+    line-height: $line-height-dt-p2;
+    }
+}
+}
