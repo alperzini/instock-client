@@ -56,7 +56,7 @@ row-gap: 1.25rem;
         cursor: pointer;
 
         &:hover, &:focus {
-            border: 0.5px, dashed $color-instock-indigo;
+            border: 0.5px, $color-instock-indigo;
             border-radius: 0.1875rem;
         }
     }
