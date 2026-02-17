@@ -33,7 +33,8 @@ white-space: nowrap;
     color: $color-white;
 
     &:hover:not(:disabled), &:focus {
-    opacity: 0.9;
+        background-color: $color-instock-black;
+        opacity: 0.9;
     }
 }
 
