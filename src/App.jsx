@@ -14,24 +14,30 @@ import Navigation from './components/Navigation/Navigation.jsx';
 import Footer from './components/Footer/Footer.jsx';
 
 function App() {
-  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  // const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const PORT = import.meta.env.VITE_PORT;
   const [warehouses, setWarehouses] = useState([]);
   const [inventory, setInventory] = useState([]);
 
-  useEffect(() => {
-    const fetchWarehousesInventory = async () => {
-      try {
-        // const initalWarehouses = await axios.get(`${BACKEND_URL}${PORT}/warehouses`);
-        // const initalInventory = await axios.get(`${BACKEND_URL}${PORT}/inventory`);
-        // setWarehouses(initalWarehouses.data);
-        // setInventory(initalInventory.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchWarehousesInventory();
-  }, []);
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const warehousesRes = await axios.get(`${BACKEND_URL}${PORT}/warehouses`); {/* Split the inventory and warehouse to two seperate try, if one of it fails, the other can continue, we can also use Promise.all but for now this is okay I believe */}
+      setWarehouses(warehousesRes.data);
+    } catch (error) {
+      console.error("Error fetching warehouses:", error);
+    }
+
+    try {
+      const inventoryRes = await axios.get(`${BACKEND_URL}${PORT}/inventory`);
+      setInventory(inventoryRes.data);
+    } catch (error) {
+      console.error("Error fetching inventory:", error);
+    }
+  };
+
+  fetchData();
+}, [BACKEND_URL, PORT]);
 
   return (
     <BrowserRouter>
