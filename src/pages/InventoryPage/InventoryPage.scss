@@ -2,3 +2,260 @@
 @use "../../styles/functions" as *;
 @use "../../styles/mixins" as *;
 
+.inventory-page {
+  background: $color-light-grey;
+  min-height: 100vh;
+  padding: 1rem;
+
+  @include tablet {
+    padding: 2rem;
+  }
+
+  &__card {
+    background: $color-white;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(19, 24, 44, 0.08);
+    overflow: hidden;
+  }
+
+  &__top {
+    padding: 1.5rem 1rem 1rem;
+
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 2rem 1rem;
+    }
+  }
+
+  &__title {
+    margin: 0 0 1rem;
+    color: $color-instock-black;
+
+    @include tablet {
+      margin: 0;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  &__search {
+    position: relative;
+    width: 100%;
+
+    @include tablet {
+      width: 17rem;
+    }
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  &__search-input {
+    width: 100%;
+    height: $ff-height-m;
+    border-radius: $ff-br;
+    border: 1px solid $color-cloud;
+    padding-left: 2.5rem;
+    padding-right: 1rem;
+    outline: none;
+
+    @include tablet {
+      height: $ff-height-dt;
+    }
+  }
+
+  &__add {
+    width: 100%;
+    height: $cta-height-m;
+    border-radius: $cta-br;
+    border: none;
+    background: $color-instock-indigo;
+    color: $color-white;
+    font-weight: $font-semi-bold;
+    cursor: pointer;
+
+    @include tablet {
+      width: auto;
+      padding: 0 $cta-padding-dt;
+      height: $cta-height-dt;
+      white-space: nowrap;
+    }
+  }
+
+  /* TABLE HEADER (tablet/desktop only) */
+  &__header-row {
+    display: none;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: 2.2fr 1.3fr 1.1fr 0.7fr 1.3fr 0.8fr;
+      gap: 1rem;
+      padding: 0.75rem 2rem;
+      background: $color-light-grey;
+      border-top: 1px solid $color-cloud;
+      border-bottom: 1px solid $color-cloud;
+      color: $color-slate;
+      font-size: $text-size-m-h4;
+      line-height: $line-height-m-h4;
+      font-weight: $font-semi-bold;
+    }
+  }
+
+  &__h {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    img {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &__rows {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__row {
+    border-bottom: 1px solid $color-cloud;
+    cursor: pointer;
+  }
+
+  /* MOBILE CARD */
+  &__mobile {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__mobile-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__label {
+    margin: 0 0 0.25rem;
+    color: $color-slate;
+    font-size: $text-size-m-h4;
+    line-height: $line-height-m-h4;
+    font-weight: $font-semi-bold;
+  }
+
+  &__value {
+    margin: 0 0 0.75rem;
+    color: $color-instock-black;
+    font-size: $text-size-m-p2;
+    line-height: $line-height-m-p2;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+
+    img {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &__name {
+    color: $color-instock-indigo;
+    font-weight: $font-semi-bold;
+    font-size: $text-size-m-h3;
+    line-height: $line-height-m-h3;
+  }
+
+  /* TABLE ROW (tablet/desktop) */
+  &__desktop {
+    display: none;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: 2.2fr 1.3fr 1.1fr 0.7fr 1.3fr 0.8fr;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      align-items: center;
+    }
+  }
+
+  &__cell {
+    color: $color-instock-black;
+    font-size: $text-size-dt-p2;
+    line-height: $line-height-dt-p2;
+
+    &--actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+  }
+
+  &__icon-btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+
+    img {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  /* TAGS */
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: $tag-height-m;
+    padding: 0 $tag-padding-right;
+    border-radius: $tag-br;
+    font-size: $text-size-m-h4;
+    font-weight: $font-semi-bold;
+    text-transform: uppercase;
+
+    @include tablet {
+      height: $tag-height-dt;
+      font-size: $text-size-dt-h4;
+    }
+
+    &--in {
+      color: $color-green;
+      background: rgba(21, 132, 99, $tag-bo);
+    }
+
+    &--out {
+      color: $color-red;
+      background: rgba(201, 69, 21, $tag-bo);
+    }
+  }
+}

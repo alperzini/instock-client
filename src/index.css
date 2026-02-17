@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+/*Text Styles*/
+/*Mobile Text Sizes and Line heights*/
+/*Desktop & Tablet Text Sizes and Line heights*/
+/*Colors*/
+/*Call to Actions Styles*/
+/*Form Fields Styles*/
+/*Radio Button and Radio Button Group Styles*/
+/*Tag Styles*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Titillium Web", sans-serif;
+  margin: 0;
+  background-color: #F7F8F9;
+}
+
+h1 {
+  font: 1.75rem "Titillium Web", sans-serif;
+}/*# sourceMappingURL=index.css.map */
