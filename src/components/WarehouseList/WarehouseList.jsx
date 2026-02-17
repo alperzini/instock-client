@@ -34,7 +34,13 @@ return (
             placeholder="Search..."
             />
 
-            <Button variant="primary" onClick={() => navigate("/addWarehouse")}>
+            <Button
+            variant="primary"
+            onClick={() => {
+                console.log("BUTTON CLICKED");
+                navigate("/addWarehouse");
+            }}
+            >
             + Add New Warehouse
             </Button>
         </div>
