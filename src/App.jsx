@@ -14,17 +14,17 @@ import Navigation from './components/Navigation/Navigation.jsx';
 import Footer from './components/Footer/Footer.jsx';
 
 function App() {
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
+  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
   const [warehouses, setWarehouses] = useState([]);
   const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     const fetchWarehousesInventory = async () => {
       try {
-        const initalWarehouses = await axios.get(`${BACKEND_URL}${PORT}/warehouses`);
+        // const initalWarehouses = await axios.get(`${BACKEND_URL}${PORT}/warehouses`);
         // const initalInventory = await axios.get(`${BACKEND_URL}${PORT}/inventory`);
-        setWarehouses(initalWarehouses.data);
+        // setWarehouses(initalWarehouses.data);
         // setInventory(initalInventory.data);
       } catch (error) {
         console.error(error);
