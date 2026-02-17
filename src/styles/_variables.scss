@@ -10,11 +10,11 @@ $max-width-wrapper: pxToRem(1020);
 
 /*Text Styles*/
 /*Mobile Text Sizes and Line heights*/
-//M H1 - Page Header
+//M H1 - Page navigation
 $text-size-m-h1: pxToRem(28);
 $line-height-m-h1: pxToRem(36);
 
-//M H2 - Subheader
+//M H2 - Subnavigation
 $text-size-m-h2: pxToRem(20);
 $line-height-m-h2: pxToRem(28);
 
@@ -22,7 +22,7 @@ $line-height-m-h2: pxToRem(28);
 $text-size-m-h3: pxToRem(13);
 $line-height-m-h3: pxToRem(20);
 
-//M H4 - Table Header
+//M H4 - Table navigation
 $text-size-m-h4: pxToRem(11);
 $line-height-m-h4: pxToRem(16);
 
@@ -39,11 +39,11 @@ $text-size-m-p3: pxToRem(11);
 $line-height-m-p3: pxToRem(16);
 
 /*Desktop & Tablet Text Sizes and Line heights*/
-//DT H1 - Page Header
+//DT H1 - Page navigation
 $text-size-dt-h1: pxToRem(32);
 $line-height-dt-h1: pxToRem(40);
 
-//DT H2 - Subheader
+//DT H2 - Subnavigation
 $text-size-dt-h2: pxToRem(24);
 $line-height-dt-h2: pxToRem(32);
 
@@ -51,7 +51,7 @@ $line-height-dt-h2: pxToRem(32);
 $text-size-dt-h3: pxToRem(14);
 $line-height-dt-h3: pxToRem(22);
 
-//DT H4 - Table Header
+//DT H4 - Table navigation
 $text-size-dt-h4: pxToRem(12);
 $line-height-dt-h4: pxToRem(18);
 

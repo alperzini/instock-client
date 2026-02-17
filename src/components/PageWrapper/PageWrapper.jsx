@@ -6,6 +6,7 @@ function PageWrapper({ children }) {
         <>
             <div className="page-wrapper__header-background"></div>
             <div className="page-wrapper__wrapper">
+                <div className="page-wrapper__top-border-hide" ></div>
                 <div className="page-wrapper" >
                     {children}
                 </div>
