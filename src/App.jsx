@@ -14,43 +14,43 @@ import Navigation from './components/Navigation/Navigation.jsx';
 import Footer from './components/Footer/Footer.jsx';
 
 function App() {
-  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  // const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
-  const [warehouses, setWarehouses] = useState([]);
-  const [inventory, setInventory] = useState([]);
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
+const [warehouses, setWarehouses] = useState([]);
+const [inventory, setInventory] = useState([]);
 
-  useEffect(() => {
-    const fetchWarehousesInventory = async () => {
-      try {
-        // const initalWarehouses = await axios.get(`${BACKEND_URL}${PORT}/warehouses`);
-        // const initalInventory = await axios.get(`${BACKEND_URL}${PORT}/inventory`);
-        // setWarehouses(initalWarehouses.data);
-        // setInventory(initalInventory.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchWarehousesInventory();
-  }, []);
+useEffect(() => {
+const fetchWarehousesInventory = async () => {
+try {
+  const initalWarehouses = await axios.get(`${BACKEND_URL}${PORT}/warehouses`);
+  // const initalInventory = await axios.get(`${BACKEND_URL}${PORT}/inventory`);
+  setWarehouses(initalWarehouses.data);
+  // setInventory(initalInventory.data);
+} catch (error) {
+  console.error(error);
+}
+};
+fetchWarehousesInventory();
+}, []);
 
-  return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<WarehousesPage warehouses={warehouses} setWarehouses={setWarehouses} />} />
-        <Route path="/warehouse/:warehouseId" element={<WarehouseDetailsPage inventory={inventory} setInventory={setInventory} warehouses= {warehouses}/>} />
-        <Route path="/editWarehouse/:warehouseId" element={<EditWarehousePage warehouses={warehouses} setWarehouses={setWarehouses} />} />
-        <Route path="/addWarehouse" element={<AddWareHousePage warehouses={warehouses} setWarehouses={setWarehouses} />} />
-        <Route path="/inventory" element={<InventoryPage inventory={inventory} setInventory={setInventory} />} />
-        <Route path="/inventory/:inventoryId" element={<InventoryItemDetailsPage inventory={inventory} />} />
-        <Route path="/editInventory/:inventoryId" element={<EditInventoryItemPage inventory={inventory} setInventory={setInventory} />} />
-        <Route path="/addInventory" element={<AddInventoryItemPage inventory={inventory} setInventory={setInventory} />} />
-        <Route path="*" element={<h1>404<br />PAGE NOT FOUND</h1>} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
-  )
+return (
+<BrowserRouter>
+<ScrollToTop />
+<Navigation />
+<Routes>
+  <Route path="/" element={<WarehousesPage warehouses={warehouses} setWarehouses={setWarehouses} />} />
+  <Route path="/warehouse/:warehouseId" element={<WarehouseDetailsPage warehouses= {warehouses} inventory={inventory} setInventory={setInventory}/>} />
+  <Route path="/editWarehouse/:warehouseId" element={<EditWarehousePage warehouses={warehouses} setWarehouses={setWarehouses} />} />
+  <Route path="/addWarehouse" element={<AddWareHousePage warehouses={warehouses} setWarehouses={setWarehouses} />} />
+  <Route path="/inventory" element={<InventoryPage inventory={inventory} setInventory={setInventory} />} />
+  <Route path="/inventory/:inventoryId" element={<InventoryItemDetailsPage inventory={inventory} />} />
+  <Route path="/editInventory/:inventoryId" element={<EditInventoryItemPage inventory={inventory} setInventory={setInventory} />} />
+  <Route path="/addInventory" element={<AddInventoryItemPage inventory={inventory} setInventory={setInventory} />} />
+  <Route path="*" element={<h1>404<br />PAGE NOT FOUND</h1>} />
+</Routes>
+<Footer />
+</BrowserRouter>
+)
 }
 
 export default App;

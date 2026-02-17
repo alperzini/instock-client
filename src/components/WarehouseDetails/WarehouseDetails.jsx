@@ -1,5 +1,5 @@
 import "./WarehouseDetails.scss";
-import BackArrowButton from "../Button/BackArrowButton/BackArrowButton";
+import BackArrowButton from "../customButtons/BackArrowButton/BackArrowButton";
 import EditIcon from "../Icons/EditIcon";
 
 const WarehouseDetails = ({ warehouse, onEdit }) => {

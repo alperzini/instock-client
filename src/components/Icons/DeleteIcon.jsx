@@ -1,15 +1,11 @@
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 
-const DeleteIcon = ({ onClick, ariaLabel = "Delete" }) => {
+const DeleteIcon = ({ ariaLabel = "Delete" }) => {
 return (
-    <button
-    type="button"
-    className="icon-button"
+    <img 
+    src={deleteIcon}
     aria-label={ariaLabel}
-    onClick={onClick}
-    >
-    <img src={deleteIcon} alt="" />
-    </button>
+    className="icon-button"/>
 );
 };
 

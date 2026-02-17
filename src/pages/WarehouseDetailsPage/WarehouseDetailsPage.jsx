@@ -7,7 +7,19 @@ import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails
     const { warehouseId } = useParams();
     const navigate = useNavigate();
 
-    const warehouse = warehouses.find((w) => String(w.id) === String(warehouseId));
+    const [warehouse, setWarehouse] = useState(null);
+
+  useEffect(() => {
+    const fetchWarehouse = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8080/warehouses/${warehouseId}`);
+        setWarehouse(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchWarehouse();
+  }, [warehouseId]);
 
     return (
         <PageWrapper>

@@ -52,6 +52,13 @@ row-gap: 1.25rem;
         border: 0;
         background: transparent;
         padding: 0;
+        outline: none;
+        cursor: pointer;
+
+        &:hover, &:focus {
+            border: 0.5px, dashed $color-instock-indigo;
+            border-radius: 0.1875rem;
+        }
     }
 
     @include tablet {

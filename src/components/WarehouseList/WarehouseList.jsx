@@ -6,7 +6,7 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 
-const WarehouseList = ({ warehouses }) => {
+const WarehouseList = ({ warehouses = [], setWarehouses }) => {
 const [search, setSearch] = useState("");
 const navigate = useNavigate();
 

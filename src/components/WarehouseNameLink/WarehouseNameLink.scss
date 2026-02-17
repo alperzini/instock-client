@@ -2,6 +2,7 @@
 @use "../../styles/icons" as *;
 
 .warehouse-name-link {
+outline: none;
 display: inline-flex;
 align-items: center;
 gap: $link-margin-right;
@@ -9,7 +10,7 @@ color: $color-instock-indigo;
 text-decoration: none;
 font-weight: $font-semi-bold;
 
-&:hover {
+&:hover, &:focus {
     text-decoration: underline;
 }
 }
@@ -23,7 +24,7 @@ transition: transform 200ms ease;
 }
 
 @media (hover: hover) {
-.warehouse-name-link:hover .warehouse-chevron {
+.warehouse-name-link:hover .warehouse-chevron, .warehouse-name-link:focus .warehouse-chevron {
     transform: translateX(4px);
 }
 
