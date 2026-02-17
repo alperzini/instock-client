@@ -1,7 +1,10 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./WarehouseDetailsPage.scss";
 import { useParams, useNavigate } from "react-router-dom";
 import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
+
 
     const WarehouseDetailsPage = ({ inventory, setInventory, warehouses = [] }) => {
     const { warehouseId } = useParams();
