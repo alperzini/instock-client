@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "../Button/Button";
 import BackArrowButton from "../customButtons/BackArrowButton/BackArrowButton";
+import WarehouseNameLink from "../WarehouseNameLink/WarehouseNameLink";
 
 import editIcon from "../../assets/icons/edit-24px.svg";
 
@@ -67,7 +68,14 @@ const InventoryItemDetails = ({ item }) => {
 
           <div className="inventory-item-details__block">
             <p className="inventory-item-details__label">WAREHOUSE:</p>
-            <p className="inventory-item-details__value">{item?.warehouse_name}</p>
+
+            {item?.warehouse_id ? (
+              <WarehouseNameLink to={`/warehouses/${item.warehouse_id}`}>
+                {item?.warehouse_name}
+              </WarehouseNameLink>
+            ) : (
+              <p className="inventory-item-details__value">{item?.warehouse_name}</p>
+            )}
           </div>
         </div>
       </div>

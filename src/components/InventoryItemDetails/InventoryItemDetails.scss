@@ -1,25 +1,26 @@
 @use "../../styles/variables" as *;
+@use "../../styles/functions" as *;
 @use "../../styles/mixins" as *;
 
 .inventory-item-details {
-  background: $color-white;
+  width: 100%;
 
   &__header {
-    padding: 1.5rem 1rem;
+    padding: pxToRem(24) pxToRem(16);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: pxToRem(16);
 
     @include tablet {
-      padding: 2rem;
+      padding: pxToRem(32);
     }
   }
 
   &__title-group {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: pxToRem(8);
     min-width: 0;
   }
 
@@ -39,20 +40,20 @@
     }
   }
 
-  /* Reuse Button styles — only handle the “icon-only on mobile” behaviour */
+  /* Don’t restyle the button system — only control the responsive behavior */
   &__edit-btn {
     padding: 0;
     width: $cta-height-m;
 
     @include tablet {
       width: auto;
-      padding: 0 1rem;
+      padding: 0 pxToRem(16);
     }
   }
 
   &__edit-icon {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: pxToRem(24);
+    height: pxToRem(24);
     display: block;
     filter: brightness(0) invert(1);
   }
@@ -67,30 +68,30 @@
 
   &__divider {
     height: 1px;
-    background: $color-cloud;
+    background-color: $color-cloud;
   }
 
   &__content {
-    padding: 1.5rem 1rem;
+    padding: pxToRem(24) pxToRem(16);
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: pxToRem(24);
 
     @include tablet {
-      padding: 2rem;
+      padding: pxToRem(32);
       flex-direction: row;
-      gap: 2rem;
+      gap: pxToRem(32);
     }
   }
 
   &__left {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: pxToRem(24);
 
     @include tablet {
       flex: 1;
-      padding-right: 2rem;
+      padding-right: pxToRem(32);
       border-right: 1px solid $color-cloud;
     }
   }
@@ -98,22 +99,22 @@
   &__right {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: pxToRem(24);
 
     @include tablet {
       flex: 1;
-      padding-left: 2rem;
+      padding-left: pxToRem(32);
     }
   }
 
   &__top {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: pxToRem(24);
   }
 
   &__label {
-    margin: 0 0 0.25rem;
+    margin: 0 0 pxToRem(4);
     font-size: $text-size-m-h4;
     line-height: $line-height-m-h4;
     font-weight: $font-semi-bold;
@@ -145,12 +146,14 @@
     padding: 0 $tag-padding-right;
     border-radius: $tag-br;
     font-size: $text-size-m-h4;
+    line-height: $line-height-m-h4;
     font-weight: $font-semi-bold;
     width: fit-content;
 
     @include tablet {
       height: $tag-height-dt;
       font-size: $text-size-dt-h4;
+      line-height: $line-height-dt-h4;
     }
   }
 
