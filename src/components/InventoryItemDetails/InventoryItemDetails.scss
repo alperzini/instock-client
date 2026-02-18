@@ -1,18 +1,14 @@
 @use "../../styles/variables" as *;
-@use "../../styles/functions" as *;
 @use "../../styles/mixins" as *;
 
 .inventory-item-details {
   background: $color-white;
-  border-radius: $card-br;
-  box-shadow: $card-shadow;
-  overflow: hidden;
 
   &__header {
     padding: 1.5rem 1rem;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 1rem;
 
     @include tablet {
@@ -20,23 +16,11 @@
     }
   }
 
-  &__title-wrap {
+  &__title-group {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     min-width: 0;
-  }
-
-  &__back {
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: inline-flex;
-
-    &:hover {
-      opacity: 0.7;
-    }
   }
 
   &__title {
@@ -45,8 +29,8 @@
     line-height: $line-height-m-h1;
     font-weight: $font-semi-bold;
     color: $color-instock-black;
-    overflow: hidden;
     white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
 
     @include tablet {
@@ -55,27 +39,14 @@
     }
   }
 
-  &__edit {
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-
-    height: $cta-height-m;
+  /* Reuse Button styles — only handle the “icon-only on mobile” behaviour */
+  &__edit-btn {
+    padding: 0;
     width: $cta-height-m;
-    border-radius: 50%;
-    background: $color-instock-indigo;
 
     @include tablet {
       width: auto;
-      border-radius: $cta-br;
       padding: 0 1rem;
-    }
-
-    &:hover {
-      background: $color-instock-black;
     }
   }
 
@@ -88,8 +59,6 @@
 
   &__edit-text {
     display: none;
-    color: $color-white;
-    font-weight: $font-semi-bold;
 
     @include tablet {
       display: inline;
@@ -98,10 +67,10 @@
 
   &__divider {
     height: 1px;
-    background-color: $color-cloud;
+    background: $color-cloud;
   }
 
-  &__body {
+  &__content {
     padding: 1.5rem 1rem;
     display: flex;
     flex-direction: column;
@@ -137,14 +106,14 @@
     }
   }
 
-  &__top-grid {
+  &__top {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
 
   &__label {
-    margin: 0 0 0.25rem 0;
+    margin: 0 0 0.25rem;
     font-size: $text-size-m-h4;
     line-height: $line-height-m-h4;
     font-weight: $font-semi-bold;
@@ -175,15 +144,13 @@
     height: $tag-height-m;
     padding: 0 $tag-padding-right;
     border-radius: $tag-br;
-    width: fit-content;
     font-size: $text-size-m-h4;
-    line-height: $line-height-m-h4;
     font-weight: $font-semi-bold;
+    width: fit-content;
 
     @include tablet {
       height: $tag-height-dt;
       font-size: $text-size-dt-h4;
-      line-height: $line-height-dt-h4;
     }
   }
 
