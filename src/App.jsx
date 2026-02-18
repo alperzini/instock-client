@@ -23,7 +23,7 @@ function App() {
     const fetchWarehousesInventory = async () => {
       try {
         // const initalWarehouses = await axios.get(`${BACKEND_URL}${PORT}/warehouses`);
-        // const initalInventory = await axios.get(`${BACKEND_URL}${PORT}/inventory`);
+        // const initalInventory = await axios.get(`${BACKEND_URL}${PORT}/inventories`);
         // setWarehouses(initalWarehouses.data);
         // setInventory(initalInventory.data);
       } catch (error) {
