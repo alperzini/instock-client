@@ -1,0 +1,199 @@
+@use "../../styles/variables" as *;
+@use "../../styles/functions" as *;
+@use "../../styles/mixins" as *;
+
+.inventory-item-details {
+  background: $color-white;
+  border-radius: $card-br;
+  box-shadow: $card-shadow;
+  overflow: hidden;
+
+  &__header {
+    padding: 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    @include tablet {
+      padding: 2rem;
+    }
+  }
+
+  &__title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  &__back {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $text-size-m-h1;
+    line-height: $line-height-m-h1;
+    font-weight: $font-semi-bold;
+    color: $color-instock-black;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    @include tablet {
+      font-size: $text-size-dt-h1;
+      line-height: $line-height-dt-h1;
+    }
+  }
+
+  &__edit {
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    height: $cta-height-m;
+    width: $cta-height-m;
+    border-radius: 50%;
+    background: $color-instock-indigo;
+
+    @include tablet {
+      width: auto;
+      border-radius: $cta-br;
+      padding: 0 1rem;
+    }
+
+    &:hover {
+      background: $color-instock-black;
+    }
+  }
+
+  &__edit-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    filter: brightness(0) invert(1);
+  }
+
+  &__edit-text {
+    display: none;
+    color: $color-white;
+    font-weight: $font-semi-bold;
+
+    @include tablet {
+      display: inline;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: $color-cloud;
+  }
+
+  &__body {
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include tablet {
+      padding: 2rem;
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include tablet {
+      flex: 1;
+      padding-right: 2rem;
+      border-right: 1px solid $color-cloud;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include tablet {
+      flex: 1;
+      padding-left: 2rem;
+    }
+  }
+
+  &__top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  &__label {
+    margin: 0 0 0.25rem 0;
+    font-size: $text-size-m-h4;
+    line-height: $line-height-m-h4;
+    font-weight: $font-semi-bold;
+    color: $color-slate;
+
+    @include tablet {
+      font-size: $text-size-dt-h4;
+      line-height: $line-height-dt-h4;
+    }
+  }
+
+  &__value {
+    margin: 0;
+    font-size: $text-size-m-p2;
+    line-height: $line-height-m-p2;
+    color: $color-instock-black;
+
+    @include tablet {
+      font-size: $text-size-dt-p2;
+      line-height: $line-height-dt-p2;
+    }
+  }
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: $tag-height-m;
+    padding: 0 $tag-padding-right;
+    border-radius: $tag-br;
+    width: fit-content;
+    font-size: $text-size-m-h4;
+    line-height: $line-height-m-h4;
+    font-weight: $font-semi-bold;
+
+    @include tablet {
+      height: $tag-height-dt;
+      font-size: $text-size-dt-h4;
+      line-height: $line-height-dt-h4;
+    }
+  }
+
+  &__tag--in {
+    color: $color-green;
+    background-color: rgba($color-green, $tag-bo);
+  }
+
+  &__tag--out {
+    color: $color-red;
+    background-color: rgba($color-red, $tag-bo);
+  }
+}
