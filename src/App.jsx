@@ -19,6 +19,7 @@ const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
 const [warehouses, setWarehouses] = useState([]);
 const [inventory, setInventory] = useState([]);
 
+<<<<<<< HEAD
 useEffect(() => {
 const fetchWarehousesInventory = async () => {
 try {
@@ -32,6 +33,21 @@ try {
 };
 fetchWarehousesInventory();
 }, []);
+=======
+  useEffect(() => {
+    const fetchWarehousesInventory = async () => {
+      try {
+        // const initalWarehouses = await axios.get(`${BACKEND_URL}${PORT}/warehouses`);
+        // const initalInventory = await axios.get(`${BACKEND_URL}${PORT}/inventories`);
+        // setWarehouses(initalWarehouses.data);
+        // setInventory(initalInventory.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchWarehousesInventory();
+  }, []);
+>>>>>>> dev
 
 return (
 <BrowserRouter>
