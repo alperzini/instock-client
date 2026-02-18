@@ -7,7 +7,7 @@
   padding: pxToRem(16);
   border-bottom: pxToRem(1) solid $color-cloud;
 
-  &:hover {
+  &:hover, &:focus {
     background-color: rgba($color-instock-indigo, 0.07);
   }
 
@@ -56,12 +56,16 @@
     outline: none;
     cursor: pointer;
 
-    &:hover,
+    &:hover{
+        opacity: 0.7;
+    }
+
     &:focus {
-      border: pxToRem(0.5) solid $color-instock-indigo;
+      border: 1px solid $color-instock-indigo;
       border-radius: pxToRem(3);
     }
   }
+  
 
   @include tablet {
     padding: pxToRem(16) pxToRem(32);

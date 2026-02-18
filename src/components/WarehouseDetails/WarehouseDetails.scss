@@ -12,11 +12,11 @@ background: $color-white;
     padding: pxToRem(32) pxToRem(24) pxToRem(24);
 
     @include tablet {
-    padding: pxToRem(32) pxToRem(32) pxToRem(20);
+    padding: pxToRem(32) pxToRem(32) pxToRem(21);
     }
 
     @include desktop {
-    padding: pxToRem(32) pxToRem(40) pxToRem(20);
+    padding: pxToRem(32) pxToRem(40) pxToRem(21);
     }
 }
 
@@ -69,7 +69,7 @@ background: $color-white;
     display: block;
     }
 
-    &:hover {
+    &:hover &:focus {
     background: $color-graphite;
     border-color: $color-graphite;
     }

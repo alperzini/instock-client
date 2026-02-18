@@ -7,7 +7,6 @@
     @extend %wrapper;
     background-color: $color-white;
     border-radius: pxToRem(3);
-    box-shadow: 0 pxToRem(2) pxToRem(6) rgba(19, 24, 44, 0.08);
     overflow: hidden;
   }
 
@@ -21,11 +20,11 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      padding: pxToRem(32) pxToRem(32) pxToRem(20);
+      padding: pxToRem(32) pxToRem(32) pxToRem(21);
     }
 
     @include desktop {
-      padding: pxToRem(32) pxToRem(40) pxToRem(20);
+      padding: pxToRem(32) pxToRem(40) pxToRem(21);
     }
   }
 
@@ -63,8 +62,6 @@
       align-items: center;
       padding: pxToRem(12) pxToRem(32);
       background-color: $color-light-grey;
-      border-top: pxToRem(1) solid $color-cloud;
-      border-bottom: pxToRem(1) solid $color-cloud;
     }
 
     @include desktop {
