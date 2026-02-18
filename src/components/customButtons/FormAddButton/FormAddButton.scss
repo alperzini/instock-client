@@ -1,0 +1,38 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/functions" as *;
+@use "../../../styles/mixins" as *;
+
+.add-button {
+    font-family: $primary-font;
+    color: $color-white;
+    background-color: $color-instock-indigo;
+    border-radius: $cta-br;
+    border: 1px solid $color-instock-indigo;
+    cursor: pointer;
+    font-weight: $font-semi-bold;
+    outline: none;
+
+    font-size: $text-size-m-h3;
+    line-height: $line-height-m-h3;
+    height: $cta-height-m;
+    width: 100%;
+
+    &:hover, &:focus {
+        background-color: $color-graphite;
+        border-color: $color-graphite;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: $color-cloud;
+        border-color: $color-cloud;
+    }
+
+    @include tablet {
+        font-size: $text-size-dt-h3;
+        line-height: $line-height-dt-h3;
+        height: $cta-height-dt;
+        padding: 0 $cta-padding-dt;
+        width: auto;
+    }
+}

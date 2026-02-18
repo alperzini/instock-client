@@ -1,0 +1,55 @@
+@use "../../styles/variables" as *;
+@use "../../styles/functions" as *;
+@use "../../styles/mixins" as *;
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    border: 1px solid $color-light-grey;
+    @extend %wrapper;
+    box-shadow: 0px 2px 5px 0px #13182C1A;
+    position: relative;
+    top: pxToRem(-128);
+    z-index: 10;
+
+    @include tablet {
+        top: pxToRem(-188);
+    }
+
+    &__header-background {
+        background-color: $color-graphite;
+        height: pxToRem(64);
+        border-bottom: 1px solid $color-graphite;
+
+        @include tablet {
+            height: pxToRem(94);
+        }
+    }
+
+    &__wrapper {
+        background-color: $color-light-grey;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__top-border-hide {
+        pointer-events: none;
+        @extend %wrapper;
+        border: 1px solid $color-graphite;
+        border-radius: 3px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: none;
+        position: relative;
+        top: pxToRem(-64);
+        height: pxToRem(64);
+        z-index: 100;
+
+        @include tablet {
+            height: pxToRem(94);
+            top: pxToRem(-94);
+        }
+    }
+}

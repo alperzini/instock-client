@@ -1,0 +1,50 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.button {
+height: $cta-height-m;
+padding: 0 $cta-padding-dt;
+border-radius: $cta-br;
+border: 1px solid transparent;
+font-weight: $font-semi-bold;
+cursor: pointer;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+white-space: nowrap;
+
+@include tablet {
+    height: $cta-height-dt;
+}
+
+&:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+&--full {
+    width: 100%;
+}
+
+/* Primary = Indigo filled */
+&--primary {
+    background-color: $color-instock-indigo;
+    color: $color-white;
+
+    &:hover:not(:disabled) {
+    opacity: 0.9;
+    }
+}
+
+/* Secondary = White with border */
+&--secondary {
+    background-color: $color-white;
+    color: $color-slate;
+    border-color: $color-cloud;
+
+    &:hover:not(:disabled) {
+    background-color: $color-light-grey;
+    }
+}
+}
+
