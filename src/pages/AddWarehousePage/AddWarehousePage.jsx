@@ -1,12 +1,17 @@
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "../../components/FormFields/TextField/TextField";
 import Button from "../../components/Button/Button";
-import FormHeader from "../../components/FormFields/FormHeader/FormHeader"
+import FormHeader from "../../components/FormFields/FormHeader/FormHeader";
+import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import "./AddWarehousePage.scss";
 
 const AddWarehousePage = ({ setWarehouses }) => {
   const navigate = useNavigate();
+
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const PORT = import.meta.env.VITE_PORT;
 
   const [formData, setFormData] = useState({
     warehouse_name: "",
@@ -20,7 +25,11 @@ const AddWarehousePage = ({ setWarehouses }) => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // ----------------------------
+  // Handle Input Change
+  // ----------------------------
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -28,31 +37,92 @@ const AddWarehousePage = ({ setWarehouses }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  // ----------------------------
+  // Validation
+  // ----------------------------
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Required fields
+    if (!formData.warehouse_name.trim())
+      newErrors.warehouse_name = "Warehouse name is required";
+
+    if (!formData.address.trim())
+      newErrors.address = "Street address is required";
+
+    if (!formData.city.trim())
+      newErrors.city = "City is required";
+
+    if (!formData.country.trim())
+      newErrors.country = "Country is required";
+
+    if (!formData.contact_name.trim())
+      newErrors.contact_name = "Contact name is required";
+
+    if (!formData.contact_position.trim())
+      newErrors.contact_position = "Position is required";
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.contact_email))
+      newErrors.contact_email = "Please enter a valid email address";
+
+    // Phone validation (10–15 digits)
+    const cleanPhone = formData.contact_phone.replace(/\D/g, "");
+    if (cleanPhone.length < 10 || cleanPhone.length > 15)
+      newErrors.contact_phone = "Please enter a valid phone number";
+
+    return newErrors;
+  };
+
+  // Submit Handler
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let newErrors = {};
-    if (!formData.warehouse_name) {
-      newErrors.warehouse_name = "Warehouse name is required";
+    const validationErrors = validateForm();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) return;
+
+    try {
+      setIsSubmitting(true);
+
+      const newWarehouse = {
+        ...formData,
+      };
+
+      await axios.post(
+        `${BACKEND_URL}${PORT}/warehouses`,
+        newWarehouse
+      );
+
+      // Update local state
+      setWarehouses((prev) => [...prev, newWarehouse]);
+
+      navigate("/");
+    } catch (error) {
+      console.error("Error creating warehouse:", error);
+
+      if (error.response?.data?.message) {
+        alert(error.response.data.message);
+      } else {
+        alert("Failed to create warehouse.");
+      }
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setErrors(newErrors);
-    if (Object.keys(newErrors).length > 0) return;
-
-    console.log("Submitting:", formData);
   };
 
   return (
-    <main className="add-warehouse">
+    <PageWrapper className="add-warehouse">
       <div className="add-warehouse__container">
-
+        
         {/* Header */}
         <div className="add-warehouse__header">
-          <FormHeader title="Add New Warehouse"/>
+          <FormHeader title="Add New Warehouse" />
         </div>
 
         <form onSubmit={handleSubmit}>
-
           <div className="add-warehouse__form-sections">
 
             {/* Warehouse Details */}
@@ -62,7 +132,6 @@ const AddWarehousePage = ({ setWarehouses }) => {
               </h2>
 
               <TextField
-                className="add-warehouse__form-sections__input"
                 label="Warehouse Name"
                 name="warehouse_name"
                 id="warehouse_name"
@@ -75,7 +144,6 @@ const AddWarehousePage = ({ setWarehouses }) => {
               />
 
               <TextField
-                className="add-warehouse__form-sections__input"
                 label="Street Address"
                 name="address"
                 id="address"
@@ -88,7 +156,6 @@ const AddWarehousePage = ({ setWarehouses }) => {
               />
 
               <TextField
-                className="add-warehouse__form-sections__input"
                 label="City"
                 name="city"
                 id="city"
@@ -101,7 +168,6 @@ const AddWarehousePage = ({ setWarehouses }) => {
               />
 
               <TextField
-                className="add-warehouse__form-sections__input"
                 label="Country"
                 name="country"
                 id="country"
@@ -121,7 +187,6 @@ const AddWarehousePage = ({ setWarehouses }) => {
               </h2>
 
               <TextField
-                className="add-warehouse__form-sections__input"
                 label="Contact Name"
                 name="contact_name"
                 id="contact_name"
@@ -169,18 +234,30 @@ const AddWarehousePage = ({ setWarehouses }) => {
                 isError={!!errors.contact_email}
               />
             </div>
-
           </div>
 
           {/* Action Buttons */}
           <div className="add-warehouse__actions">
-            <Button className="add-warehouse__actions__secondary" variant="secondary" type="button" onClick={() => navigate("/")}> Cancel </Button>
-            <Button className="add-warehouse__actions__primary" variant="primary" type="submit"> + Add Warehouse </Button>
-          </div>
+            <Button
+              variant="secondary"
+              type="button"
+              onClick={() => navigate("/")}
+              disabled={isSubmitting}
+            >
+              Cancel
+            </Button>
 
+            <Button
+              variant="primary"
+              type="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Adding..." : "+ Add Warehouse"}
+            </Button>
+          </div>
         </form>
       </div>
-    </main>
+    </PageWrapper>
   );
 };
 
