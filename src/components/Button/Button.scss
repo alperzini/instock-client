@@ -1,12 +1,13 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
+@use "../../styles/functions" as *;
 
 .button {
 outline: none;
 height: $cta-height-m;
 padding: 0 $cta-padding-dt;
 border-radius: $cta-br;
-border: 1px solid transparent;
+border: pxToRem(1) solid transparent;
 font-weight: $font-semi-bold;
 cursor: pointer;
 display: inline-flex;

@@ -35,6 +35,7 @@
     }
 
     &__top-border-hide {
+        pointer-events: none;
         @extend %wrapper;
         border: 1px solid $color-graphite;
         border-radius: 3px;

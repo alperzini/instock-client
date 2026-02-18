@@ -1,34 +1,37 @@
 @use "../../styles/variables" as *;
 @use "../../styles/icons" as *;
+@use "../../styles/functions" as *;
 
 .warehouse-name-link {
-outline: none;
-display: inline-flex;
-align-items: center;
-gap: $link-margin-right;
-color: $color-instock-indigo;
-text-decoration: none;
-font-weight: $font-semi-bold;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  gap: $link-margin-right;
+  color: $color-instock-indigo;
+  text-decoration: none;
+  font-weight: $font-semi-bold;
 
-&:hover, &:focus {
+  &:hover,
+  &:focus {
     text-decoration: underline;
-}
+  }
 }
 
 .warehouse-chevron {
-width: 24px;
-height: 24px;
-display: block;
-transform: translateX(0);
-transition: transform 200ms ease;
+  width: pxToRem(24);
+  height: pxToRem(24);
+  display: block;
+  transform: translateX(0);
+  transition: transform 200ms ease;
 }
 
 @media (hover: hover) {
-.warehouse-name-link:hover .warehouse-chevron, .warehouse-name-link:focus .warehouse-chevron {
-    transform: translateX(4px);
-}
+  .warehouse-name-link:hover .warehouse-chevron,
+  .warehouse-name-link:focus .warehouse-chevron {
+    transform: translateX(pxToRem(4));
+  }
 
-.warehouse-name-link:active .warehouse-chevron {
-    transform: translateX(2px);
-}
+  .warehouse-name-link:active .warehouse-chevron {
+    transform: translateX(pxToRem(2));
+  }
 }
