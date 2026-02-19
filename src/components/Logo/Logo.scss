@@ -1,5 +1,7 @@
+@use "../../styles/functions" as *;
+
 .logo {
     display: block;
-    height: 25px;
+    height: pxToRem(25);
     width: auto;
 }

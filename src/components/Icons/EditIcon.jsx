@@ -1,15 +1,11 @@
 import editIcon from "../../assets/icons/edit-24px.svg";
 
-const EditIcon = ({ onClick, ariaLabel = "Edit" }) => {
+const EditIcon = ({ ariaLabel = "Edit" }) => {
 return (
-    <button
-    type="button"
+    <img 
+    src={editIcon} 
     className="icon-button"
-    aria-label={ariaLabel}
-    onClick={onClick}
-    >
-    <img src={editIcon} alt="" />
-    </button>
+    aria-label={ariaLabel} />
 );
 };
 

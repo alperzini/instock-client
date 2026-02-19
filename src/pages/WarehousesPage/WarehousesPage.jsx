@@ -6,11 +6,10 @@ const WarehousesPage = ({ warehouses, setWarehouses }) => {
   return (
     <PageWrapper>
       <main className="warehouses-page">
-        <WarehouseList warehouses={warehouses} />
+        <WarehouseList warehouses={warehouses} setWarehouses={setWarehouses} />
       </main>
     </PageWrapper>
   );
 };
 
 export default WarehousesPage;
-
