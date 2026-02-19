@@ -1,15 +1,22 @@
 import "./InventoryForm.scss";
 import { useState, useEffect } from "react";
-import FormHeader from "../formFields/FormHeader/FormHeader";
-import FieldsetsWrapper from "../formFields/FieldsetsWrapper/FieldsetsWrapper";
-import FieldsetField from "../formFields/FieldsetField/FieldsetField";
-import FormButtonsWrapper from "../formFields/FormButtonsWrapper/FormButtonsWrapper";
+import axios from "axios";
+import FormHeader from "../FormFields/FormHeader/FormHeader";
+import FieldsetsWrapper from "../FormFields/FieldsetsWrapper/FieldsetsWrapper";
+import FieldsetField from "../FormFields/FieldsetField/FieldsetField";
+import FormButtonsWrapper from "../FormFields/FormButtonsWrapper/FormButtonsWrapper";
 import FormCancelButton from "../customButtons/FormCancelButton/FormCancelButton";
 import FormAddButton from "../customButtons/FormAddButton/FormAddButton";
-import TextField from "../formFields/TextField/TextField";
+import TextField from "../FormFields/TextField/TextField";
+import DescriptionField from "../FormFields/DescriptionField/DescriptionField";
+import DropdownField from "../FormFields/DropdownField/DropdownField";
+import StatusField from "../FormFields/StatusField/StatusField";
+import QuantityField from "../FormFields/QuantityField/QuantityField";
 
 function InventoryForm(props) {
-    const { inventory, setInventory, formTitle, formType,
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+    const PORT = import.meta.env.VITE_PORT;
+    const { inventory, setInventory, warehouses, formTitle, formType,
         initalName, initalDesc, initalCategory, initalStatus,
         initalQuantity, initalWarehouse } = props;
 
@@ -19,18 +26,34 @@ function InventoryForm(props) {
         category: initalCategory ?? '', status: initalStatus ?? "In Stock",
         quantity: initalQuantity ?? 1, warehouse: initalWarehouse ?? ''
     });
+    const [categoriesList, setCategoriesList] = useState([]);
+
+    //Populate categories dropdown list
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const categoriesRes = await axios.get(`${BACKEND_URL}${PORT}/categories`);
+                setCategoriesList(categoriesRes.data);
+            } catch (error) {
+                console.error("Error fetching inventory categories:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     // Set initial fields user interaction 
     const [touched, setTouched] = useState({
-        name: false, desc: false, category: false,
-        status: false, quantity: false, warehouse: false
+        name: false, desc: false, category: false, quantity: false, warehouse: false
+        // status: false, , 
     });
 
     // Errors for each field
     const errors = {
         name: formData.name.trim().length === 0 ? 'Please enter the item name.' : '',
-        des: formData.desc.trim().length === 0 ? 'Please enter the item description.' : '',
+        desc: formData.desc.trim().length === 0 ? 'Please enter the item description.' : '',
         category: formData.category.length === 0 ? 'Please choose the item category.' : '',
+        quantity: formData.quantity.length === 0 ? 'Please enter the item quantity.' : '',
         warehouse: formData.warehouse.length === 0 ? 'Please choose the item warehouse.' : '',
     };
 
@@ -40,7 +63,11 @@ function InventoryForm(props) {
     // Handle onChange and onBlur of each field
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        // Handle case of empty quantity field then toggle to Out of stock
+        if (name === "status" && value === "Out of Stock")
+            setFormData(prev => ({ ...prev, [name]: value, ["quantity"]: 1 }));
+        else
+            setFormData(prev => ({ ...prev, [name]: value }));
     };
     const handleBlur = (e) => {
         const { name } = e.target;
@@ -48,9 +75,23 @@ function InventoryForm(props) {
     };
 
     // Handle form submit
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        // console.log("formData", formData);
+        let updatedQuantity = (formData.status === "Out of Stock") ? 0 : formData.quantity;
+        const newInventory = {
+            warehouse_id: Number(formData.warehouse), item_name: formData.name,
+            description: formData.desc, category: formData.category,
+            status: formData.status, quantity: updatedQuantity
+        };
+        try {
+            const res = await axios.post(`${BACKEND_URL}${PORT}/inventories`, newInventory);
+            console.log("DB response:", res.data.data);
+            // Update local state
+            setInventory((prev) => [...prev, res.data.data]);
+        } catch (error) {
+            console.error("Error adding new inventory item:", error);
+        }
     };
 
     return (
@@ -62,9 +103,25 @@ function InventoryForm(props) {
                         <TextField onChange={handleChange} onBlur={handleBlur} type="text" label="Item Name"
                             name="name" id="name" placeholder="Item Name" value={formData.name}
                             error={errors.name} isError={touched.name && errors.name} />
+                        <DescriptionField onChange={handleChange} onBlur={handleBlur} label="Description"
+                            name="desc" id="desc" placeholder="Please enter a brief item description..." value={formData.desc}
+                            error={errors.desc} isError={touched.desc && errors.desc} />
+                        <DropdownField onChange={handleChange} onBlur={handleBlur} label="Category"
+                            options={categoriesList.map(c => ({ id: c, label: c }))}
+                            name="category" id="category" placeholder="Please select" selectedValue={formData.category}
+                            error={errors.category} isError={touched.category && errors.category} />
                     </FieldsetField>
                     <FieldsetField title="Item Availability" isSecond={true}>
-
+                        <StatusField legend="Status" name="status" selectedStatus={formData.status} onChange={handleChange} />
+                        {(formData.status === "In Stock") ?
+                            <QuantityField label="Quantity" name="quantity" id="quantity"
+                                value={formData.quantity} onChange={handleChange} onBlur={handleBlur}
+                                error={errors.quantity} isError={touched.quantity && errors.quantity} />
+                            : ""}
+                        <DropdownField onChange={handleChange} onBlur={handleBlur} label="Warehouse"
+                            options={warehouses.map(warehouse => ({ id: warehouse.id, label: warehouse.warehouse_name }))}
+                            name="warehouse" id="warehouse" placeholder="Please select" selectedValue={formData.warehouse}
+                            error={errors.warehouse} isError={touched.warehouse && errors.warehouse} />
                     </FieldsetField>
                 </FieldsetsWrapper>
                 <FormButtonsWrapper>

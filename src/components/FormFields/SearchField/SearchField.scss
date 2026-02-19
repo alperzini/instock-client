@@ -22,7 +22,8 @@
         border-radius: $ff-br;
         border: 1px solid $color-cloud;
 
-        &:focus {
+        &:focus,
+        &:hover {
             border-color: $color-instock-indigo;
         }
 
