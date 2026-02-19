@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import backIcon from "../../assets/icons/arrow_back-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5173";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
 export default function InventoryItemDetailsPage() {
   const navigate = useNavigate();
