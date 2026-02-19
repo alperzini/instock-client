@@ -2,3 +2,104 @@
 @use "../../styles/functions" as *;
 @use "../../styles/mixins" as *;
 
+
+.add-warehouse {
+
+    &__container {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-bottom: -8rem;
+    }
+
+    &__form-sections {
+        background-color: $color-white;
+        padding: 0 1rem;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+
+        &__warehouse-details {
+            padding-bottom: 2rem;
+            border-bottom: 0.1rem solid rgb(225, 225, 225);
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+
+            @include tablet {
+                width: 50%;
+                padding-right: 2rem;
+                border-right: 0.1rem solid rgb(225, 225, 225);
+                border-bottom: 0rem;
+            }
+
+            &__title {
+                margin-top: -0.1rem;
+                padding-top: 2rem;
+            }
+
+        }
+
+
+        &__contact-details {
+            padding-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            @include tablet {
+                width: 50%;
+            }
+
+            &__title {
+                margin-top: -0.1rem;
+                padding-top: 2rem;
+            }
+
+        }
+    }
+
+
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1rem;
+        justify-content: center;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        &__secondary {
+            width: 50%;
+            @include tablet {
+                max-width: 10%;
+            }
+
+        }
+        &__primary {
+            width: 50%;
+            @include tablet {
+                max-width: 20%;
+            }
+        }
+
+        @include tablet {
+            justify-content: flex-end;
+            margin-right: 2rem;
+        }
+    }
+
+
+    @include tablet {
+        padding: 0 2rem 2.5rem;
+    }
+
+    @include desktop {
+        padding: 0 2.5rem 3rem;
+    }
+
+
+
+}
+
