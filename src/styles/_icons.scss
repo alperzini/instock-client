@@ -9,8 +9,8 @@
 
     img {
     display: block;
-    width: 24px;
-    height: 24px;
+    width: pxToRem(24);
+    height: pxToRem(24);
     }
 
     &:hover {
@@ -20,7 +20,7 @@
 
 .icon-button--sort {
     img {
-    width: 16px;
-    height: 16px;
+    width: pxToRem(16);
+    height: pxToRem(16);
     }
 }

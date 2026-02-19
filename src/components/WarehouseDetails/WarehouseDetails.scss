@@ -1,0 +1,175 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/functions" as *;
+
+.warehouse-details {
+background: $color-white;
+
+&__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: pxToRem(32) pxToRem(24) pxToRem(24);
+
+    @include tablet {
+    padding: pxToRem(32) pxToRem(32) pxToRem(21);
+    }
+
+    @include desktop {
+    padding: pxToRem(32) pxToRem(40) pxToRem(21);
+    }
+}
+
+&__title-wrap {
+    display: flex;
+    align-items: center;
+    gap: pxToRem(12);
+    min-width: 0;
+}
+
+&__title {
+    margin: 0;
+    font-size: $text-size-m-h1;
+    line-height: $line-height-m-h1;
+    font-weight: $font-semi-bold;
+    color: $color-instock-black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include tablet {
+    font-size: $text-size-dt-h1;
+    line-height: $line-height-dt-h1;
+    }
+}
+
+&__edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: pxToRem(8);
+
+    width: pxToRem(40);
+    height: pxToRem(40);
+    padding: 0;
+    border-radius: 50%;
+
+    border: pxToRem(1) solid $color-instock-indigo;
+    background: $color-instock-indigo;
+    color: $color-white;
+
+    cursor: pointer;
+
+    svg,
+    img {
+    width: pxToRem(20);
+    height: pxToRem(20);
+    display: block;
+    }
+
+    &:hover,
+    &:focus {
+    background: $color-graphite;
+    border-color: $color-graphite;
+    }
+
+    @include tablet {
+    width: auto;
+    height: $cta-height-dt;
+    padding: 0 pxToRem(20);
+    border-radius: pxToRem(999);
+
+    font-weight: $font-semi-bold;
+    font-size: $text-size-dt-h3;
+    line-height: $line-height-dt-h3;
+    }
+}
+
+&__edit-text {
+    display: none;
+
+    @include tablet {
+    display: inline;
+    }
+}
+
+&__divider {
+    height: pxToRem(1);
+    background: $color-cloud;
+}
+
+&__info {
+    padding: pxToRem(24) pxToRem(16);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: pxToRem(48);
+    row-gap: pxToRem(24);
+
+    .warehouse-details__block:nth-child(1) {
+    grid-column: 1 / -1;
+    padding-bottom: pxToRem(24);
+    }
+
+    .warehouse-details__block:nth-child(3) {
+    padding-left: pxToRem(24);
+    }
+
+    @include tablet {
+    padding: pxToRem(32);
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: pxToRem(32);
+
+    .warehouse-details__block:nth-child(1) {
+        grid-column: auto;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    .warehouse-details__block:nth-child(3) {
+        border-left: 0;
+        padding-left: 0;
+    }
+    }
+
+    @include desktop {
+    padding: pxToRem(32) pxToRem(40);
+    }
+}
+
+&__block {
+    min-width: 0;
+}
+
+&__block--address {
+    @include tablet {
+    padding-right: pxToRem(32);
+    border-right: 1px solid $color-cloud;
+    }
+}
+
+&__label {
+    margin: 0 0 pxToRem(8) 0;
+    font-size: $text-size-m-h4;
+    line-height: $line-height-m-h4;
+    font-weight: $font-semi-bold;
+    color: $color-slate;
+    text-transform: uppercase;
+
+    @include tablet {
+    font-size: $text-size-dt-h4;
+    line-height: $line-height-dt-h4;
+    }
+}
+
+&__value {
+    margin: 0;
+    font-size: $text-size-m-p2;
+    line-height: $line-height-m-p2;
+    color: $color-instock-black;
+
+    @include tablet {
+    font-size: $text-size-dt-p2;
+    line-height: $line-height-dt-p2;
+    }
+}
+}
