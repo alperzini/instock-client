@@ -5,7 +5,7 @@
 .warehouse-item {
   width: 100%;
   padding: pxToRem(16);
-  border-bottom: pxToRem(1) solid $color-cloud;
+  border-bottom: 1px solid $color-cloud;
 
   &:hover, &:focus {
     background-color: rgba($color-instock-indigo, 0.07);

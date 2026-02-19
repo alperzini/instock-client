@@ -6,7 +6,7 @@
   &__container {
     @extend %wrapper;
     background-color: $color-white;
-    border-radius: pxToRem(3);
+    border-radius: 3px;
     overflow: hidden;
   }
 
