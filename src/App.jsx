@@ -29,7 +29,7 @@ useEffect(() => {
     }
 
     try {
-      const inventoryRes = await axios.get(`${BACKEND_URL}${PORT}/inventory`);
+      const inventoryRes = await axios.get(`${BACKEND_URL}${PORT}/inventories`);
       setInventory(inventoryRes.data);
     } catch (error) {
       console.error("Error fetching inventory:", error);
