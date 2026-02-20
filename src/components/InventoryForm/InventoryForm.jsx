@@ -83,7 +83,6 @@ function InventoryForm(props) {
     // Handle form submit
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log("formData", formData);
         let updatedQuantity = (formData.status === "Out of Stock") ? 0 : formData.quantity;
         const newInventory = {
             warehouse_id: Number(formData.warehouse), item_name: formData.name,
@@ -96,6 +95,8 @@ function InventoryForm(props) {
                 console.log("DB response:", res.data.data);
                 // Update local state
                 setInventory((prev) => [...prev, res.data.data]);
+                // Navigate to inventory item details page
+                navigate(`/inventory/${res.data.data.id}`);
             }
             catch (error) {
                 console.error("Error adding new inventory item:", error);
@@ -109,12 +110,13 @@ function InventoryForm(props) {
                 setInventory((prev) => prev.map(item =>
                     item.id === inventoryId ? res.data.data : item
                 ));
+                // Navigate to inventory item details page
+                navigate(`/inventory/${res.data.data.id}`);
             }
             catch (error) {
                 console.error("Error updating inventory item:", error);
             }
         }
-        navigate("/inventory");
     };
 
     return (
@@ -149,7 +151,7 @@ function InventoryForm(props) {
                 </FieldsetsWrapper>
                 <FormButtonsWrapper>
                     <FormCancelButton />
-                    <FormAddButton label="+ Add Item" isDisabled={!isFormValid} />
+                    <FormAddButton label={(formType==="add") ? "+ Add Item" : "Save"} isDisabled={!isFormValid} />
                 </FormButtonsWrapper>
             </form>
         </>
