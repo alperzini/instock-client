@@ -6,7 +6,7 @@ const AddInventoryItemPage = ({ inventory, setInventory, warehouses }) => {
 
     return (
         <PageWrapper>
-            <InventoryForm inventory={inventory} setInventory={setInventory} warehouses={warehouses}
+            <InventoryForm setInventory={setInventory} warehouses={warehouses}
                 formTitle={"Add New Inventory Item"} formType={"add"} />
         </PageWrapper>
     );

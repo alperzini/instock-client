@@ -12,19 +12,28 @@ import DescriptionField from "../FormFields/DescriptionField/DescriptionField";
 import DropdownField from "../FormFields/DropdownField/DropdownField";
 import StatusField from "../FormFields/StatusField/StatusField";
 import QuantityField from "../FormFields/QuantityField/QuantityField";
+import { useNavigate } from 'react-router-dom';
 
 function InventoryForm(props) {
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const PORT = import.meta.env.VITE_PORT;
-    const { inventory, setInventory, warehouses, formTitle, formType,
+    const navigate = useNavigate();
+    const { setInventory, warehouses, formTitle, formType, inventoryId,
         initalName, initalDesc, initalCategory, initalStatus,
         initalQuantity, initalWarehouse } = props;
+
+    // Handle initial quantity of 0
+    let q = 0;
+    if (initalQuantity === 0)
+        q = 1;
+    else
+        q = initalQuantity;
 
     // Set initial form data
     const [formData, setFormData] = useState({
         name: initalName ?? '', desc: initalDesc ?? '',
         category: initalCategory ?? '', status: initalStatus ?? "In Stock",
-        quantity: initalQuantity ?? 1, warehouse: initalWarehouse ?? ''
+        quantity: q ?? 1, warehouse: initalWarehouse ?? ''
     });
     const [categoriesList, setCategoriesList] = useState([]);
 
@@ -38,14 +47,12 @@ function InventoryForm(props) {
                 console.error("Error fetching inventory categories:", error);
             }
         };
-
         fetchData();
     }, []);
 
     // Set initial fields user interaction 
     const [touched, setTouched] = useState({
         name: false, desc: false, category: false, quantity: false, warehouse: false
-        // status: false, , 
     });
 
     // Errors for each field
@@ -63,8 +70,7 @@ function InventoryForm(props) {
     // Handle onChange and onBlur of each field
     const handleChange = (e) => {
         const { name, value } = e.target;
-        // Handle case of empty quantity field then toggle to Out of stock
-        if (name === "status" && value === "Out of Stock")
+        if (name === "status" && value === "Out of Stock") // Handle case of empty quantity field then toggle to Out of stock
             setFormData(prev => ({ ...prev, [name]: value, ["quantity"]: 1 }));
         else
             setFormData(prev => ({ ...prev, [name]: value }));
@@ -84,14 +90,31 @@ function InventoryForm(props) {
             description: formData.desc, category: formData.category,
             status: formData.status, quantity: updatedQuantity
         };
-        try {
-            const res = await axios.post(`${BACKEND_URL}${PORT}/inventories`, newInventory);
-            console.log("DB response:", res.data.data);
-            // Update local state
-            setInventory((prev) => [...prev, res.data.data]);
-        } catch (error) {
-            console.error("Error adding new inventory item:", error);
+        if (formType === "add") { // post request
+            try {
+                const res = await axios.post(`${BACKEND_URL}${PORT}/inventories`, newInventory);
+                console.log("DB response:", res.data.data);
+                // Update local state
+                setInventory((prev) => [...prev, res.data.data]);
+            }
+            catch (error) {
+                console.error("Error adding new inventory item:", error);
+            }
         }
+        else { // patch request
+            try {
+                const res = await axios.patch(`${BACKEND_URL}${PORT}/inventories/${inventoryId}`, newInventory);
+                console.log("DB response:", res.data.data);
+                // Update local state
+                setInventory((prev) => prev.map(item =>
+                    item.id === inventoryId ? res.data.data : item
+                ));
+            }
+            catch (error) {
+                console.error("Error updating inventory item:", error);
+            }
+        }
+        navigate("/inventory");
     };
 
     return (
