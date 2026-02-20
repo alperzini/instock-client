@@ -37,7 +37,7 @@ useEffect(() => {
   };
 
   fetchData();
-}, [BACKEND_URL, PORT]);
+}, []);
 
   return (
     <BrowserRouter>
@@ -51,7 +51,7 @@ useEffect(() => {
         <Route path="/inventory" element={<InventoryPage inventory={inventory} setInventory={setInventory} />} />
         <Route path="/inventory/:inventoryId" element={<InventoryItemDetailsPage inventory={inventory} />} />
         <Route path="/editInventory/:inventoryId" element={<EditInventoryItemPage inventory={inventory} setInventory={setInventory} />} />
-        <Route path="/addInventory" element={<AddInventoryItemPage inventory={inventory} setInventory={setInventory} />} />
+        <Route path="/addInventory" element={<AddInventoryItemPage inventory={inventory} setInventory={setInventory} warehouses={warehouses} />} />
         <Route path="*" element={<h1>404<br />PAGE NOT FOUND</h1>} />
       </Routes>
       <Footer />
