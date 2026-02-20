@@ -33,6 +33,7 @@ import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails
             />
 
             {/* Inventory list comes later */}
+            
         </main>
         </PageWrapper>
     );
