@@ -7,18 +7,22 @@ import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
 import DeleteInventoryModal from "../../components/DeleteInventoryModal/DeleteInventoryModal";
 
-const WarehouseDetailsPage = () => {
+const WarehouseDetailsPage = ({ inventory, setInventory, warehouses }) => {
   const { warehouseId } = useParams();
   const navigate = useNavigate();
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
-
-  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  // const PORT = import.meta.env.VITE_BACKEND_PORT;
+  const PORT = import.meta.env.VITE_PORT;
   
   const [warehouse, setWarehouse] = useState(null);
-  const [warehouseInventory, setWarehouseInventory] = useState([]);
+  
+  const inventoryArray = Array.isArray(inventory)
+  ? inventory
+  : inventory?.data || inventory?.inventories || [];
+
+const warehouseInventory = inventoryArray.filter(
+  (item) => Number(item.warehouse_id) === Number(warehouseId)
+);
 
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -28,14 +32,7 @@ const WarehouseDetailsPage = () => {
       const res = await axios.get(`${BACKEND_URL}${PORT}/warehouses/${warehouseId}`);
       setWarehouse(res.data);
     };
-
-    const fetchWarehouseInventory = async () => {
-      const res = await axios.get(`${BACKEND_URL}${PORT}/warehouses/${warehouseId}/inventories`);
-      setWarehouseInventory(res.data);
-    };
-
     fetchWarehouse();
-    fetchWarehouseInventory();
   }, [BACKEND_URL, PORT, warehouseId]);
 
   const handleEdit = (inventoryId) => navigate(`/editInventory/${inventoryId}`);
@@ -52,10 +49,21 @@ const WarehouseDetailsPage = () => {
 
   const handleConfirmDelete = async () => {
     if (!selectedItem) return;
-
-    await axios.delete(`${BACKEND_URL}${PORT}/inventories/${selectedItem.id}`);
-    setWarehouseInventory((prev) => prev.filter((i) => i.id !== selectedItem.id));
-    handleCloseDelete();
+  
+    try {
+      await axios.delete(
+        `${BACKEND_URL}${PORT}/inventories/${selectedItem.id}`
+      );
+  
+      setInventory((prev) =>
+        prev.filter((i) => i.id !== selectedItem.id)
+      );
+  
+      handleCloseDelete();
+    } catch (error) {
+      console.error("Error deleting inventory item:", error);
+      alert("Failed to delete item. Please try again.");
+    }
   };
 
   return (

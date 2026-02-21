@@ -18,7 +18,7 @@ const navigate = useNavigate();
    >
     <div className="warehouse-inventory-item__cell warehouse-inventory-item__cell--item">
         <p className="warehouse-inventory-item__label">Inventory Item</p>
-        <InventoryNameLink to={`/inventory/${item.id}`}> 
+        <InventoryNameLink to={`/inventory/${item.id}`}> {item.item_name}
         </InventoryNameLink>
     </div>
 

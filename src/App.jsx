@@ -17,6 +17,9 @@ import PageNotFound from './components/PageNotFound/PageNotFound.jsx';
 function App() {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const PORT = import.meta.env.VITE_PORT;
+
+  // const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
+  
   const [warehouses, setWarehouses] = useState([]);
   const [inventory, setInventory] = useState([]);
 
@@ -46,7 +49,7 @@ useEffect(() => {
       <Navigation />
       <Routes>
         <Route path="/" element={<WarehousesPage warehouses={warehouses} setWarehouses={setWarehouses} />} />
-        <Route path="/warehouse/:warehouseId" element={<WarehouseDetailsPage inventory={inventory} setInventory={setInventory} />} />
+        <Route path="/warehouse/:warehouseId" element={<WarehouseDetailsPage inventory={inventory} setInventory={setInventory} warehouses={warehouses}/>} />
         <Route path="/editWarehouse/:warehouseId" element={<EditWarehousePage warehouses={warehouses} setWarehouses={setWarehouses} />} />
         <Route path="/addWarehouse" element={<AddWarehousePage warehouses={warehouses} setWarehouses={setWarehouses} />} />
         <Route path="/inventory" element={<InventoryPage inventory={inventory} setInventory={setInventory} />} />
