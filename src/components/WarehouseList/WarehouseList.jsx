@@ -6,7 +6,7 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 
-const WarehouseList = ({ warehouses }) => {
+const WarehouseList = ({ warehouses, setWarehouses }) => {
 const [search, setSearch] = useState("");
 const navigate = useNavigate();
 
@@ -34,7 +34,13 @@ return (
             placeholder="Search..."
             />
 
-            <Button variant="primary" onClick={() => navigate("/addWarehouse")}>
+            <Button
+            variant="primary"
+            onClick={() => {
+                console.log("BUTTON CLICKED");
+                navigate("/addWarehouse");
+            }}
+            >
             + Add New Warehouse
             </Button>
         </div>
@@ -59,7 +65,7 @@ return (
         </div>
 
         <div className="warehouse-list__rows">
-        {warehouses?.map((warehouse) => (
+        {filtered?.map((warehouse) => (
             <WarehouseListItem 
             key={warehouse.id} 
             warehouse={warehouse} 
@@ -73,3 +79,4 @@ return (
 };
 
 export default WarehouseList;
+

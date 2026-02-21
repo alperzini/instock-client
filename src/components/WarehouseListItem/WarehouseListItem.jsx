@@ -6,7 +6,7 @@ import EditIcon from "../Icons/EditIcon";
 import WarehouseNameLink from "../WarehouseNameLink/WarehouseNameLink";
 import DeleteWarehouseModal from "../DeleteWarehouseModal/DeleteWarehouseModal";
 
-const WarehouseListItem = ({ warehouse }) => {
+const WarehouseListItem = ({ warehouse, onDelete }) => {
 
     const navigate = useNavigate();
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);

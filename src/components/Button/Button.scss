@@ -1,7 +1,9 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
+@use "../../styles/functions" as *;
 
 .button {
+outline: none;
 height: $cta-height-m;
 padding: 0 $cta-padding-dt;
 border-radius: $cta-br;
@@ -31,8 +33,9 @@ white-space: nowrap;
     background-color: $color-instock-indigo;
     color: $color-white;
 
-    &:hover:not(:disabled) {
-    opacity: 0.9;
+    &:hover:not(:disabled), &:focus {
+        background-color: $color-instock-black;
+        opacity: 0.9;
     }
 }
 
