@@ -37,7 +37,7 @@ return (
             <Button
             variant="primary"
             onClick={() => {
-                console.log("BUTTON CLICKED");
+                // console.log("BUTTON CLICKED");
                 navigate("/addWarehouse");
             }}
             >

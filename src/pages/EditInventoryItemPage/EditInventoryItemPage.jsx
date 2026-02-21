@@ -7,8 +7,8 @@ import PageNotFound from "../../components/PageNotFound/PageNotFound";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const EditInventoryItemPage = ({ inventory, setInventory, warehouses }) => {
-    const params = useParams();
-    const id = Number(params.inventoryId);
+    const { inventoryId } = useParams();
+    const id = Number(inventoryId);
     const [inventoryItem, setInventoryItem] = useState(null);
     const [isLodaing, setIsLoading] = useState(true);
 
@@ -24,12 +24,11 @@ const EditInventoryItemPage = ({ inventory, setInventory, warehouses }) => {
             setTimeout(() => { setIsLoading(false); }, 5000);
     }, [inventoryItem]);
 
-
     return (
-        // Check inventory item is found */}
-        // 404 if id is invalid */}
-        // Show edit page if inventory item is found */}
-        // Show loading page until inventory item is found or 404 otherwise */}
+        /* Check inventory item is found
+        ** 404 if id is invalid
+        ** Show edit page if inventory item is found
+        ** Show loading page until inventory item is found or 404 otherwise */
         isNaN(id) ? <PageNotFound content="Invalid ID for the inventory item." />
             : (inventoryItem != null ?
                 <PageWrapper>
