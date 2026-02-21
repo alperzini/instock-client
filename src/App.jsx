@@ -56,7 +56,7 @@ useEffect(() => {
         <Route path="/inventory/:inventoryId" element={<InventoryItemDetailsPage inventory={inventory} />} />
         <Route path="/editInventory/:inventoryId" element={<EditInventoryItemPage inventory={inventory} setInventory={setInventory} warehouses={warehouses} />} />
         <Route path="/addInventory" element={<AddInventoryItemPage inventory={inventory} setInventory={setInventory} warehouses={warehouses} />} />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="*" element={<PageNotFound content="The content you are looking for cannot be found." />} />
       </Routes>
       <Footer />
     </BrowserRouter>

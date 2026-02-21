@@ -34,4 +34,24 @@
             line-height: $line-height-dt-h1;
         }
     }
+
+    &__content {
+        font-family: $primary-font;
+        font-size: $text-size-m-p1;
+        line-height: $line-height-m-p1;
+        color: $color-instock-black;
+        font-weight: $font-regular;
+        margin: 0;
+        padding: pxToRem(32) pxToRem(24) pxToRem(24);
+
+        @include tablet {
+            font-size: $text-size-dt-p1;
+            line-height: $line-height-dt-p1;
+            padding: pxToRem(32) pxToRem(32) pxToRem(21);
+        }
+
+        @include desktop {
+            padding: pxToRem(32) pxToRem(40) pxToRem(21);
+        }
+    }
 }
