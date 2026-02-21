@@ -28,6 +28,7 @@
         background-color: $color-white;
         display: flex;
         align-items: center;
+        cursor: pointer;
 
         &::picker(select) {
             appearance: base-select;
@@ -53,7 +54,8 @@
         }
 
         &:open::picker-icon,
-        &:focus::picker-icon {
+        &:focus::picker-icon,
+        &:hover::picker-icon {
             color: $color-instock-indigo;
         }
 
@@ -75,7 +77,8 @@
         }
 
         &:focus,
-        &:open {
+        &:open,
+        &:hover {
             border-color: $color-instock-indigo;
         }
 

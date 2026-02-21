@@ -1,0 +1,57 @@
+@use "../../styles/variables" as *;
+@use "../../styles/functions" as *;
+@use "../../styles/mixins" as *;
+
+.page-not-found {
+    &__header {
+        background-color: $color-white;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        gap: 8px;
+
+        padding: pxToRem(32) pxToRem(24) pxToRem(24);
+
+        @include tablet {
+            padding: pxToRem(32) pxToRem(32) pxToRem(21);
+        }
+
+        @include desktop {
+            padding: pxToRem(32) pxToRem(40) pxToRem(21);
+        }
+    }
+
+    &__title {
+        font-family: $primary-font;
+        color: $color-instock-black;
+        margin: 0;
+        font-weight: $font-semi-bold;
+        font-size: $text-size-m-h1;
+        line-height: $line-height-m-h1;
+
+        @include tablet {
+            font-size: $text-size-dt-h1;
+            line-height: $line-height-dt-h1;
+        }
+    }
+
+    &__content {
+        font-family: $primary-font;
+        font-size: $text-size-m-p1;
+        line-height: $line-height-m-p1;
+        color: $color-instock-black;
+        font-weight: $font-regular;
+        margin: 0;
+        padding: pxToRem(32) pxToRem(24) pxToRem(24);
+
+        @include tablet {
+            font-size: $text-size-dt-p1;
+            line-height: $line-height-dt-p1;
+            padding: pxToRem(32) pxToRem(32) pxToRem(21);
+        }
+
+        @include desktop {
+            padding: pxToRem(32) pxToRem(40) pxToRem(21);
+        }
+    }
+}

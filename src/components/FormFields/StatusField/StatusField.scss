@@ -42,10 +42,10 @@
         color: $color-slate;
         font-weight: $font-regular;
         transition: background-color 0.3s;
+        cursor: pointer;
 
         &:hover {
             color: $color-instock-black;
-            ;
         }
 
         @include tablet {
@@ -55,12 +55,14 @@
     }
 
     &__radio-buttons-item-wrapper {
+        cursor: pointer;
         display: flex;
         align-items: center;
         gap: 8px;
     }
 
     &__radio-button {
+        cursor: pointer;
         appearance: none;
         -webkit-appearance: none;
         width: 16px;

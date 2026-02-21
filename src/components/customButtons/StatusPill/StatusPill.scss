@@ -1,0 +1,30 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.status-pill {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 0.25rem 0.5rem;
+border-radius: 999px;
+font-size: $text-size-m-h4;
+line-height: $line-height-m-h4;
+font-weight: $font-semi-bold;
+text-transform: uppercase;
+white-space: nowrap;
+
+@include tablet {
+    font-size: $text-size-dt-h4;
+    line-height: $line-height-dt-h4;
+}
+
+&--in-stock {
+    background: rgba(21, 132, 99, 0.07);
+    color: $color-green;
+}
+
+&--out-of-stock {
+    background: rgba(201, 69, 21, 0.07);
+    color: $color-red;
+}
+}
