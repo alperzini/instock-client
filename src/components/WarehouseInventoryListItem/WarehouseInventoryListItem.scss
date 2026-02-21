@@ -1,0 +1,87 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/functions" as *;
+
+.warehouse-inventory-item {
+  width: 100%;
+  padding: pxToRem(16);
+  border-bottom: pxToRem(1) solid $color-cloud;
+
+  &:hover,
+  &:focus {
+    background-color: rgba($color-instock-indigo, 0.07);
+  }
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: pxToRem(32);
+  row-gap: pxToRem(20);
+
+  &__cell {
+    min-width: 0;
+  }
+
+  &__label {
+    margin: 0 0 pxToRem(4) 0;
+    font-size: $text-size-m-h4;
+    line-height: $line-height-m-h4;
+    font-weight: $font-semi-bold;
+    color: $color-slate;
+  }
+
+  &__value {
+    margin: 0;
+    font-size: $text-size-m-p2;
+    line-height: $line-height-m-p2;
+    color: $color-instock-black;
+    overflow-wrap: break-word;
+  }
+
+  &__actions {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: pxToRem(4);
+  }
+
+  &__icon-btn {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      border: pxToRem(1) solid $color-instock-indigo;
+      border-radius: pxToRem(3);
+    }
+  }
+
+  @include tablet {
+    padding: pxToRem(16) pxToRem(32);
+    grid-template-columns: 1.6fr 1fr 0.9fr 0.6fr 0.7fr;
+    column-gap: pxToRem(16);
+    row-gap: 0;
+    align-items: center;
+    min-height: pxToRem(72);
+
+    &__label {
+      display: none;
+    }
+
+    &__actions {
+      grid-column: auto;
+      justify-content: flex-end;
+      gap: pxToRem(12);
+      margin-top: 0;
+    }
+  }
+
+  @include desktop {
+    padding: pxToRem(16) pxToRem(40);
+  }
+}
