@@ -4,7 +4,7 @@ import "./AddWarehousePage.scss";
 
 const AddWarehousePage = ({ setWarehouses }) => {
   return (
-    <PageWrapper>
+    <PageWrapper className="add-warehouse">
       <WarehouseForm
         setWarehouses={setWarehouses}
         formTitle="Add New Warehouse"

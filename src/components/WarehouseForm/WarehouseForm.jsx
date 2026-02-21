@@ -1,5 +1,5 @@
 import "./WarehouseForm.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import FormHeader from "../FormFields/FormHeader/FormHeader";
 import FieldsetsWrapper from "../FormFields/FieldsetsWrapper/FieldsetsWrapper";
@@ -10,7 +10,7 @@ import FormAddButton from "../customButtons/FormAddButton/FormAddButton";
 import TextField from "../FormFields/TextField/TextField";
 import { useNavigate } from "react-router-dom";
 
-function WarehouseForm({ formTitle, formType, setWarehouses }) {
+function WarehouseForm({ formTitle, formType, setWarehouses, warehouseId }) {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const PORT = import.meta.env.VITE_PORT;
   const navigate = useNavigate();
@@ -27,11 +27,33 @@ function WarehouseForm({ formTitle, formType, setWarehouses }) {
   });
 
   const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+
+  // Load existing warehouse (edit mode)
+  useEffect(() => {
+    if (formType !== "edit") return;
+
+    const fetchWarehouse = async () => {
+      try {
+        const res = await axios.get(`${BACKEND_URL}${PORT}/warehouses/${warehouseId}`);
+        setFormData(res.data);
+      } catch (error) {
+        console.error("Error loading warehouse:", error);
+      }
+    };
+
+    fetchWarehouse();
+  }, [formType, warehouseId]);
 
   // Handle Change
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleBlur = (e) => {
+    setTouched((prev) => ({ ...prev, [e.target.name]: true }));
   };
 
   // Validation
@@ -71,37 +93,65 @@ function WarehouseForm({ formTitle, formType, setWarehouses }) {
     return newErrors;
   };
 
+  // Live validation
+  useEffect(() => {
+    setErrors(validateForm());
+  }, [formData]);
+
+  // Is form valid?
+  const isFormValid = Object.keys(errors).length === 0;
+
   // Submit Handler
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validationErrors = validateForm();
     setErrors(validationErrors);
+    setTouched({
+      warehouse_name: true,
+      address: true,
+      city: true,
+      country: true,
+      contact_name: true,
+      contact_position: true,
+      contact_phone: true,
+      contact_email: true,
+    });
 
     if (Object.keys(validationErrors).length > 0) return;
 
     try {
       setIsSubmitting(true);
 
-      const newWarehouse = { ...formData };
+      if (formType === "add") {
+        const response = await axios.post(
+          `${BACKEND_URL}${PORT}/warehouses`,
+          formData
+        );
 
-      const response = await axios.post(
-        `${BACKEND_URL}${PORT}/warehouses`,
-        newWarehouse
-      );
+        const created = response.data.data;
+        setWarehouses((prev) => [...prev, created]);
 
-      // Update global state
-      setWarehouses((prev) => [...prev, response.data.data]);
-
-      navigate("/");
-    } catch (error) {
-      console.error("Error creating warehouse:", error);
-
-      if (error.response?.data?.message) {
-        alert(error.response.data.message);
-      } else {
-        alert("Failed to create warehouse.");
+        navigate(`/warehouse/${created.id}`);
       }
+
+      if (formType === "edit") {
+        const response = await axios.patch(
+          `${BACKEND_URL}${PORT}/warehouses/${warehouseId}`,
+          formData
+        );
+
+        const updated = response.data.data;
+
+        setWarehouses((prev) =>
+          prev.map((w) => (w.id === warehouseId ? updated : w))
+        );
+
+        navigate(`/warehouse/${warehouseId}`);
+      }
+    } catch (error) {
+      console.error("Save error:", error);
+      alert(error.response?.data?.message || "Failed to save warehouse.");
     } finally {
       setIsSubmitting(false);
     }
@@ -124,6 +174,7 @@ function WarehouseForm({ formTitle, formType, setWarehouses }) {
               placeholder="Warehouse Name"
               value={formData.warehouse_name}
               onChange={handleChange}
+              onBlur={handleBlur}
               error={errors.warehouse_name}
               isError={!!errors.warehouse_name}
             />
@@ -136,6 +187,7 @@ function WarehouseForm({ formTitle, formType, setWarehouses }) {
               placeholder="Street Address"
               value={formData.address}
               onChange={handleChange}
+              onBlur={handleBlur}
               error={errors.address}
               isError={!!errors.address}
             />
@@ -148,6 +200,7 @@ function WarehouseForm({ formTitle, formType, setWarehouses }) {
               placeholder="City"
               value={formData.city}
               onChange={handleChange}
+              onBlur={handleBlur}
               error={errors.city}
               isError={!!errors.city}
             />
@@ -160,6 +213,7 @@ function WarehouseForm({ formTitle, formType, setWarehouses }) {
               placeholder="Country"
               value={formData.country}
               onChange={handleChange}
+              onBlur={handleBlur}
               error={errors.country}
               isError={!!errors.country}
             />
@@ -175,6 +229,7 @@ function WarehouseForm({ formTitle, formType, setWarehouses }) {
               placeholder="Contact Name"
               value={formData.contact_name}
               onChange={handleChange}
+              onBlur={handleBlur}
               error={errors.contact_name}
               isError={!!errors.contact_name}
             />
@@ -187,6 +242,7 @@ function WarehouseForm({ formTitle, formType, setWarehouses }) {
               placeholder="Position"
               value={formData.contact_position}
               onChange={handleChange}
+              onBlur={handleBlur}
               error={errors.contact_position}
               isError={!!errors.contact_position}
             />
@@ -199,6 +255,7 @@ function WarehouseForm({ formTitle, formType, setWarehouses }) {
               placeholder="Phone Number"
               value={formData.contact_phone}
               onChange={handleChange}
+              onBlur={handleBlur}
               error={errors.contact_phone}
               isError={!!errors.contact_phone}
             />
@@ -211,6 +268,7 @@ function WarehouseForm({ formTitle, formType, setWarehouses }) {
               placeholder="Email"
               value={formData.contact_email}
               onChange={handleChange}
+              onBlur={handleBlur}
               error={errors.contact_email}
               isError={!!errors.contact_email}
             />
@@ -219,8 +277,11 @@ function WarehouseForm({ formTitle, formType, setWarehouses }) {
         </FieldsetsWrapper>
 
         <FormButtonsWrapper>
-          <FormCancelButton onClick={() => navigate("/")} />
-          <FormAddButton label="+ Add Warehouse" isDisabled={isSubmitting} />
+          <FormCancelButton />
+          <FormAddButton
+            label={formType === "add" ? "+ Add Warehouse" : "Save Changes"}
+            isDisabled={!isFormValid || isSubmitting}
+          />
         </FormButtonsWrapper>
       </form>
     </>
