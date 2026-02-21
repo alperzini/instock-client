@@ -1,0 +1,163 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/functions" as *;
+
+.delete-modal {
+position: fixed;
+inset: 0;
+z-index: 100;
+
+display: flex;
+align-items: stretch;
+justify-content: stretch;
+
+padding: 0;
+}
+
+.delete-modal__overlay {
+position: absolute;
+inset: 0;
+background: rgba(19, 24, 44, 0.6);
+border: 0;
+padding: 0;
+cursor: pointer;
+}
+
+.delete-modal__card {
+position: relative;
+z-index: 1;
+
+width: 100%;
+height: 100%;
+background: $color-white;
+border-radius: 0;
+box-shadow: none;
+
+display: flex;
+flex-direction: column;
+
+padding: pxToRem(24) pxToRem(16);
+}
+
+.delete-modal__close {
+position: absolute;
+top: pxToRem(20);
+right: pxToRem(16);
+
+background: transparent;
+border: 0;
+padding: 0;
+cursor: pointer;
+
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+svg,
+img {
+    width: pxToRem(24);
+    height: pxToRem(24);
+    display: block;
+}
+}
+
+.delete-modal__title {
+margin: 0;
+padding-top: pxToRem(36);
+
+font-size: $text-size-m-h1;
+line-height: $line-height-m-h1;
+font-weight: $font-semi-bold;
+color: $color-instock-black;
+}
+
+.delete-modal__text {
+margin: pxToRem(16) 0 0 0;
+
+font-size: $text-size-m-p2;
+line-height: $line-height-m-p2;
+color: $color-instock-black;
+}
+
+.delete-modal__actions {
+margin-top: auto;
+padding-top: pxToRem(32);
+
+display: flex;
+gap: pxToRem(16);
+}
+
+.delete-modal__btn {
+flex: 1;
+height: $cta-height-m;
+border-radius: pxToRem(20);
+padding: 0 pxToRem(16);
+
+font-size: $text-size-m-h3;
+line-height: $line-height-m-h3;
+font-weight: $font-semi-bold;
+cursor: pointer;
+}
+
+.delete-modal__btn--secondary {
+background: $color-white;
+border: pxToRem(1) solid $color-cloud;
+color: $color-slate;
+
+&:hover {
+    border-color: $color-slate;
+}
+}
+
+.delete-modal__btn--delete {
+background: $color-red;
+border: pxToRem(1) solid $color-red;
+color: $color-white;
+
+&:hover {
+    opacity: 0.9;
+}
+}
+
+@include tablet {
+.delete-modal {
+    align-items: center;
+    justify-content: center;
+    padding: pxToRem(16);
+}
+
+.delete-modal__card {
+    width: min(100%, pxToRem(672));
+    height: auto;
+
+    border-radius: pxToRem(4);
+    box-shadow: 0 pxToRem(8) pxToRem(24) rgba(19, 24, 44, 0.18);
+
+    padding: pxToRem(40) pxToRem(48);
+}
+
+.delete-modal__title {
+    padding-top: 0;
+    font-size: $text-size-dt-h1;
+    line-height: $line-height-dt-h1;
+}
+
+.delete-modal__text {
+    font-size: $text-size-dt-p2;
+    line-height: $line-height-dt-p2;
+    max-width: pxToRem(544);
+}
+
+.delete-modal__actions {
+    justify-content: flex-end;
+}
+
+.delete-modal__btn {
+    flex: 0 0 auto;
+    width: auto;
+    height: $cta-height-dt;
+
+    font-size: $text-size-dt-h3;
+    line-height: $line-height-dt-h3;
+}
+}

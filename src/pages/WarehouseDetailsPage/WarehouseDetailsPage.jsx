@@ -5,9 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
-import DeleteWarehouseModal from "../../components/DeleteWarehouseModal/DeleteWarehouseModal";
-import DeleteIcon from "../../components/Icons/DeleteIcon";
-import EditIcon from "../../components/Icons/EditIcon";
+import DeleteInventoryModal from "../../components/DeleteInventoryModal/DeleteInventoryModal";
 
 const WarehouseDetailsPage = () => {
   const { warehouseId } = useParams();
@@ -16,6 +14,9 @@ const WarehouseDetailsPage = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
 
+  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_PORT;
+  
   const [warehouse, setWarehouse] = useState(null);
   const [warehouseInventory, setWarehouseInventory] = useState([]);
 
@@ -24,34 +25,20 @@ const WarehouseDetailsPage = () => {
 
   useEffect(() => {
     const fetchWarehouse = async () => {
-      try {
-        const res = await axios.get(`${BACKEND_URL}${PORT}/warehouses/${warehouseId}`);
-        setWarehouse(res.data);
-      } catch (err) {
-        console.error(err);
-      }
+      const res = await axios.get(`${BACKEND_URL}${PORT}/warehouses/${warehouseId}`);
+      setWarehouse(res.data);
     };
 
     const fetchWarehouseInventory = async () => {
-      try {
-        const res = await axios.get(`${BACKEND_URL}${PORT}/warehouses/${warehouseId}/inventories`);
-        setWarehouseInventory(res.data);
-      } catch (err) {
-        console.error(err);
-      }
+      const res = await axios.get(`${BACKEND_URL}${PORT}/warehouses/${warehouseId}/inventories`);
+      setWarehouseInventory(res.data);
     };
 
     fetchWarehouse();
     fetchWarehouseInventory();
   }, [BACKEND_URL, PORT, warehouseId]);
 
-  const handleRowClick = (inventoryId) => {
-    navigate(`/inventory/${inventoryId}`);
-  };
-
-  const handleEdit = (inventoryId) => {
-    navigate(`/editInventory/${inventoryId}`);
-  };
+  const handleEdit = (inventoryId) => navigate(`/editInventory/${inventoryId}`);
 
   const handleDeleteClick = (item) => {
     setSelectedItem(item);
@@ -66,39 +53,33 @@ const WarehouseDetailsPage = () => {
   const handleConfirmDelete = async () => {
     if (!selectedItem) return;
 
-    try {
-      await axios.delete(`${BACKEND_URL}${PORT}/inventories/${selectedItem.id}`);
-      setWarehouseInventory((prev) => prev.filter((i) => i.id !== selectedItem.id));
-      handleCloseDelete();
-    } catch (err) {
-      console.error(err);
-    }
+    await axios.delete(`${BACKEND_URL}${PORT}/inventories/${selectedItem.id}`);
+    setWarehouseInventory((prev) => prev.filter((i) => i.id !== selectedItem.id));
+    handleCloseDelete();
   };
 
   return (
     <PageWrapper>
-      <main className="warehouse-details-page">
-        <WarehouseDetails
-          warehouse={warehouse}
-          onEdit={() => navigate(`/editWarehouse/${warehouseId}`)}
-        />
+    <main className="warehouse-details-page">
+      <WarehouseDetails
+        warehouse={warehouse}
+        onEdit={() => navigate(`/editWarehouse/${warehouseId}`)}
+      />
 
-        <WarehouseInventoryList
-          inventory={warehouseInventory}
-          onRowClick={handleRowClick}
-          onEdit={handleEdit}
-          onDelete={handleDeleteClick}
-        />
+      <WarehouseInventoryList
+        inventory={warehouseInventory}
+        onEdit={handleEdit}
+        onDelete={handleDeleteClick}
+      />
 
-        {isDeleteOpen && (
-          <DeleteInventoryModal
-            itemName={selectedItem?.item_name}
-            onClose={handleCloseDelete}
-            onDelete={handleConfirmDelete}
-          />
-        )}
-      </main>
-    </PageWrapper>
+      <DeleteInventoryModal
+        isOpen={isDeleteOpen}
+        itemName={selectedItem?.item_name}
+        onClose={handleCloseDelete}
+        onDelete={handleConfirmDelete}
+      /> 
+    </main>
+  </PageWrapper>
   );
 };
 
