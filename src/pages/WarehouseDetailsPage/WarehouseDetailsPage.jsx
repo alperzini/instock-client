@@ -29,9 +29,17 @@ const warehouseInventory = inventoryArray.filter(
 
   useEffect(() => {
     const fetchWarehouse = async () => {
-      const res = await axios.get(`${BACKEND_URL}${PORT}/warehouses/${warehouseId}`);
-      setWarehouse(res.data);
+      try {
+        const res = await axios.get(
+          `${BACKEND_URL}${PORT}/warehouses/${warehouseId}`
+        );
+  
+        setWarehouse(res.data);
+      } catch (error) {
+        console.error("Error fetching warehouse:", error);
+      }
     };
+  
     fetchWarehouse();
   }, [BACKEND_URL, PORT, warehouseId]);
 
