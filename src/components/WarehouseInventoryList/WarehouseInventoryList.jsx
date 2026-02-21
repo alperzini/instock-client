@@ -4,10 +4,12 @@ import StatusPill from "../StatusPill/StatusPill";
 import DeleteIcon from "../Icons/DeleteIcon";
 import EditIcon from "../Icons/EditIcon";
 import ChevronRightIcon from "../Icons/ChevronRightIcon";
+import SortIcon from "../Icons/SortIcon";
 
 const WarehouseInventoryList = ({ inventory = [], onRowClick, onEdit, onDelete }) => {
   return (
     <section className="warehouse-inventory">
+    <div className="warehouse-inventory__container">
       <header className="warehouse-inventory__header">
         <h2 className="warehouse-inventory__title">Inventory</h2>
       </header>
@@ -75,8 +77,11 @@ const WarehouseInventoryList = ({ inventory = [], onRowClick, onEdit, onDelete }
                 <EditIcon />
               </button>
             </div>
+            
           </div>
+          
         ))}
+      </div>
       </div>
     </section>
   );
