@@ -1,0 +1,166 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/functions" as *;
+
+.warehouse-inventory {
+  background: $color-white;
+  border-top: pxToRem(1) solid $color-cloud;
+
+  &__header {
+    padding: pxToRem(16);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include tablet {
+      padding: pxToRem(24) pxToRem(32);
+    }
+
+    @include desktop {
+      padding: pxToRem(24) pxToRem(40);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $text-size-m-h2;
+    line-height: $line-height-m-h2;
+    font-weight: $font-semi-bold;
+    color: $color-instock-black;
+
+    @include tablet {
+      font-size: $text-size-dt-h2;
+      line-height: $line-height-dt-h2;
+    }
+  }
+
+  &__table {
+    width: 100%;
+  }
+
+  &__row {
+    border-top: pxToRem(1) solid $color-cloud;
+    padding: pxToRem(16);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: pxToRem(12);
+    column-gap: pxToRem(16);
+
+    @include tablet {
+      padding: 0;
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr 0.8fr 0.8fr;
+      align-items: center;
+      column-gap: pxToRem(16);
+      row-gap: 0;
+    }
+  }
+
+  &__row--head {
+    display: none;
+
+    @include tablet {
+      display: grid;
+      padding: pxToRem(12) pxToRem(32);
+      background: $color-light-grey;
+      border-top: pxToRem(1) solid $color-cloud;
+    }
+
+    @include desktop {
+      padding: pxToRem(12) pxToRem(40);
+    }
+  }
+
+  &__row:not(&__row--head) {
+    @include tablet {
+      padding: pxToRem(16) pxToRem(32);
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(46, 102, 229, 0.04);
+      }
+    }
+
+    @include desktop {
+      padding: pxToRem(16) pxToRem(40);
+    }
+  }
+
+  &__cell {
+    margin: 0;
+    min-width: 0;
+    font-size: $text-size-m-p2;
+    line-height: $line-height-m-p2;
+    color: $color-instock-black;
+
+    @include tablet {
+      font-size: $text-size-dt-p2;
+      line-height: $line-height-dt-p2;
+    }
+  }
+
+  &__cell--actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: pxToRem(12);
+  }
+
+  &__cell--item {
+    grid-column: 1 / -1;
+
+    @include tablet {
+      grid-column: auto;
+    }
+  }
+
+  &__item-link {
+    display: inline-flex;
+    align-items: center;
+    gap: pxToRem(6);
+    color: $color-instock-indigo;
+    text-decoration: none;
+    font-weight: $font-semi-bold;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+
+    svg,
+    img {
+      width: pxToRem(16);
+      height: pxToRem(16);
+      display: block;
+    }
+  }
+
+  &__icon-btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg,
+    img {
+      width: pxToRem(24);
+      height: pxToRem(24);
+      display: block;
+    }
+  }
+
+  @include tablet {
+    &__cell--category,
+    &__cell--status,
+    &__cell--qty,
+    &__cell--actions {
+      justify-self: start;
+    }
+
+    &__cell--actions {
+      justify-self: end;
+    }
+  }
+}
