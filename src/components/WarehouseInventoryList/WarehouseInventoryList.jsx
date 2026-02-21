@@ -19,7 +19,7 @@ const WarehouseInventoryList = ({ inventory = [], onRowClick, onEdit, onDelete }
         <div className="warehouse-inventory__th" role="columnheader">CATEGORY <SortIcon /></div>
         <div className="warehouse-inventory__th" role="columnheader">STATUS <SortIcon /></div>
         <div className="warehouse-inventory__th" role="columnheader">OTY <SortIcon /></div>
-        <div className="warehouse-inventory__th" role="columnheader">ACTIONS <SortIcon /></div>
+        <div className="warehouse-inventory__th warehouse-inventory__th--actions" role="columnheader">ACTIONS</div>
 
     <div className="warehouse-inventory__row">
     {inventory.map((item) => (
