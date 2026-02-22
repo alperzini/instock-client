@@ -1,5 +1,6 @@
 @use "../../styles/variables" as *;
 @use "../../styles/functions" as *;
+@use "../../styles//mixins" as *;
 
 .inventory-name-link {
   outline: none;
@@ -9,11 +10,23 @@
   color: $color-instock-indigo;
   text-decoration: none;
   font-weight: $font-semi-bold;
+  font-size: $text-size-m-h3;
+  line-height: $line-height-m-h3;
 
   &:hover,
   &:focus {
     text-decoration: underline;
   }
+
+  img {
+    height: 20px;
+    width: 20px;
+  }
+
+@include tablet {
+  font-size: $text-size-dt-h3;
+  line-height: $line-height-dt-h3;
+}
 }
 
 @media (hover: hover) {

@@ -16,8 +16,8 @@
 
     img {
         display: block;
-        width: pxToRem(24);
-        height: pxToRem(24);
+        width: 24px;
+        height: 24px;
 
         &:hover {
             opacity: 0.7;
@@ -29,7 +29,7 @@
 
 .icon-button--sort {
     img {
-        width: pxToRem(16);
-        height: pxToRem(16);
+        width: 16px;
+        height: 16px;
     }
 }

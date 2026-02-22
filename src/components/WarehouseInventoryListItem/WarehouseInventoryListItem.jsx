@@ -6,23 +6,23 @@ import StatusPill from "../StatusPill/StatusPill";
 import InventoryNameLink from "../InventoryNameLink/InventoryNameLink";
 
 const WarehouseInventoryListItem = ({ item, onDelete, onEdit }) => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
-   <article
-   className="warehouse-inventory-item"
-   role="button"
-   tabIndex={0}
-   onClick={()=> navigate(`/inventory/${item.id}`)}
-   onKeyDown={(e) => e.key === "Enter" && navigate (`/inventory/${item.id}`)}
-   >
-    <div className="warehouse-inventory-item__cell warehouse-inventory-item__cell--item">
-        <p className="warehouse-inventory-item__label">Inventory Item</p>
+    <article
+      className="warehouse-inventory-item"
+      role="button"
+      tabIndex={0}
+      onClick={() => navigate(`/inventory/${item.id}`)}
+      onKeyDown={(e) => e.key === "Enter" && navigate(`/inventory/${item.id}`)}
+    >
+      <div className="warehouse-inventory-item__cell warehouse-inventory-item__cell--item">
+        <p className="warehouse-inventory-item__label">INVENTORY ITEM</p>
         <InventoryNameLink to={`/inventory/${item.id}`}> {item.item_name}
         </InventoryNameLink>
-    </div>
+      </div>
 
-    <div className="warehouse-inventory-item__cell">
+      <div className="warehouse-inventory-item__cell">
         <p className="warehouse-inventory-item__label">CATEGORY</p>
         <p className="warehouse-inventory-item__value">{item.category}</p>
       </div>
@@ -59,7 +59,7 @@ const navigate = useNavigate();
           <EditIcon />
         </button>
       </div>
-   </article>
+    </article>
   );
 };
 

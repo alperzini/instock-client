@@ -1,6 +1,7 @@
 @use "../../styles/variables" as *;
 @use "../../styles/icons" as *;
 @use "../../styles/functions" as *;
+@use "../../styles/mixins" as *;
 
 .warehouse-name-link {
   outline: none;
@@ -10,16 +11,23 @@
   color: $color-instock-indigo;
   text-decoration: none;
   font-weight: $font-semi-bold;
+  font-size: $text-size-m-h3;
+  line-height: $line-height-m-h3;
 
   &:hover,
   &:focus {
     text-decoration: underline;
   }
+
+  @include tablet {
+  font-size: $text-size-dt-h3;
+  line-height: $line-height-dt-h3;
+}
 }
 
 .warehouse-chevron {
-  width: pxToRem(24);
-  height: pxToRem(24);
+  width: 20px;
+  height: 20px;
   display: block;
   transform: translateX(0);
   transition: transform 200ms ease;
@@ -34,4 +42,5 @@
   .warehouse-name-link:active .warehouse-chevron {
     transform: translateX(pxToRem(2));
   }
+
 }

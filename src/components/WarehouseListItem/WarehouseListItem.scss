@@ -4,7 +4,7 @@
 
 .warehouse-item {
   width: 100%;
-  padding: pxToRem(16);
+  padding: pxToRem(16) pxToRem(24) pxToRem(24);
   border-bottom: 1px solid $color-cloud;
 
   &:hover, &:focus, &:focus-within {
@@ -36,6 +36,10 @@
     color: $color-instock-black;
     word-break: normal;
     overflow-wrap: break-word;
+    @include tablet {
+      font-size: $text-size-dt-p2;
+      line-height: $line-height-dt-p2;
+    }
   }
 
   &__value--nowrap {

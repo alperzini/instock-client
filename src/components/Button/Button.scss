@@ -3,6 +3,9 @@
 @use "../../styles/functions" as *;
 
 .button {
+font-family: $primary-font;
+font-size: $text-size-m-h3;
+line-height: $line-height-m-h3;
 outline: none;
 height: $cta-height-m;
 padding: 0 $cta-padding-dt;
@@ -17,6 +20,8 @@ white-space: nowrap;
 
 @include tablet {
     height: $cta-height-dt;
+    font-size: $text-size-dt-h3;
+    line-height: $line-height-dt-h3;
 }
 
 &:disabled {

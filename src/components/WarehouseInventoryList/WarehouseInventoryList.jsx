@@ -6,9 +6,9 @@ const WarehouseInventoryList = ({ inventory = [], onEdit, onDelete }) => {
   return (
     <section className="warehouse-inventory">
       <div className="warehouse-inventory__container">
-        <header className="warehouse-inventory__header">
+        {/* <header className="warehouse-inventory__header">
           <h2 className="warehouse-inventory__title">Inventory</h2>
-        </header>
+        </header> */}
 
         <div className="warehouse-inventory__table-header" role="row">
           <div className="warehouse-inventory__th" role="columnheader">
