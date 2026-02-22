@@ -10,7 +10,8 @@
   cursor: pointer;
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:focus-within {
     background-color: rgba($color-instock-indigo, 0.07);
   }
 
@@ -29,6 +30,7 @@
     line-height: $line-height-m-h4;
     font-weight: $font-semi-bold;
     color: $color-slate;
+    text-transform: uppercase;
   }
 
   &__value {
@@ -38,14 +40,37 @@
     line-height: $line-height-m-p2;
     color: $color-instock-black;
     overflow-wrap: break-word;
+
     @include tablet {
       font-size: $text-size-dt-p2;
       line-height: $line-height-dt-p2;
     }
   }
 
+  &__cell--item {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  &__cell--status {
+    grid-column: 2 / 3;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  &__cell--category {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+
+  &__cell--qty {
+    grid-column: 2 / 3;
+    grid-row: 2;
+  }
+
   &__actions {
     grid-column: 1 / -1;
+    grid-row: 3;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -65,7 +90,7 @@
 
     &:focus-visible {
       border: 1px solid $color-instock-indigo;
-      border-radius: 3px;
+      border-radius: pxToRem(3);
     }
   }
 
@@ -81,8 +106,18 @@
       display: none;
     }
 
+    &__cell--item,
+    &__cell--status,
+    &__cell--category,
+    &__cell--qty {
+      grid-column: auto;
+      grid-row: auto;
+      justify-self: stretch;
+    }
+
     &__actions {
       grid-column: auto;
+      grid-row: auto;
       justify-content: flex-end;
       gap: pxToRem(12);
       margin-top: 0;
