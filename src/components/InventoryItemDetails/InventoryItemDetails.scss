@@ -118,6 +118,32 @@
     min-width: 0;
   }
 
+  /* ✅ PHONE ONLY (max-width < tablet breakpoint) */
+  @media (max-width: 767px) {
+    &__info {
+      grid-template-columns: 1fr 1fr;
+      column-gap: pxToRem(16);
+      row-gap: pxToRem(16);
+    }
+
+    &__block--left,
+    &__block--category {
+      grid-column: 1 / -1;
+    }
+
+    &__block--status {
+      grid-column: 1 / 2;
+    }
+
+    &__block--qty {
+      grid-column: 2 / 3;
+    }
+
+    &__block--warehouse {
+      grid-column: 1 / -1;
+    }
+  }
+
   &__block--left {
     @include tablet {
       grid-column: 1 / 2;
