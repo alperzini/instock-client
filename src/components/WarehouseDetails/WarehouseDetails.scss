@@ -111,7 +111,8 @@ background: $color-white;
     }
 
     .warehouse-details__block:nth-child(3) {
-    padding-left: pxToRem(24);
+    padding-left: pxToRem(8);
+    min-width: 0;
     }
 
     @include tablet {
@@ -137,7 +138,7 @@ background: $color-white;
 }
 
 &__block {
-    min-width: 0;
+    padding: 0;
 }
 
 &__block--address {

@@ -1,3 +1,4 @@
+@use "../../styles/functions" as *;
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
@@ -35,13 +36,13 @@ box-shadow: none;
 display: flex;
 flex-direction: column;
 
-padding: 1.5rem 1rem;
+padding: pxToRem(24) pxToRem(16);
 }
 
 .delete-modal__close {
 position: absolute;
-top: 1.25rem;
-right: 1rem;
+top: pxToRem(20);
+right: pxToRem(16);
 
 background: transparent;
 border: 0;
@@ -54,15 +55,15 @@ justify-content: center;
 
 svg,
 img {
-    width: 24px;
-    height: 24px;
+    width: pxToRem(24);
+    height: pxToRem(24);
     display: block;
 }
 }
 
 .delete-modal__title {
 margin: 0;
-padding-top: 2.25rem;
+padding-top: pxToRem(36);
 
 font-size: $text-size-m-h1;
 line-height: $line-height-m-h1;
@@ -71,7 +72,7 @@ color: $color-instock-black;
 }
 
 .delete-modal__text {
-margin: 1rem 0 0 0;
+margin: pxToRem(16) 0 0 0;
 
 font-size: $text-size-m-p2;
 line-height: $line-height-m-p2;
@@ -80,10 +81,10 @@ color: $color-instock-black;
 
 .delete-modal__actions {
 margin-top: auto;
-padding-top: 2rem;
+padding-top: pxToRem(32);
 
 display: flex;
-gap: 1rem;
+gap: pxToRem(16);
 }
 
 .delete-modal__btn {
@@ -118,48 +119,47 @@ color: $color-white;
 }
 }
 
-/* Tablet + Desktop: centered card (same layout) */
 @include tablet {
-    @media (min-width: 767px) {
-.delete-modal {
+@media (min-width: 767px) {
+    .delete-modal {
     align-items: center;
     justify-content: center;
-    padding: 1rem;
-}
+    padding: pxToRem(16);
+    }
 
-.delete-modal__card {
+    .delete-modal__card {
     width: min(100%, 42rem);
     height: auto;
 
     border-radius: 4px;
     box-shadow: 0 8px 24px rgba(19, 24, 44, 0.18);
 
-    padding: 2.5rem 3rem;
-}
+    padding: pxToRem(40) pxToRem(48);
+    }
 
-.delete-modal__title {
+    .delete-modal__title {
     padding-top: 0;
     font-size: $text-size-dt-h1;
     line-height: $line-height-dt-h1;
-}
+    }
 
-.delete-modal__text {
+    .delete-modal__text {
     font-size: $text-size-dt-p2;
     line-height: $line-height-dt-p2;
     max-width: 34rem;
-}
+    }
 
-.delete-modal__actions {
+    .delete-modal__actions {
     justify-content: flex-end;
-}
+    }
 
-.delete-modal__btn {
+    .delete-modal__btn {
     flex: 0 0 auto;
     width: auto;
     height: $cta-height-dt;
 
     font-size: $text-size-dt-h3;
     line-height: $line-height-dt-h3;
-}
+    }
 }
 }

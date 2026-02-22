@@ -1,4 +1,5 @@
 import "./WarehouseList.scss";
+import axios from "axios";
 import WarehouseListItem from "../WarehouseListItem/WarehouseListItem";
 import SortIcon from "../Icons/SortIcon";
 import SearchField from "../SearchField/SearchField";
@@ -10,10 +11,23 @@ const WarehouseList = ({ warehouses, setWarehouses }) => {
 const [search, setSearch] = useState("");
 const navigate = useNavigate();
 
-const handleDeleteWarehouse = (warehouseId) => {
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const PORT = import.meta.env.VITE_PORT;
+
+const handleDeleteWarehouse = async (warehouseId) => {
     if (!setWarehouses) return;
-    setWarehouses((prev) => prev.filter((w) => w.id !== warehouseId));
-};
+  
+    try {
+      await axios.delete(`${BACKEND_URL}${PORT}/warehouses/${warehouseId}`);
+  
+      setWarehouses((prev) =>
+        prev.filter((w) => w.id !== warehouseId)
+      );
+    } catch (error) {
+      console.error("Error deleting warehouse:", error);
+      alert("Failed to delete warehouse. Please try again.");
+    }
+  };
 
 const filtered = warehouses.filter((w) =>
     `${w.warehouse_name} ${w.address} ${w.city} ${w.country} ${w.contact_name} ${w.contact_email} ${w.contact_phone}`
