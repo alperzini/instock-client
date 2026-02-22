@@ -39,7 +39,7 @@
     &__top-border-hide {
         pointer-events: none;
         @extend %wrapper;
-        border: 1px solid $color-graphite;
+        border: 1px solid $color-white;
         border-radius: 3px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
@@ -50,6 +50,8 @@
         z-index: 100;
 
         @include tablet {
+            border: 1px solid $color-graphite;
+            border-bottom: none;
             height: pxToRem(94);
             top: pxToRem(-94);
         }

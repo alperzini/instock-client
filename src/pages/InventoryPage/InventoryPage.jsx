@@ -1,8 +1,15 @@
 import "./InventoryPage.scss";
+import InventoryList from "../../components/InventoryList/InventoryList";
+import PageWrapper from "../../components/PageWrapper/PageWrapper";
 
-const InventoryPage = ({ inventory, setInventory }) => {
-console.log("InventoryPage");
-
+const InventoryPage = () => {
+  return (
+    <PageWrapper>
+      <main className="inventory-page">
+        <InventoryList />
+      </main>
+    </PageWrapper>
+  );
 };
 
 export default InventoryPage;

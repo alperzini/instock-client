@@ -1,9 +1,8 @@
 @use "../../styles/variables" as *;
-@use "../../styles/icons" as *;
 @use "../../styles/functions" as *;
-@use "../../styles/mixins" as *;
+@use "../../styles//mixins" as *;
 
-.warehouse-name-link {
+.inventory-name-link {
   outline: none;
   display: inline-flex;
   align-items: center;
@@ -19,28 +18,20 @@
     text-decoration: underline;
   }
 
-  @include tablet {
+  img {
+    height: 20px;
+    width: 20px;
+  }
+
+@include tablet {
   font-size: $text-size-dt-h3;
   line-height: $line-height-dt-h3;
 }
 }
 
-.warehouse-chevron {
-  width: 20px;
-  height: 20px;
-  display: block;
-  transform: translateX(0);
-  transition: transform 200ms ease;
-}
-
 @media (hover: hover) {
-  .warehouse-name-link:hover .warehouse-chevron,
-  .warehouse-name-link:focus .warehouse-chevron {
+  .inventory-name-link:hover .warehouse-chevron,
+  .inventory-name-link:focus .warehouse-chevron {
     transform: translateX(pxToRem(4));
   }
-
-  .warehouse-name-link:active .warehouse-chevron {
-    transform: translateX(pxToRem(2));
-  }
-
 }
