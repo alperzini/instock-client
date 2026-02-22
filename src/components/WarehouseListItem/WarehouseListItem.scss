@@ -99,7 +99,6 @@
   @include tablet {
     padding: pxToRem(16) pxToRem(32);
 
-    /* 🔥 Reset grid areas so layout stays original */
     grid-template-areas: none;
     grid-template-columns: 1.2fr 1.6fr 1.2fr 1.7fr 0.7fr;
     column-gap: pxToRem(16);
