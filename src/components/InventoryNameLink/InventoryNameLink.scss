@@ -1,0 +1,24 @@
+@use "../../styles/variables" as *;
+@use "../../styles/functions" as *;
+
+.inventory-name-link {
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  gap: $link-margin-right;
+  color: $color-instock-indigo;
+  text-decoration: none;
+  font-weight: $font-semi-bold;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+@media (hover: hover) {
+  .inventory-name-link:hover .warehouse-chevron,
+  .inventory-name-link:focus .warehouse-chevron {
+    transform: translateX(pxToRem(4));
+  }
+}
