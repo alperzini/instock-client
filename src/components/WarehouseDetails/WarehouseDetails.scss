@@ -13,11 +13,11 @@ background: $color-white;
     border-bottom: 1px solid $color-cloud;
 
     @include tablet {
-    padding: pxToRem(32) pxToRem(32) pxToRem(21);
+    padding: pxToRem(32) pxToRem(32) pxToRem(20);
     }
 
     @include desktop {
-    padding: pxToRem(32) pxToRem(40) pxToRem(21);
+    padding: pxToRem(32) pxToRem(40) pxToRem(20);
     }
 }
 

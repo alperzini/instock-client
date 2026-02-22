@@ -12,6 +12,9 @@ import DeleteIcon from "../Icons/DeleteIcon";
 import EditIcon from "../Icons/EditIcon";
 import WarehouseNameLink from "../WarehouseNameLink/WarehouseNameLink";
 import DeleteInventoryModal from "../DeleteInventoryModal/DeleteInventoryModal";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import PageNotFound from "../PageNotFound/PageNotFound";
+import PageWrapper from "../PageWrapper/PageWrapper";
 
 // ===== Row Component (same pattern as WarehouseListItem) =====
 const InventoryListItem = ({ item, warehouseName, onDeleted }) => {
@@ -59,9 +62,8 @@ const InventoryListItem = ({ item, warehouseName, onDeleted }) => {
         <div className="inventory-item__cell inventory-item__cell--status">
           <p className="inventory-item__label">STATUS</p>
           <span
-            className={`inventory-item__tag ${
-              isOut ? "inventory-item__tag--out" : "inventory-item__tag--in"
-            }`}
+            className={`inventory-item__tag ${isOut ? "inventory-item__tag--out" : "inventory-item__tag--in"
+              }`}
           >
             {String(item.status || "").toUpperCase()}
           </span>
@@ -115,6 +117,8 @@ const InventoryList = () => {
   const [search, setSearch] = useState("");
   const [inventories, setInventories] = useState([]);
   const [warehousesById, setWarehousesById] = useState({});
+  const [isLodaing, setIsLoading] = useState(true);
+  const [isNotFound, setIsNotFound] = useState(false);
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:";
   const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
@@ -144,7 +148,10 @@ const InventoryList = () => {
           map[w.id] = w.warehouse_name;
         });
         setWarehousesById(map);
+        setIsLoading(false);
       } catch (err) {
+        setIsLoading(false);
+        setIsNotFound(true);
         console.error("InventoryList fetch error:", err);
       }
     };
@@ -169,58 +176,68 @@ const InventoryList = () => {
   };
 
   return (
-    <section className="inventory-list">
-      <div className="inventory-list__container">
-        <div className="inventory-list__header">
-          <h1 className="inventory-list__title">Inventory</h1>
+    (inventories.length > 0) ?
+      <PageWrapper>
+        <section className="inventory-list">
+          <div className="inventory-list__container">
+            <div className="inventory-list__header">
+              <h1 className="inventory-list__title">Inventory</h1>
 
-          <div className="inventory-list__actions">
-            <SearchField
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search..."
-            />
+              <div className="inventory-list__actions">
+                <SearchField
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search..."
+                />
 
-            <Button variant="primary" onClick={() => navigate("/addInventory")}>
-              + Add New Item
-            </Button>
-          </div>
-        </div>
+                <Button variant="primary" onClick={() => navigate("/addInventory")}>
+                  + Add New Item
+                </Button>
+              </div>
+            </div>
 
-        {/* header row (tablet/desktop) */}
-        <div className="inventory-list__table-header">
-          <div className="inventory-list__th">
-            INVENTORY ITEM <SortIcon />
-          </div>
-          <div className="inventory-list__th">
-            CATEGORY <SortIcon />
-          </div>
-          <div className="inventory-list__th">
-            STATUS <SortIcon />
-          </div>
-          <div className="inventory-list__th">
-            QTY <SortIcon />
-          </div>
-          <div className="inventory-list__th">
-            WAREHOUSE <SortIcon />
-          </div>
-          <div className="inventory-list__th inventory-list__th--actions">
-            ACTIONS
-          </div>
-        </div>
+            {/* header row (tablet/desktop) */}
+            <div className="inventory-list__table-header">
+              <div className="inventory-list__th">
+                INVENTORY ITEM <SortIcon />
+              </div>
+              <div className="inventory-list__th">
+                CATEGORY <SortIcon />
+              </div>
+              <div className="inventory-list__th">
+                STATUS <SortIcon />
+              </div>
+              <div className="inventory-list__th">
+                QTY <SortIcon />
+              </div>
+              <div className="inventory-list__th">
+                WAREHOUSE <SortIcon />
+              </div>
+              <div className="inventory-list__th inventory-list__th--actions">
+                ACTIONS
+              </div>
+            </div>
 
-        <div className="inventory-list__rows">
-          {filtered.map((item) => (
-            <InventoryListItem
-              key={item.id}
-              item={item}
-              warehouseName={warehousesById[item.warehouse_id] || ""}
-              onDeleted={handleDeleted}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+            <div className="inventory-list__rows">
+              {filtered.map((item) => (
+                <InventoryListItem
+                  key={item.id}
+                  item={item}
+                  warehouseName={warehousesById[item.warehouse_id] || ""}
+                  onDeleted={handleDeleted}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      </PageWrapper>
+      : isNotFound ?
+        <PageNotFound title="500 - INTERNAL SERVER ERROR" content="The inventory list could not be fetched." />
+        : isLodaing ?
+          <PageWrapper>
+            <LoadingSpinner delay={5000} />
+          </PageWrapper >
+          : ""
   );
 };
 

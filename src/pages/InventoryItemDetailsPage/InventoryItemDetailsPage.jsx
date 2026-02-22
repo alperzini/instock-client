@@ -2,31 +2,49 @@ import "./InventoryItemDetailsPage.scss";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
 import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import InventoryItemDetails from "../../components/InventoryItemDetails/InventoryItemDetails";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import PageNotFound from "../../components/PageNotFound/PageNotFound";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
 const InventoryItemDetailsPage = () => {
   const { inventoryId } = useParams();
   const [item, setItem] = useState(null);
+  const [isLodaing, setIsLoading] = useState(true);
+  const [isNotFound, setIsNotFound] = useState(false);
 
   useEffect(() => {
     const fetchItem = async () => {
-      const res = await axios.get(`${API_BASE_URL}/inventories/${inventoryId}`);
-      setItem(res.data);
+      try {
+        const res = await axios.get(`${API_BASE_URL}/inventories/${inventoryId}`);
+        setItem(res.data);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        setIsNotFound(true);
+        console.error("Error fetching inventory item:", error);
+      }
     };
 
     fetchItem();
   }, [inventoryId]);
 
   return (
-    <PageWrapper>
-      <main className="inventory-item-details-page">
-        {!item ? <p>Loading...</p> : <InventoryItemDetails item={item} />}
-      </main>
-    </PageWrapper>
+    (item != null) ?
+      <PageWrapper>
+        <main className="inventory-item-details-page">
+          {!item ? <p>Loading...</p> : <InventoryItemDetails item={item} />}
+        </main>
+      </PageWrapper>
+      : isNotFound ?
+        <PageNotFound title="404 - PAGE NOT FOUND" content="The inventory item is not found." />
+        : isLodaing ?
+          <PageWrapper>
+            <LoadingSpinner delay={5000} />
+          </PageWrapper >
+          : ""
   );
 };
 
