@@ -3,9 +3,9 @@
 @use "../../styles/mixins" as *;
 
 .inventory-item-details-page {
-  background: $color-light-grey;
-  min-height: 100vh;
-  padding: 1rem;
+  background: $color-white;
+  // min-height: 100vh;
+  // padding: 1rem;
 
   &__card {
     background: $color-white;
@@ -108,7 +108,7 @@
   }
 
   @include tablet {
-    padding: 2rem;
+    // padding: 2rem;
 
     &__header {
       padding: 1.5rem 2rem;
@@ -148,7 +148,7 @@
   }
 
   @include desktop {
-    padding: 2.5rem;
+    // padding: 2.5rem;
 
     &__title {
       font-size: 1.75rem;

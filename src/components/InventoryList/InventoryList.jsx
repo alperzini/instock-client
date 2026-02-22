@@ -100,7 +100,7 @@ const InventoryListItem = ({ item, warehouseName, onDeleted }) => {
 
       <DeleteInventoryModal
         isOpen={isDeleteOpen}
-        inventoryName={item.item_name}
+        itemName={item.item_name}
         onClose={closeDelete}
         onDelete={confirmDelete}
       />

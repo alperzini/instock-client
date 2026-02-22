@@ -23,7 +23,8 @@ background: $color-white;
 
 &__title-wrap {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    // justify-content: flex-start;
     gap: pxToRem(12);
     min-width: 0;
 }
@@ -35,8 +36,8 @@ background: $color-white;
     font-weight: $font-semi-bold;
     color: $color-instock-black;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
 
     @include tablet {
     font-size: $text-size-dt-h1;

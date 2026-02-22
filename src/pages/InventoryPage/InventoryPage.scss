@@ -3,15 +3,15 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/icons" as *;
 
-.warehouses-page {
-    padding: 0 1rem 2rem;
+// .warehouses-page {
+//     padding: 0 1rem 2rem;
 
-    @include tablet {
-        padding: 0 2rem 2.5rem;
-    }
+//     @include tablet {
+//         padding: 0 2rem 2.5rem;
+//     }
 
-    @include desktop {
-        padding: 0 2.5rem 3rem;
-    }
-}
+//     @include desktop {
+//         padding: 0 2.5rem 3rem;
+//     }
+// }
 

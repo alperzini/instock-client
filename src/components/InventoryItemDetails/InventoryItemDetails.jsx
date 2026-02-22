@@ -56,7 +56,7 @@ const InventoryItemDetails = ({ item }) => {
   }, [item]);
 
   return (
-    <section className="inventory-item-details">
+    <>
       <header className="inventory-item-details__header">
         <div className="inventory-item-details__title-wrap">
           <BackArrowButton />
@@ -73,12 +73,11 @@ const InventoryItemDetails = ({ item }) => {
         </button>
       </header>
 
-      <div className="inventory-item-details__divider" />
 
       <div className="inventory-item-details__info">
         <div className="inventory-item-details__block inventory-item-details__block--left">
           <p className="inventory-item-details__label">ITEM DESCRIPTION:</p>
-          <p className="inventory-item-details__value">{item?.description}</p>
+          <p className="inventory-item-details__value inventory-item-details__value--bootom-margin">{item?.description}</p>
         </div>
 
         <div className="inventory-item-details__block inventory-item-details__block--category">
@@ -99,18 +98,17 @@ const InventoryItemDetails = ({ item }) => {
 
         <div className="inventory-item-details__block inventory-item-details__block--qty">
           <p className="inventory-item-details__label">QUANTITY:</p>
-          <p className="inventory-item-details__value">{item?.quantity}</p>
+          <p className="inventory-item-details__value inventory-item-details__value--bootom-margin">{item?.quantity}</p>
         </div>
 
         <div className="inventory-item-details__block inventory-item-details__block--warehouse">
           <p className="inventory-item-details__label">WAREHOUSE:</p>
-          {/* ✅ NOT clickable + fetched from /warehouses/:id */}
           <p className="inventory-item-details__value">
             {warehouseName || "—"}
           </p>
         </div>
       </div>
-    </section>
+      </>
   );
 };
 
