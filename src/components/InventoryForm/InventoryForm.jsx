@@ -85,8 +85,8 @@ function InventoryForm(props) {
         e.preventDefault();
         let updatedQuantity = (formData.status === "Out of Stock") ? 0 : formData.quantity;
         const newInventory = {
-            warehouse_id: Number(formData.warehouse), item_name: formData.name,
-            description: formData.desc, category: formData.category,
+            warehouse_id: Number(formData.warehouse), item_name: formData.name.trim(),
+            description: formData.desc.trim(), category: formData.category,
             status: formData.status, quantity: updatedQuantity
         };
         if (formType === "add") { // post request

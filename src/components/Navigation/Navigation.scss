@@ -76,7 +76,7 @@
       background-color: $color-instock-black;
 
       &:hover {
-        background-color: color.adjust($color-instock-black, $lightness: -10%);
+        // background-color: color.adjust($color-instock-black, $lightness: -10%);
         text-decoration: none;
       }
     }

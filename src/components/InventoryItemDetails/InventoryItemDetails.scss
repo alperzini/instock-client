@@ -1,26 +1,29 @@
 @use "../../styles/variables" as *;
-@use "../../styles/functions" as *;
 @use "../../styles/mixins" as *;
+@use "../../styles/functions" as *;
 
 .inventory-item-details {
-  width: 100%;
+  background: transparent;
 
   &__header {
-    padding: pxToRem(24) pxToRem(16);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: pxToRem(16);
+    justify-content: space-between;
+    padding: pxToRem(32) pxToRem(24) pxToRem(8);
 
     @include tablet {
-      padding: pxToRem(32);
+      padding: pxToRem(32) pxToRem(32) pxToRem(21);
+    }
+
+    @include desktop {
+      padding: pxToRem(32) pxToRem(40) pxToRem(21);
     }
   }
 
-  &__title-group {
+  &__title-wrap {
     display: flex;
     align-items: center;
-    gap: pxToRem(8);
+    gap: pxToRem(12);
     min-width: 0;
   }
 
@@ -30,9 +33,9 @@
     line-height: $line-height-m-h1;
     font-weight: $font-semi-bold;
     color: $color-instock-black;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 
     @include tablet {
       font-size: $text-size-dt-h1;
@@ -40,22 +43,45 @@
     }
   }
 
-  /* Don’t restyle the button system — only control the responsive behavior */
-  &__edit-btn {
+  &__edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: pxToRem(8);
+
+    width: pxToRem(40);
+    height: pxToRem(40);
     padding: 0;
-    width: $cta-height-m;
+    border-radius: 50%;
+
+    border: pxToRem(1) solid $color-instock-indigo;
+    background: $color-instock-indigo;
+    color: $color-white;
+
+    cursor: pointer;
+
+    img {
+      width: pxToRem(20);
+      height: pxToRem(20);
+      display: block;
+    }
+
+    &:hover,
+    &:focus {
+      background: $color-graphite;
+      border-color: $color-graphite;
+    }
 
     @include tablet {
       width: auto;
-      padding: 0 pxToRem(16);
-    }
-  }
+      height: $cta-height-dt;
+      padding: 0 pxToRem(20);
+      border-radius: pxToRem(999);
 
-  &__edit-icon {
-    width: pxToRem(24);
-    height: pxToRem(24);
-    display: block;
-    filter: brightness(0) invert(1);
+      font-weight: $font-semi-bold;
+      font-size: $text-size-dt-h3;
+      line-height: $line-height-dt-h3;
+    }
   }
 
   &__edit-text {
@@ -67,58 +93,80 @@
   }
 
   &__divider {
-    height: 1px;
-    background-color: $color-cloud;
+    height: pxToRem(1);
+    background: $color-cloud;
   }
 
-  &__content {
-    padding: pxToRem(24) pxToRem(16);
-    display: flex;
-    flex-direction: column;
-    gap: pxToRem(24);
+  &__info {
+    padding: pxToRem(16) pxToRem(16);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: pxToRem(24);
 
     @include tablet {
       padding: pxToRem(32);
-      flex-direction: row;
-      gap: pxToRem(32);
+      grid-template-columns: 1.35fr 1fr 1fr;
+      column-gap: pxToRem(32);
+      row-gap: pxToRem(24);
+      align-items: start;
+    }
+
+    @include desktop {
+      padding: pxToRem(32) pxToRem(40);
     }
   }
 
-  &__left {
-    display: flex;
-    flex-direction: column;
-    gap: pxToRem(24);
+  &__block {
+    min-width: 0;
+  }
 
+  &__block--left {
     @include tablet {
-      flex: 1;
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
       padding-right: pxToRem(32);
       border-right: 1px solid $color-cloud;
     }
   }
 
-  &__right {
-    display: flex;
-    flex-direction: column;
-    gap: pxToRem(24);
-
+  &__block--category {
     @include tablet {
-      flex: 1;
-      padding-left: pxToRem(32);
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      padding-right: pxToRem(32);
+      border-right: 1px solid $color-cloud;
     }
   }
 
-  &__top {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: pxToRem(24);
+  &__block--status {
+    @include tablet {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+  }
+
+  &__block--qty {
+    @include tablet {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+  }
+
+  &__block--warehouse {
+    @include tablet {
+      grid-column: 2 / 4;
+      grid-row: 2 / 3;
+    }
   }
 
   &__label {
-    margin: 0 0 pxToRem(4);
+    margin: 0 0 pxToRem(8) 0;
     font-size: $text-size-m-h4;
     line-height: $line-height-m-h4;
     font-weight: $font-semi-bold;
     color: $color-slate;
+    text-transform: uppercase;
 
     @include tablet {
       font-size: $text-size-dt-h4;
@@ -142,28 +190,45 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: $tag-height-m;
-    padding: 0 $tag-padding-right;
-    border-radius: $tag-br;
-    font-size: $text-size-m-h4;
-    line-height: $line-height-m-h4;
-    font-weight: $font-semi-bold;
-    width: fit-content;
 
-    @include tablet {
-      height: $tag-height-dt;
-      font-size: $text-size-dt-h4;
-      line-height: $line-height-dt-h4;
-    }
+    padding: pxToRem(4) pxToRem(12);
+    border-radius: pxToRem(999);
+
+    font-size: $text-size-m-p3;
+    font-weight: $font-semi-bold;
+    text-transform: uppercase;
+
+    width: fit-content;
   }
 
   &__tag--in {
+    background-color: rgba($color-green, 0.1);
     color: $color-green;
-    background-color: rgba($color-green, $tag-bo);
   }
 
   &__tag--out {
+    background-color: rgba($color-red, 0.1);
     color: $color-red;
-    background-color: rgba($color-red, $tag-bo);
   }
 }
+
+.inventory-item-details {
+  margin-top: pxToRem(-32);
+}
+
+.inventory-item-details.inventory-item-details {
+  &__header {
+    padding-top: pxToRem(20) !important;
+    padding-bottom: pxToRem(12) !important;
+  }
+
+  &__divider {
+    margin-top: pxToRem(-6);
+  }
+
+  &__info {
+    padding-top: pxToRem(12) !important;
+    padding-bottom: pxToRem(20) !important;
+  }
+}
+
