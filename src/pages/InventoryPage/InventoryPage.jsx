@@ -1,8 +1,12 @@
 import "./InventoryPage.scss";
+import InventoryList from "../../components/InventoryList/InventoryList";
 
-const InventoryPage = ({ inventory, setInventory }) => {
-console.log("InventoryPage");
-
+const InventoryPage = () => {
+  return (
+      <main className="inventory-page">
+        <InventoryList />
+      </main>
+  );
 };
 
 export default InventoryPage;

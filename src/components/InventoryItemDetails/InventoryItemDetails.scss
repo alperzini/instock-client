@@ -1,0 +1,242 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/functions" as *;
+
+.inventory-item-details {
+  background: transparent;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: pxToRem(32) pxToRem(24) pxToRem(24);
+    border-bottom: 1px solid $color-cloud;
+
+    @include tablet {
+      padding: pxToRem(32) pxToRem(32) pxToRem(20);
+    }
+
+    @include desktop {
+      padding: pxToRem(32) pxToRem(40) pxToRem(20);
+    }
+  }
+
+  &__title-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $text-size-m-h1;
+    line-height: $line-height-m-h1;
+    font-weight: $font-semi-bold;
+    color: $color-instock-black;
+    overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+
+    @include tablet {
+      font-size: $text-size-dt-h1;
+      line-height: $line-height-dt-h1;
+    }
+  }
+
+  &__edit {
+    font-family: $primary-font;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: pxToRem(8);
+
+    width: pxToRem(40);
+    height: pxToRem(40);
+    padding: 0;
+    border-radius: 50%;
+
+    border: 1px solid $color-instock-indigo;
+    background: $color-instock-indigo;
+    color: $color-white;
+
+    cursor: pointer;
+
+    img {
+      width: pxToRem(20);
+      height: pxToRem(20);
+      display: block;
+    }
+
+    &:hover,
+    &:focus {
+      background: $color-graphite;
+      border-color: $color-graphite;
+    }
+
+    @include tablet {
+      width: auto;
+      height: $cta-height-dt;
+      padding: 0 pxToRem(20);
+      border-radius: 20px;
+
+      font-weight: $font-semi-bold;
+      font-size: $text-size-dt-h3;
+      line-height: $line-height-dt-h3;
+    }
+  }
+
+  &__edit-text {
+    display: none;
+
+    @include tablet {
+      display: inline;
+    }
+  }
+
+  &__info {
+    padding: 16px 24px 24px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+
+    @include tablet {
+      padding: pxToRem(32);
+      grid-template-columns: 1.35fr 1fr 1fr;
+      column-gap: pxToRem(32);
+      row-gap: 0;
+      align-items: start;
+    }
+
+    @include desktop {
+      padding: pxToRem(32) pxToRem(40);
+    }
+  }
+
+  &__block {
+    min-width: 0;
+  }
+
+  &__block--left {
+    @include tablet {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      padding-right: pxToRem(32);
+      border-right: 1px solid $color-cloud;
+    }
+  }
+
+  &__block--category {
+    @include tablet {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      padding-right: pxToRem(32);
+      border-right: 1px solid $color-cloud;
+    }
+  }
+
+  &__block--status {
+    @include tablet {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+  }
+
+  &__block--qty {
+    @include tablet {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+  }
+
+  &__block--warehouse {
+    @include tablet {
+      grid-column: 2 / 4;
+      grid-row: 2 / 3;
+    }
+  }
+
+  &__label {
+    margin: 0 0 pxToRem(8) 0;
+    font-size: $text-size-m-h4;
+    line-height: $line-height-m-h4;
+    font-weight: $font-semi-bold;
+    color: $color-slate;
+    text-transform: uppercase;
+
+    @include tablet {
+      font-size: $text-size-dt-h4;
+      line-height: $line-height-dt-h4;
+    }
+  }
+
+  &__value {
+    margin: 0;
+    font-size: $text-size-m-p2;
+    line-height: $line-height-m-p2;
+    color: $color-instock-black;
+
+    @include tablet {
+      font-size: $text-size-dt-p2;
+      line-height: $line-height-dt-p2;
+    }
+
+    &--bootom-margin {
+      @include tablet {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: pxToRem(4) pxToRem(12);
+    border-radius: 20px;
+
+    font-size: $text-size-m-p3;
+    line-height: $line-height-m-h3;
+    font-weight: $font-semi-bold;
+    text-transform: uppercase;
+
+    width: fit-content;
+
+    @include tablet {
+      line-height: $line-height-dt-h3;
+      font-size: $text-size-dt-p3;
+    }
+  }
+
+  &__tag--in {
+    background-color: rgba($color-green, 0.1);
+    color: $color-green;
+  }
+
+  &__tag--out {
+    background-color: rgba($color-red, 0.1);
+    color: $color-red;
+  }
+}
+
+.inventory-item-details {
+  margin-top: pxToRem(-32);
+}
+
+.inventory-item-details.inventory-item-details {
+  &__header {
+    padding-top: pxToRem(20) !important;
+    padding-bottom: pxToRem(12) !important;
+  }
+
+  &__divider {
+    margin-top: pxToRem(-6);
+  }
+
+  &__info {
+    padding-top: pxToRem(12) !important;
+    padding-bottom: pxToRem(20) !important;
+  }
+}

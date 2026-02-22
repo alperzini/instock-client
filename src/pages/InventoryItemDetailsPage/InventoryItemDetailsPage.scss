@@ -2,3 +2,161 @@
 @use "../../styles/functions" as *;
 @use "../../styles/mixins" as *;
 
+.inventory-item-details-page {
+  background: $color-white;
+  // min-height: 100vh;
+  // padding: 1rem;
+
+  &__card {
+    background: $color-white;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(19, 24, 44, 0.08);
+    overflow: hidden;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem 1rem;
+  }
+
+  &__back {
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: inline-flex;
+    cursor: pointer;
+  }
+
+  &__title {
+    flex: 1;
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  &__edit-btn {
+    display: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__edit-btn--mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: $color-red; // changed from $color-indigo
+  }
+
+  &__divider {
+    height: 1px;
+    background: $color-cloud;
+  }
+
+  &__details {
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__label {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: $color-slate;
+  }
+
+  &__value {
+    margin: 0;
+    color: $color-light-grey; // changed from $color-black
+  }
+
+  &__status-tag {
+    display: inline-flex;
+    align-items: center;
+    height: 26px; 
+    padding: 0 8px; 
+    border-radius: 20px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  &__status-tag--in-stock {
+    background: rgba(21, 132, 99, 0.07);
+    color: $color-green;
+  }
+
+  &__status-tag--out-of-stock {
+    background: rgba(201, 69, 21, 0.07);
+    color: $color-red;
+  }
+
+  @include tablet {
+    // padding: 2rem;
+
+    &__header {
+      padding: 1.5rem 2rem;
+    }
+
+    &__edit-btn--mobile {
+      display: none;
+    }
+
+    &__edit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background: $color-light-grey; // changed from $color-indigo
+      color: $color-white;
+    }
+
+    &__details {
+      padding: 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    &__right {
+      border-left: 1px solid $color-cloud;
+      padding-left: 2rem;
+    }
+
+    &__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @include desktop {
+    // padding: 2.5rem;
+
+    &__title {
+      font-size: 1.75rem;
+    }
+
+    &__details {
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+  }
+}

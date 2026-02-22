@@ -13,17 +13,18 @@ background: $color-white;
     border-bottom: 1px solid $color-cloud;
 
     @include tablet {
-    padding: pxToRem(32) pxToRem(32) pxToRem(21);
+    padding: pxToRem(32) pxToRem(32) pxToRem(20);
     }
 
     @include desktop {
-    padding: pxToRem(32) pxToRem(40) pxToRem(21);
+    padding: pxToRem(32) pxToRem(40) pxToRem(20);
     }
 }
 
 &__title-wrap {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    // justify-content: flex-start;
     gap: pxToRem(12);
     min-width: 0;
 }
@@ -35,8 +36,8 @@ background: $color-white;
     font-weight: $font-semi-bold;
     color: $color-instock-black;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
 
     @include tablet {
     font-size: $text-size-dt-h1;
