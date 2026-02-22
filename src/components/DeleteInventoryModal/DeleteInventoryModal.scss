@@ -54,7 +54,7 @@
     justify-content: center;
     outline: none;
 
-    &:focus {
+    &:focus-visible {
         border: 1px solid $color-instock-indigo;
         border-radius: 3px;
     }

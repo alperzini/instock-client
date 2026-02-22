@@ -67,7 +67,7 @@
     &:not(.navigation__link--active) {
       background-color: transparent;
 
-      &:hover {
+      &:hover, &:focus {
         text-decoration: underline;
       }
     }

@@ -6,6 +6,8 @@ import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
 import DeleteInventoryModal from "../../components/DeleteInventoryModal/DeleteInventoryModal";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import PageNotFound from "../../components/PageNotFound/PageNotFound";
 
 const WarehouseDetailsPage = ({ inventory, setInventory, warehouses }) => {
   const { warehouseId } = useParams();
@@ -13,16 +15,18 @@ const WarehouseDetailsPage = ({ inventory, setInventory, warehouses }) => {
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const PORT = import.meta.env.VITE_PORT;
-  
-  const [warehouse, setWarehouse] = useState(null);
-  
-  const inventoryArray = Array.isArray(inventory)
-  ? inventory
-  : inventory?.data || inventory?.inventories || [];
 
-const warehouseInventory = inventoryArray.filter(
-  (item) => Number(item.warehouse_id) === Number(warehouseId)
-);
+  const [warehouse, setWarehouse] = useState(null);
+  const [isLodaing, setIsLoading] = useState(true);
+  const [isNotFound, setIsNotFound] = useState(false);
+
+  const inventoryArray = Array.isArray(inventory)
+    ? inventory
+    : inventory?.data || inventory?.inventories || [];
+
+  const warehouseInventory = inventoryArray.filter(
+    (item) => Number(item.warehouse_id) === Number(warehouseId)
+  );
 
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -33,13 +37,16 @@ const warehouseInventory = inventoryArray.filter(
         const res = await axios.get(
           `${BACKEND_URL}${PORT}/warehouses/${warehouseId}`
         );
-  
+
         setWarehouse(res.data);
+        setIsLoading(false);
       } catch (error) {
+        setIsLoading(false);
+        setIsNotFound(true);
         console.error("Error fetching warehouse:", error);
       }
     };
-  
+
     fetchWarehouse();
   }, [BACKEND_URL, PORT, warehouseId]);
 
@@ -57,16 +64,16 @@ const warehouseInventory = inventoryArray.filter(
 
   const handleConfirmDelete = async () => {
     if (!selectedItem) return;
-  
+
     try {
       await axios.delete(
         `${BACKEND_URL}${PORT}/inventories/${selectedItem.id}`
       );
-  
+
       setInventory((prev) =>
         prev.filter((i) => i.id !== selectedItem.id)
       );
-  
+
       handleCloseDelete();
     } catch (error) {
       console.error("Error deleting inventory item:", error);
@@ -75,27 +82,35 @@ const warehouseInventory = inventoryArray.filter(
   };
 
   return (
-    <PageWrapper>
-    <main className="warehouse-details-page">
-      <WarehouseDetails
-        warehouse={warehouse}
-        onEdit={() => navigate(`/editWarehouse/${warehouseId}`)}
-      />
+    (warehouse != null) ?
+      <PageWrapper>
+        <main className="warehouse-details-page">
+          <WarehouseDetails
+            warehouse={warehouse}
+            onEdit={() => navigate(`/editWarehouse/${warehouseId}`)}
+          />
 
-      <WarehouseInventoryList
-        inventory={warehouseInventory}
-        onEdit={handleEdit}
-        onDelete={handleDeleteClick}
-      />
+          <WarehouseInventoryList
+            inventory={warehouseInventory}
+            onEdit={handleEdit}
+            onDelete={handleDeleteClick}
+          />
 
-      <DeleteInventoryModal
-        isOpen={isDeleteOpen}
-        itemName={selectedItem?.item_name}
-        onClose={handleCloseDelete}
-        onDelete={handleConfirmDelete}
-      /> 
-    </main>
-  </PageWrapper>
+          <DeleteInventoryModal
+            isOpen={isDeleteOpen}
+            itemName={selectedItem?.item_name}
+            onClose={handleCloseDelete}
+            onDelete={handleConfirmDelete}
+          />
+        </main>
+      </PageWrapper>
+      : isNotFound ?
+        <PageNotFound title="404 - PAGE NOT FOUND" content="The warehouse is not found." />
+        : isLodaing ?
+          <PageWrapper>
+            <LoadingSpinner delay={5000} />
+          </PageWrapper >
+          : ""
   );
 };
 
