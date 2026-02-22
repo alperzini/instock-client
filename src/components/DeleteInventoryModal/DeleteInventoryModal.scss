@@ -1,11 +1,11 @@
-@use "../../styles/functions" as *;
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
+@use "../../styles/functions" as *;
 
 .delete-modal {
     position: fixed;
     inset: 0;
-    z-index: 999;
+    z-index: 100;
 
     display: flex;
     align-items: stretch;
@@ -25,7 +25,7 @@
 
 .delete-modal__card {
     position: relative;
-    z-index: 999;
+    z-index: 1;
 
     width: 100%;
     height: 100%;
@@ -73,9 +73,6 @@
 }
 
 .delete-modal__title {
-    z-index: 999;
-
-    background: $color-white;
     margin: 0;
     padding-top: pxToRem(36);
 
@@ -83,7 +80,6 @@
     line-height: $line-height-m-h1;
     font-weight: $font-semi-bold;
     color: $color-instock-black;
-
     @include tablet {
         font-size: $text-size-dt-h1;
         line-height: $line-height-dt-h1;
@@ -91,15 +87,11 @@
 }
 
 .delete-modal__text {
-    z-index: 999;
-
-    background: $color-white;
     margin: pxToRem(16) 0 0 0;
 
     font-size: pxToRem(15);
     line-height: pxToRem(26);
     color: $color-instock-black;
-
     @include tablet {
         font-size: pxToRem(16);
         line-height: pxToRem(28);
@@ -117,15 +109,14 @@
 .delete-modal__btn {
     flex: 1;
     height: $cta-height-m;
-    border-radius: $cta-br;
-    padding: 0 $cta-padding-dt;
+    border-radius: pxToRem(20);
+    padding: 0 pxToRem(16);
 
     font-size: $text-size-m-h3;
     line-height: $line-height-m-h3;
     font-weight: $font-semi-bold;
     cursor: pointer;
     font-family: $primary-font;
-
     @include tablet {
         font-size: $text-size-dt-h3;
         line-height: $line-height-dt-h3;
@@ -134,7 +125,7 @@
 
 .delete-modal__btn--secondary {
     background: $color-white;
-    border: 1px solid $color-cloud;
+    border: pxToRem(1) solid $color-cloud;
     color: $color-slate;
     outline: none;
 
@@ -147,7 +138,7 @@
 
 .delete-modal__btn--delete {
     background: $color-red;
-    border: 1px solid $color-red;
+    border: pxToRem(1) solid $color-red;
     color: $color-white;
     outline: none;
 
@@ -159,46 +150,44 @@
 }
 
 @include tablet {
-    @media (min-width: 767px) {
-        .delete-modal {
-            align-items: center;
-            justify-content: center;
-            padding: pxToRem(16);
-        }
+    .delete-modal {
+        align-items: center;
+        justify-content: center;
+        padding: pxToRem(16);
+    }
 
-        .delete-modal__card {
-            width: min(100%, 42rem);
-            height: auto;
+    .delete-modal__card {
+        width: min(100%, pxToRem(672));
+        height: auto;
 
-            border-radius: 4px;
-            box-shadow: 0 8px 24px rgba(19, 24, 44, 0.18);
+        border-radius: pxToRem(4);
+        box-shadow: 0 pxToRem(8) pxToRem(24) rgba(19, 24, 44, 0.18);
 
-            padding: pxToRem(40) pxToRem(48);
-        }
+        padding: pxToRem(40) pxToRem(48);
+    }
 
-        .delete-modal__title {
-            padding-top: 0;
-            // font-size: $text-size-dt-h1;
-            // line-height: $line-height-dt-h1;
-        }
+    .delete-modal__title {
+        padding-top: 0;
+        // font-size: $text-size-dt-h1;
+        // line-height: $line-height-dt-h1;
+    }
 
-        .delete-modal__text {
-            // font-size: $text-size-dt-p2;
-            // line-height: $line-height-dt-p2;
-            max-width: 34rem;
-        }
+    .delete-modal__text {
+        // font-size: $text-size-dt-p2;
+        // line-height: $line-height-dt-p2;
+        max-width: pxToRem(544);
+    }
 
-        .delete-modal__actions {
-            justify-content: flex-end;
-        }
+    .delete-modal__actions {
+        justify-content: flex-end;
+    }
 
-        .delete-modal__btn {
-            flex: 0 0 auto;
-            width: auto;
-            height: $cta-height-dt;
+    .delete-modal__btn {
+        flex: 0 0 auto;
+        width: auto;
+        height: $cta-height-dt;
 
-            font-size: $text-size-dt-h3;
-            line-height: $line-height-dt-h3;
-        }
+        font-size: $text-size-dt-h3;
+        line-height: $line-height-dt-h3;
     }
 }

@@ -29,7 +29,7 @@ const EditWarehousePage = ({ setWarehouses, warehouses }) => {
     ** 404 if id is invalid
     ** Show edit page if warehouse is found
     ** Show loading page until warehouse is found or 404 otherwise */
-    isNaN(id) ? <PageNotFound content="Invalid ID for the warehouse." />
+    isNaN(id) ? <PageNotFound title="400 - BAD REQUEST" content="Invalid ID for the warehouse." />
       : (warehouse != null ?
         <PageWrapper>
           <WarehouseForm warehouses={warehouses} setWarehouses={setWarehouses}
@@ -44,7 +44,7 @@ const EditWarehousePage = ({ setWarehouses, warehouses }) => {
           <PageWrapper>
             <LoadingSpinner delay={5000} />
           </PageWrapper >
-          : <PageNotFound content="The warehouse is not found." />
+          : <PageNotFound title="404 - PAGE NOT FOUND" content="The warehouse is not found." />
         )
       )
   );

@@ -2,12 +2,15 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/functions" as *;
 
-.warehouse-item {
+.warehouse-inventory-item {
   width: 100%;
   padding: pxToRem(16) pxToRem(24) pxToRem(24);
-  border-bottom: 1px solid $color-cloud;
+  border-bottom: pxToRem(1) solid $color-cloud;
+  outline: none;
+  cursor: pointer;
 
-  &:hover, &:focus, &:focus-within {
+  &:hover,
+  &:focus {
     background-color: rgba($color-instock-indigo, 0.07);
   }
 
@@ -34,16 +37,11 @@
     font-weight: $font-regular;
     line-height: $line-height-m-p2;
     color: $color-instock-black;
-    word-break: normal;
     overflow-wrap: break-word;
     @include tablet {
       font-size: $text-size-dt-p2;
       line-height: $line-height-dt-p2;
     }
-  }
-
-  &__value--nowrap {
-    white-space: nowrap;
   }
 
   &__actions {
@@ -58,25 +56,22 @@
     border: 0;
     background: transparent;
     padding: 0;
-    margin: 0;
-    outline: none;
     cursor: pointer;
+    outline: none;
 
-    &:hover{
-        opacity: 0.7;
+    &:hover {
+      opacity: 0.7;
     }
 
     &:focus-visible {
       border: 1px solid $color-instock-indigo;
-      border-radius: pxToRem(3);
+      border-radius: 3px;
     }
   }
-  
 
   @include tablet {
     padding: pxToRem(16) pxToRem(32);
-    display: grid;
-    grid-template-columns: 1.2fr 1.6fr 1.2fr 1.7fr 0.7fr;
+    grid-template-columns: 1.6fr 1fr 0.9fr 0.6fr 0.7fr;
     column-gap: pxToRem(16);
     row-gap: 0;
     align-items: center;

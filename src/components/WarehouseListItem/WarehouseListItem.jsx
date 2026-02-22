@@ -13,10 +13,14 @@ const WarehouseListItem = ({ warehouse, onDelete }) => {
 
     const closeDelete = () => setIsDeleteOpen(false);
 
-    const confirmDelete = () => {
-        onDelete?.(warehouse.id);
-        closeDelete();
-    };
+    const confirmDelete = async () => {
+        try {
+          await onDelete?.(warehouse.id);
+          closeDelete();
+        } catch (error) {
+          console.error("Error deleting warehouse:", error);
+        }
+      };
 
 return (
     <>

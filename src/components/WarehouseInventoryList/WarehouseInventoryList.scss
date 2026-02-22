@@ -1,0 +1,89 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/functions" as *;
+
+.warehouse-inventory {
+&__container {
+    @extend %wrapper;
+    background-color: $color-white;
+    border-radius: pxToRem(3);
+    overflow: hidden;
+}
+
+&__header {
+    display: flex;
+    flex-direction: column;
+    gap: pxToRem(16);
+    padding: pxToRem(24) pxToRem(16);
+    display: none;
+
+    @include tablet {
+        display: block;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: pxToRem(32);
+    }
+
+    @include desktop {
+    padding: pxToRem(32) pxToRem(40);
+    }
+}
+
+&__title {
+    margin: 0;
+    font-size: $text-size-m-h2;
+    line-height: $line-height-m-h2;
+    font-weight: $font-semi-bold;
+    color: $color-instock-black;
+
+    @include tablet {
+    font-size: $text-size-dt-h2;
+    line-height: $line-height-dt-h2;
+    }
+}
+
+&__table-header {
+    display: none;
+
+    @include tablet {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 0.9fr 0.6fr 0.7fr;
+    column-gap: pxToRem(16);
+    align-items: center;
+    padding: pxToRem(12) pxToRem(32);
+    background-color: $color-light-grey;
+    }
+
+    @include desktop {
+    padding: pxToRem(12) pxToRem(40);
+    }
+}
+
+&__th {
+    display: inline-flex;
+    align-items: center;
+    gap: pxToRem(4);
+    font-size: $text-size-dt-h4;
+    font-weight: $font-semi-bold;
+    color: $color-slate;
+    text-transform: uppercase;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+&__th--actions {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+&__rows {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    & .warehouse-inventory-item:last-child {
+    border-bottom: none;
+    }
+}
+}

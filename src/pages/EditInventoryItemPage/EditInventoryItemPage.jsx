@@ -29,7 +29,7 @@ const EditInventoryItemPage = ({ inventory, setInventory, warehouses }) => {
         ** 404 if id is invalid
         ** Show edit page if inventory item is found
         ** Show loading page until inventory item is found or 404 otherwise */
-        isNaN(id) ? <PageNotFound content="Invalid ID for the inventory item." />
+        isNaN(id) ? <PageNotFound title="400 - BAD REQUEST" content="Invalid ID for the inventory item." />
             : (inventoryItem != null ?
                 <PageWrapper>
                     <InventoryForm setInventory={setInventory} warehouses={warehouses}
@@ -39,12 +39,12 @@ const EditInventoryItemPage = ({ inventory, setInventory, warehouses }) => {
                         initalQuantity={inventoryItem.quantity} initalWarehouse={inventoryItem.warehouse_id} />
                 </PageWrapper>
                 :
-                (isLodaing ?
+                isLodaing ?
                     <PageWrapper>
                         <LoadingSpinner delay={5000} />
                     </PageWrapper >
-                    : <PageNotFound content="The inventory item is not found." />
-                )
+                    : <PageNotFound title="404 - PAGE NOT FOUND" content="The inventory item is not found." />
+
             )
     );
 };
