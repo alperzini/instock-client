@@ -7,7 +7,9 @@
   padding: pxToRem(16) pxToRem(24) pxToRem(24);
   border-bottom: 1px solid $color-cloud;
 
-  &:hover, &:focus, &:focus-within {
+  &:hover,
+  &:focus,
+  &:focus-within {
     background-color: rgba($color-instock-indigo, 0.07);
   }
 
@@ -16,8 +18,29 @@
   column-gap: pxToRem(32);
   row-gap: pxToRem(20);
 
+  grid-template-areas:
+    "warehouse contact"
+    "address info"
+    "actions actions";
+
   &__cell {
     min-width: 0;
+  }
+
+  &__cell--warehouse {
+    grid-area: warehouse;
+  }
+
+  &__cell--contact {
+    grid-area: contact;
+  }
+
+  &__cell--address {
+    grid-area: address;
+  }
+
+  &__cell--info {
+    grid-area: info;
   }
 
   &__label {
@@ -36,6 +59,7 @@
     color: $color-instock-black;
     word-break: normal;
     overflow-wrap: break-word;
+
     @include tablet {
       font-size: $text-size-dt-p2;
       line-height: $line-height-dt-p2;
@@ -47,7 +71,7 @@
   }
 
   &__actions {
-    grid-column: 1 / -1;
+    grid-area: actions;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -62,8 +86,8 @@
     outline: none;
     cursor: pointer;
 
-    &:hover{
-        opacity: 0.7;
+    &:hover {
+      opacity: 0.7;
     }
 
     &:focus-visible {
@@ -74,19 +98,28 @@
 
   @include tablet {
     padding: pxToRem(16) pxToRem(32);
-    display: grid;
+
+    /* 🔥 Reset grid areas so layout stays original */
+    grid-template-areas: none;
     grid-template-columns: 1.2fr 1.6fr 1.2fr 1.7fr 0.7fr;
     column-gap: pxToRem(16);
     row-gap: 0;
     align-items: center;
     min-height: pxToRem(72);
 
+    &__cell--warehouse,
+    &__cell--contact,
+    &__cell--address,
+    &__cell--info,
+    &__actions {
+      grid-area: auto;
+    }
+
     &__label {
       display: none;
     }
 
     &__actions {
-      grid-column: auto;
       justify-content: flex-end;
       gap: pxToRem(12);
       margin-top: 0;
