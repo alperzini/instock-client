@@ -36,7 +36,10 @@ const WarehouseInventoryListItem = ({ item, onDelete, onEdit }) => {
       </div>
 
       <div className="warehouse-inventory-item__cell warehouse-inventory-item__cell--qty">
-        <p className="warehouse-inventory-item__label">QTY</p>
+        <p className="warehouse-inventory-item__label">
+          <span className="display-mobile-only">QTY</span>
+          <span className="display-tablet-desktop-only">QUANTITY</span>
+        </p>
         <p className="warehouse-inventory-item__value">{item.quantity}</p>
       </div>
 

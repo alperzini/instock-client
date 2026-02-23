@@ -21,7 +21,8 @@ const WarehouseInventoryList = ({ inventory = [], onEdit, onDelete }) => {
             STATUS <SortIcon />
           </div>
           <div className="warehouse-inventory__th" role="columnheader">
-            QTY <SortIcon />
+            <span className="display-mobile-only">QTY</span>
+            <span className="display-tablet-desktop-only">QUANTITY </span> <SortIcon />
           </div>
           <div
             className="warehouse-inventory__th warehouse-inventory__th--actions"
