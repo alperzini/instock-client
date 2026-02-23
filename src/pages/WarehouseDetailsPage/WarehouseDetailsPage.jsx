@@ -17,16 +17,24 @@ const WarehouseDetailsPage = ({ inventory, setInventory, warehouses }) => {
   const PORT = import.meta.env.VITE_PORT;
 
   const [warehouse, setWarehouse] = useState(null);
+  const [warehouseInventory, setWarehouseInventory] = useState(null);
   const [isLodaing, setIsLoading] = useState(true);
   const [isNotFound, setIsNotFound] = useState(false);
+  const [isWarehouseInventoryLodaing, setIsWarehouseInventoryLodaing] = useState(true);
 
-  const inventoryArray = Array.isArray(inventory)
-    ? inventory
-    : inventory?.data || inventory?.inventories || [];
-
-  const warehouseInventory = inventoryArray.filter(
-    (item) => Number(item.warehouse_id) === Number(warehouseId)
-  );
+  useEffect(() => {
+    const inventoryArray = Array.isArray(inventory)
+      ? inventory
+      : inventory?.data || inventory?.inventories || [];
+    if (inventory.length > 0) {
+      setWarehouseInventory(inventoryArray.filter(
+        (item) => Number(item.warehouse_id) === Number(warehouseId)
+      ));
+      setIsWarehouseInventoryLodaing(false);
+    }
+    else
+      setTimeout(() => setIsWarehouseInventoryLodaing(false), 5000);
+  }, [inventory]);
 
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -83,18 +91,21 @@ const WarehouseDetailsPage = ({ inventory, setInventory, warehouses }) => {
 
   return (
     (warehouse != null) ?
-      <PageWrapper>
+      (<PageWrapper>
         <main className="warehouse-details-page">
           <WarehouseDetails
             warehouse={warehouse}
             onEdit={() => navigate(`/editWarehouse/${warehouseId}`)}
           />
 
+          {(warehouseInventory!= null && warehouseInventory.length > 0) ?
           <WarehouseInventoryList
             inventory={warehouseInventory}
             onEdit={handleEdit}
             onDelete={handleDeleteClick}
-          />
+          /> : isWarehouseInventoryLodaing ?
+            <LoadingSpinner delay={5000} />
+          : <p className="warehouse-details-page__no-inventory-p">There are no inventory items assigned to this warehouse.</p>}
 
           <DeleteInventoryModal
             isOpen={isDeleteOpen}
@@ -103,7 +114,7 @@ const WarehouseDetailsPage = ({ inventory, setInventory, warehouses }) => {
             onDelete={handleConfirmDelete}
           />
         </main>
-      </PageWrapper>
+      </PageWrapper>)
       : isNotFound ?
         <PageNotFound title="404 - PAGE NOT FOUND" content="The warehouse is not found." />
         : isLodaing ?

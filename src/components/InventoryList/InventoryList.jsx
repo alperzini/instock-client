@@ -70,7 +70,10 @@ const InventoryListItem = ({ item, warehouseName, onDeleted }) => {
         </div>
 
         <div className="inventory-item__cell inventory-item__cell--qty">
-          <p className="inventory-item__label">QTY</p>
+          <p className="inventory-item__label">
+            <span className="display-mobile-only">QTY</span>
+            <span className="display-tablet-desktop-only">QUANTITY</span>
+          </p>
           <p className="inventory-item__value">{item.quantity}</p>
         </div>
 
