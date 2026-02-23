@@ -4,4 +4,24 @@
 
 .warehouse-details-page {
     width: 100%;
-} 
+
+    &__no-inventory-p {
+        margin: 0;
+        color: $color-instock-black;
+        background-color: $color-white;
+        font-weight: $font-semi-bold;
+        padding: 16px 24px 32px;
+        font-size: $text-size-m-p2;
+        line-height: $line-height-m-p2;
+
+        @include tablet {
+            padding: 24px 32px 32px;
+            font-size: $text-size-dt-p2;
+            line-height: $line-height-dt-p2;
+        }
+
+        @include desktop {
+            padding: 24px 40px 32px;
+        }
+    }
+}
