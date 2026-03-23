@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 
 function InventoryForm(props) {
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-    const PORT = import.meta.env.VITE_PORT;
+    const PORT = import.meta.env.VITE_PORT || "";
     const navigate = useNavigate();
     const { setInventory, warehouses, formTitle, formType, inventoryId,
         initalName, initalDesc, initalCategory, initalStatus,

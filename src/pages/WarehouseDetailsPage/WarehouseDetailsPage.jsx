@@ -14,7 +14,7 @@ const WarehouseDetailsPage = ({ inventory, setInventory, warehouses }) => {
   const navigate = useNavigate();
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  const PORT = import.meta.env.VITE_PORT;
+  const PORT = import.meta.env.VITE_PORT || "";
 
   const [warehouse, setWarehouse] = useState(null);
   const [warehouseInventory, setWarehouseInventory] = useState(null);

@@ -29,7 +29,7 @@ const InventoryListItem = ({ item, warehouseName, onDeleted }) => {
   const confirmDelete = async () => {
     try {
       const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:";
-      const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
+      const PORT = import.meta.env.VITE_BACKEND_PORT || import.meta.env.VITE_PORT || (import.meta.env.VITE_BACKEND_URL ? "" : "8080");
       const baseUrl = `${BACKEND_URL}${PORT}`;
 
       await axios.delete(`${baseUrl}/inventories/${item.id}`);
@@ -124,7 +124,7 @@ const InventoryList = () => {
   const [isNotFound, setIsNotFound] = useState(false);
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:";
-  const PORT = import.meta.env.VITE_BACKEND_PORT || 8080;
+  const PORT = import.meta.env.VITE_BACKEND_PORT || import.meta.env.VITE_PORT || (import.meta.env.VITE_BACKEND_URL ? "" : "8080");
   const baseUrl = `${BACKEND_URL}${PORT}`;
 
   useEffect(() => {

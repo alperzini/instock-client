@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 function WarehouseForm(props) {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  const PORT = import.meta.env.VITE_PORT;
+  const PORT = import.meta.env.VITE_PORT || "";
   const navigate = useNavigate();
   const { setWarehouses, formTitle, formType, warehouseId,
     initalName, initalAdress, initalCity, initalCountry,
