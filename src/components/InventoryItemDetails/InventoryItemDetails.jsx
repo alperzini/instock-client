@@ -10,7 +10,7 @@ import BackArrowButton from "../customButtons/BackArrowButton/BackArrowButton";
 import editWhiteIcon from "../../assets/icons/editWhite-24px.svg";
 
 // ✅ match your project pattern (works in Vite)
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
 
 const InventoryItemDetails = ({ item }) => {
   const navigate = useNavigate();

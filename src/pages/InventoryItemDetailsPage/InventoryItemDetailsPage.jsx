@@ -7,7 +7,7 @@ import InventoryItemDetails from "../../components/InventoryItemDetails/Inventor
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import PageNotFound from "../../components/PageNotFound/PageNotFound";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
 
 const InventoryItemDetailsPage = () => {
   const { inventoryId } = useParams();
