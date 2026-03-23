@@ -2,7 +2,7 @@
 
 InStock is a comprehensive Inventory Management System developed for a Fortune 500 client. This repository contains the frontend application, which provides users with a seamless interface to manage warehouses and inventory items. The system allows users to view, add, edit, and delete warehouses and their associated inventory, ensuring accurate and up-to-date tracking of stock across multiple locations.
 
-URL: https://github.com/alperzini/instock-client
+URL: https://instock-client-42ifns2x6-alperzinis-projects.vercel.app/
 Backend Repository: https://github.com/alperzini/instock-server
 
 Built with React.js, Vite, SCSS, Axios, MySQL.
